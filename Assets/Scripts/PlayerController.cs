@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Start is called before the first frame update
     public float speed = 5f;
     public float jumpForce = 7f;
     private Rigidbody2D rb;
