@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4340c7261fb28a843b45e231ebb8bb45, type: 3}
-  m_Name: PlayerStats
+  m_Name: PlayerStats_DeathKpur
   m_EditorClassIdentifier: Assembly-CSharp::TarodevController.ScriptableStats
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   SnapInput: 1
-  VerticalDeadZoneThreshold: 0.3
-  HorizontalDeadZoneThreshold: 0.1
-  MaxSpeed: 7
-  Acceleration: 120
-  GroundDeceleration: 60
-  AirDeceleration: 30
-  GroundingForce: -1.5
-  GrounderDistance: 0.05
-  JumpPower: 36
-  MaxFallSpeed: 40
-  FallAcceleration: 110
-  JumpEndEarlyGravityModifier: 3
-  CoyoteTime: 0.15
-  JumpBuffer: 0.2
+  VerticalDeadZoneThreshold: 0.1
+  HorizontalDeadZoneThreshold: 0.3
+  MaxSpeed: 14
+  Acceleration: 220
+  GroundDeceleration: 280
+  AirDeceleration: 140
+  GroundingForce: -2
+  GrounderDistance: 0.07
+  JumpPower: 50
+  MaxFallSpeed: 30
+  FallAcceleration: 160
+  JumpEndEarlyGravityModifier: 4.2
+  CoyoteTime: 0.08
+  JumpBuffer: 0.1

@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace TarodevController
 {
+    /// <summary>
+    /// Hey!
+    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
+    /// I have a premium version on Patreon, which has every feature you'd expect from a polished controller. Link: https://www.patreon.com/tarodev
+    /// You can play and compete for best times here: https://tarodev.itch.io/extended-ultimate-2d-controller
+    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/tarodev
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
@@ -28,16 +35,7 @@ namespace TarodevController
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
 
-            // Mantén consistència: estat intern arrenca des de la velocitat real
-            _frameVelocity = _rb.linearVelocity;
-
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-        }
-
-        private void OnEnable()
-        {
-            // En cas de desactivar/activar el GO, resinc
-            _frameVelocity = _rb.linearVelocity;
         }
 
         private void Update()
@@ -51,14 +49,14 @@ namespace TarodevController
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
-                JumpHeld  = Input.GetButton("Jump")     || Input.GetKey(KeyCode.C),
-                Move      = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
+                Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
 
             if (_stats.SnapInput)
             {
                 _frameInput.Move.x = Mathf.Abs(_frameInput.Move.x) < _stats.HorizontalDeadZoneThreshold ? 0 : Mathf.Sign(_frameInput.Move.x);
-                _frameInput.Move.y = Mathf.Abs(_frameInput.Move.y) < _stats.VerticalDeadZoneThreshold   ? 0 : Mathf.Sign(_frameInput.Move.y);
+                _frameInput.Move.y = Mathf.Abs(_frameInput.Move.y) < _stats.VerticalDeadZoneThreshold ? 0 : Mathf.Sign(_frameInput.Move.y);
             }
 
             if (_frameInput.JumpDown)
@@ -90,7 +88,7 @@ namespace TarodevController
 
             // Ground and Ceiling
             bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
-            bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up,   _stats.GrounderDistance, ~_stats.PlayerLayer);
+            bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
 
             // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
@@ -117,6 +115,7 @@ namespace TarodevController
 
         #endregion
 
+
         #region Jumping
 
         private bool _jumpToConsume;
@@ -130,8 +129,7 @@ namespace TarodevController
 
         private void HandleJump()
         {
-            // IMPORTANT: fem servir _frameVelocity, no _rb.velocity
-            if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _frameVelocity.y > 0) _endedJumpEarly = true;
+            if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.linearVelocity.y > 0) _endedJumpEarly = true;
 
             if (!_jumpToConsume && !HasBufferedJump) return;
 
@@ -175,7 +173,6 @@ namespace TarodevController
         {
             if (_grounded && _frameVelocity.y <= 0f)
             {
-                // Petita força cap avall per mantenir l’adhesió sense “clavar”
                 _frameVelocity.y = _stats.GroundingForce;
             }
             else
@@ -188,11 +185,7 @@ namespace TarodevController
 
         #endregion
 
-        private void ApplyMovement()
-        {
-            // Un únic punt d’escriptura al Rigidbody
-            _rb.linearVelocity = _frameVelocity;
-        }
+        private void ApplyMovement() => _rb.linearVelocity = _frameVelocity;
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -212,6 +205,7 @@ namespace TarodevController
     public interface IPlayerController
     {
         public event Action<bool, float> GroundedChanged;
+
         public event Action Jumped;
         public Vector2 FrameInput { get; }
     }
