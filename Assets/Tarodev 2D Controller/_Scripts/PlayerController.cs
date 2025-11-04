@@ -73,12 +73,12 @@ namespace TarodevController
             HandleJump();
             HandleDirection();
             HandleGravity();
-
+            
             ApplyMovement();
         }
 
         #region Collisions
-
+        
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
 
