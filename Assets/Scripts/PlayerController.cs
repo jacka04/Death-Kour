@@ -29,28 +29,23 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
-        // 1) Ground check
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
-        // 2) Gir del sprite
         if (moveInput > 0) transform.eulerAngles = new Vector3(0, 0, 0);
         else if (moveInput < 0) transform.eulerAngles = new Vector3(0, 180, 0);
 
-        // 3) Better jump
         if (rb.linearVelocity.y < 0) {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
         } else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space)) {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
         }
 
-        // 4) Inici del salt (només quan toques terra)
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        // 5) Salt sostingut (mentre mantens espai) dins la finestra
         if (Input.GetKey(KeyCode.Space) && isJumping) {
             if (jumpTimeCounter > 0f) {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -60,13 +55,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // 6) Si deixes d’apretar, s’acaba el salt sostingut
         if (Input.GetKeyUp(KeyCode.Space)) {
             isJumping = false;
         }
     }
 
-    // Dibuixa el cercle del ground-check a l’editor per comprovar que no toca sempre
     void OnDrawGizmosSelected() {
         if (feetPos != null) {
             Gizmos.color = Color.yellow;
