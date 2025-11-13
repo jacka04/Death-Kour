@@ -151,19 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d9ea4867afcaa4889cf26f7e68acd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TarodevController.PlayerController
-  _stats: {fileID: 11400000, guid: 60d6ca444fa347741aa56a18455a58af, type: 2}
-  _rb: {fileID: 0}
-  _col: {fileID: 0}
-  _frameVelocity: {x: 0, y: 0}
-  _cachedQueryStartInColliders: 0
-  _time: 0
-  _frameLeftGrounded: -3.4028235e+38
-  _grounded: 0
-  _jumpToConsume: 0
-  _bufferedJumpUsable: 0
-  _endedJumpEarly: 0
-  _coyoteUsable: 0
-  _timeJumpWasPressed: 0
 --- !u!50 &118886459
 Rigidbody2D:
   serializedVersion: 5
@@ -295,8 +282,8 @@ Transform:
   m_GameObject: {fileID: 118886457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1859, y: 1.33, z: 0}
-  m_LocalScale: {x: -0.2319, y: 1.9956, z: 1}
+  m_LocalPosition: {x: -1.7301, y: 1.1981, z: 0}
+  m_LocalScale: {x: -1.1434525, y: 2.2594182, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1380,19 +1367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d9ea4867afcaa4889cf26f7e68acd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TarodevController.PlayerController
-  _stats: {fileID: 11400000, guid: 60d6ca444fa347741aa56a18455a58af, type: 2}
-  _rb: {fileID: 0}
-  _col: {fileID: 0}
-  _frameVelocity: {x: 0, y: 0}
-  _cachedQueryStartInColliders: 0
-  _time: 0
-  _frameLeftGrounded: -3.4028235e+38
-  _grounded: 0
-  _jumpToConsume: 0
-  _bufferedJumpUsable: 0
-  _endedJumpEarly: 0
-  _coyoteUsable: 0
-  _timeJumpWasPressed: 0
 --- !u!50 &1110281130
 Rigidbody2D:
   serializedVersion: 5
