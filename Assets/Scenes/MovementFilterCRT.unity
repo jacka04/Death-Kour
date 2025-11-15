@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33f0fb3e84908349935f3b20718ef50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 5
+  speed: 8
   jumpForce: 10
   feetPos: {fileID: 1204857801}
   checkRadius: 0.3
@@ -306,7 +306,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpTime: 0.35
-  fallMultiplier: 10
+  fallMultiplier: 5
   lowJumpMultiplier: 0
 --- !u!1 &337321329
 GameObject:
