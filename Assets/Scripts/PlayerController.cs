@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
 
     public Transform feetPos;
-    public float checkRadius = 0.15f;
+    public float checkRadius = 0.15f;//
     public LayerMask whatIsGround; //DETECTOR DE TERRA
     private bool isGrounded;
 
