@@ -4,7 +4,18 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float speed = 6f;
+    
+    public float acceleration = 25f; 
+    public float deceleration = 30f; 
+    public float velPower = 0.9f;    
+    
     public float jumpForce = 12f;
+    
+    public float jumpCutMultiplier = 0.3f;
+    
+    public float jumpHoldGravityScale = 0.4f; 
+    private float originalGravityScale; 
+    
     private float moveInput;
 
     public Transform feetPos;
@@ -25,12 +36,24 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalGravityScale = rb.gravityScale;
     }
 
     void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+        moveInput = Input.GetAxisRaw("Horizontal"); 
+
+        float targetSpeed = moveInput * speed;
+
+        float speedDif = targetSpeed - rb.linearVelocity.x;
+
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+        
+        float movement = speedDif * accelRate;
+        
+        movement = Mathf.Pow(Mathf.Abs(movement), velPower) * Mathf.Sign(movement);
+        
+        rb.AddForce(movement * Vector2.right);
     }
 
     void Update()
@@ -49,16 +72,21 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput > 0) transform.eulerAngles = new Vector3(0, 0, 0);
         else if (moveInput < 0) transform.eulerAngles = new Vector3(0, 180, 0);
 
-        if (rb.linearVelocity.y < 0)
+        if (!Input.GetKey(KeyCode.Space) || rb.gravityScale == originalGravityScale || rb.linearVelocity.y < 0)
         {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
-        }
-        else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            rb.gravityScale = originalGravityScale; 
+
+            if (rb.linearVelocity.y < 0)
+            {
+                rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+            }
+            else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
+            {
+                rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+            }
         }
 
-     
+       
         if (coyoteTimeCounter > 0f && Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
@@ -72,18 +100,25 @@ public class PlayerMovement : MonoBehaviour
         {
             if (jumpTimeCounter > 0f)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                rb.gravityScale = originalGravityScale * jumpHoldGravityScale;
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
                 isJumping = false;
+                rb.gravityScale = originalGravityScale; 
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
+            rb.gravityScale = originalGravityScale; 
+            
+            if (rb.linearVelocity.y > 0f)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+            }
         }
     }
 
