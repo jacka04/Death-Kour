@@ -3,11 +3,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    
+    // Variables de Integración
+    private SquishAndStretch squishAndStretch;
+    private bool wasGroundedLastFrame; 
+    
     public float speed = 6f;
     
     public float acceleration = 25f; 
     public float deceleration = 30f; 
-    public float velPower = 0.9f;    
+    public float velPower = 0.9f;    
     
     public float jumpForce = 12f;
     
@@ -26,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTime = 0.15f;// coyote jump
     private float coyoteTimeCounter; 
 
+    public float jumpBufferTime = 0.2f; // TIEMPO DE BUFFER
+    private float jumpBufferCounter;
+
     public float jumpTime = 0.18f; //jump hold
     private float jumpTimeCounter;
     private bool isJumping;
@@ -37,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalGravityScale = rb.gravityScale;
+        
+        // Busca el script de animación en los hijos (donde está SpriteHolder)
+        squishAndStretch = GetComponentInChildren<SquishAndStretch>(); 
     }
 
     void FixedUpdate()
@@ -60,6 +71,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
+        // Lógica de Aterrizaje (Squash)
+        if (!wasGroundedLastFrame && isGrounded)
+        {
+            if (squishAndStretch != null) squishAndStretch.PlayLandSquash();
+        }
+        wasGroundedLastFrame = isGrounded;
+
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime; 
@@ -67,6 +85,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
         }
 
         if (moveInput > 0) transform.eulerAngles = new Vector3(0, 0, 0);
@@ -86,14 +113,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-       
-        if (coyoteTimeCounter > 0f && Input.GetKeyDown(KeyCode.Space))
+        
+        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
+            jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
+
+            // Lógica de Salto (Stretch)
+            if (squishAndStretch != null) squishAndStretch.PlayJumpStretch();
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
