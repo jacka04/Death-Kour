@@ -1,26 +1,27 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    
-    // Variables de Integración
     private SquishAndStretch squishAndStretch;
-    private bool wasGroundedLastFrame; 
-    
+    private bool wasGroundedLastFrame;
+
+    private bool estaMuerto = false;
+
     public float speed = 6f;
-    
-    public float acceleration = 25f; 
-    public float deceleration = 30f; 
-    public float velPower = 0.9f;    
-    
+
+    public float acceleration = 25f;
+    public float deceleration = 30f;
+    public float velPower = 0.9f;
+
     public float jumpForce = 12f;
-    
+
     public float jumpCutMultiplier = 0.3f;
-    
-    public float jumpHoldGravityScale = 0.4f; 
-    private float originalGravityScale; 
-    
+
+    public float jumpHoldGravityScale = 0.4f;
+    private float originalGravityScale;
+
     private float moveInput;
 
     public Transform feetPos;
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
 
     public float coyoteTime = 0.15f;// coyote jump
-    private float coyoteTimeCounter; 
+    private float coyoteTimeCounter;
 
     public float jumpBufferTime = 0.2f; // TIEMPO DE BUFFER
     private float jumpBufferCounter;
@@ -45,33 +46,35 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalGravityScale = rb.gravityScale;
-        
-        // Busca el script de animación en los hijos (donde está SpriteHolder)
-        squishAndStretch = GetComponentInChildren<SquishAndStretch>(); 
+
+        squishAndStretch = GetComponentInChildren<SquishAndStretch>();
     }
 
     void FixedUpdate()
     {
-        moveInput = Input.GetAxisRaw("Horizontal"); 
+        if (estaMuerto) return;
+
+        moveInput = Input.GetAxisRaw("Horizontal");
 
         float targetSpeed = moveInput * speed;
 
         float speedDif = targetSpeed - rb.linearVelocity.x;
 
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
-        
+
         float movement = speedDif * accelRate;
-        
+
         movement = Mathf.Pow(Mathf.Abs(movement), velPower) * Mathf.Sign(movement);
-        
+
         rb.AddForce(movement * Vector2.right);
     }
 
     void Update()
     {
+        if (estaMuerto) return;
+
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
-        // Lógica de Aterrizaje (Squash)
         if (!wasGroundedLastFrame && isGrounded)
         {
             if (squishAndStretch != null) squishAndStretch.PlayLandSquash();
@@ -80,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            coyoteTimeCounter = coyoteTime; 
+            coyoteTimeCounter = coyoteTime;
         }
         else
         {
@@ -101,19 +104,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Input.GetKey(KeyCode.Space) || rb.gravityScale == originalGravityScale || rb.linearVelocity.y < 0)
         {
-            rb.gravityScale = originalGravityScale; 
+            rb.gravityScale = originalGravityScale;
 
             if (rb.linearVelocity.y < 0)
             {
                 rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
             }
-            else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
+            else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space))
             {
                 rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
             }
         }
 
-        
         if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
             isJumping = true;
@@ -123,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
 
-            // Lógica de Salto (Stretch)
             if (squishAndStretch != null) squishAndStretch.PlayJumpStretch();
         }
 
@@ -137,15 +138,15 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 isJumping = false;
-                rb.gravityScale = originalGravityScale; 
+                rb.gravityScale = originalGravityScale;
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;
-            rb.gravityScale = originalGravityScale; 
-            
+            rb.gravityScale = originalGravityScale;
+
             if (rb.linearVelocity.y > 0f)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
@@ -160,5 +161,31 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(feetPos.position, checkRadius);
         }
+    }
+
+
+    public void Morir()
+    {
+        if (estaMuerto)
+        {
+            return;
+        }
+
+        estaMuerto = true;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.isKinematic = true;
+        }
+
+        GetComponent<Renderer>().enabled = false;
+
+        Invoke("ReiniciarNivel", 1.0f);
+    }
+
+    private void ReiniciarNivel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
