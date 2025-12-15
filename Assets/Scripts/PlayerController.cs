@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private SquishAndStretch squishAndStretch;
     private bool wasGroundedLastFrame;
 
+    //SISTEMA DE MONEDES
+    public CoinManager cm;
+    //
     private bool estaMuerto = false;
 
     public float speed = 6f;
@@ -187,5 +190,20 @@ public class PlayerController : MonoBehaviour
     private void ReiniciarNivel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+    //gestor de monede simple i funcional, ShotOut a MoreBBlakeyyy un grande.
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            if (cm != null)
+            {
+                cm.AddCoin();
+            }
+
+            Destroy(other.gameObject);
+        }
     }
 }
