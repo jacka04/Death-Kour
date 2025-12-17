@@ -184,29 +184,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void StartDash()
+   private void StartDash()
     {
         canDash = false;
         isDashing = true;
         isJumping = false;
         dashTimeCounter = dashDuration;
+
+        // Quitamos la gravedad para que el dash sea totalmente recto
         rb.gravityScale = 0;
 
+        // CAPTURA DE 8 EJES:
+        // GetAxisRaw obtiene -1, 0 o 1 sin suavizado (perfecto para control preciso)
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
+        
         dashDir = new Vector2(x, y).normalized;
-
         if (dashDir == Vector2.zero)
         {
-            dashDir = transform.eulerAngles.y == 0 ? Vector2.right : Vector2.left;
+            dashDir = (transform.eulerAngles.y == 0) ? Vector2.right : Vector2.left;
         }
+
+        rb.linearVelocity = dashDir * dashForce;
+
+        if (squishAndStretch != null) squishAndStretch.PlayJumpStretch();
     }
 
     private void StopDash()
     {
         isDashing = false;
         rb.gravityScale = originalGravityScale;
-        rb.linearVelocity = dashDir * (speed * 0.8f);
+        
+        rb.linearVelocity = dashDir * speed;
+        
         dashCooldownCounter = dashCooldown;
     }
 
@@ -232,8 +242,7 @@ public class PlayerController : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.isKinematic = true;
-        }
+            rb.bodyType = RigidbodyType2D.Kinematic;        }
 
         GetComponent<Renderer>().enabled = false;
 
