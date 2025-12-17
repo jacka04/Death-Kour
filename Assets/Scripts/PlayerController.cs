@@ -45,6 +45,16 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+    [Header("Dash Celeste")]
+    public float dashForce = 20f;
+    public float dashDuration = 0.15f;
+    public float dashCooldown = 0.5f;
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashTimeCounter;
+    private float dashCooldownCounter;
+    private Vector2 dashDir;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (estaMuerto) return;
+        if (estaMuerto || isDashing) return;
 
         moveInput = Input.GetAxisRaw("Horizontal");
 
@@ -77,6 +87,8 @@ public class PlayerController : MonoBehaviour
         if (estaMuerto) return;
 
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+
+        if (isGrounded && !isDashing) canDash = true;
 
         if (!wasGroundedLastFrame && isGrounded)
         {
@@ -101,6 +113,21 @@ public class PlayerController : MonoBehaviour
         {
             jumpBufferCounter -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && canDash && !isDashing)
+        {
+            StartDash();
+        }
+
+        if (isDashing)
+        {
+            dashTimeCounter -= Time.deltaTime;
+            rb.linearVelocity = dashDir * dashForce;
+            if (dashTimeCounter <= 0) StopDash();
+            return;
+        }
+
+        if (dashCooldownCounter > 0) dashCooldownCounter -= Time.deltaTime;
 
         if (moveInput > 0) transform.eulerAngles = new Vector3(0, 0, 0);
         else if (moveInput < 0) transform.eulerAngles = new Vector3(0, 180, 0);
@@ -155,6 +182,32 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
             }
         }
+    }
+
+    private void StartDash()
+    {
+        canDash = false;
+        isDashing = true;
+        isJumping = false;
+        dashTimeCounter = dashDuration;
+        rb.gravityScale = 0;
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        dashDir = new Vector2(x, y).normalized;
+
+        if (dashDir == Vector2.zero)
+        {
+            dashDir = transform.eulerAngles.y == 0 ? Vector2.right : Vector2.left;
+        }
+    }
+
+    private void StopDash()
+    {
+        isDashing = false;
+        rb.gravityScale = originalGravityScale;
+        rb.linearVelocity = dashDir * (speed * 0.8f);
+        dashCooldownCounter = dashCooldown;
     }
 
     void OnDrawGizmosSelected()
