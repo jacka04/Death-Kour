@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::trabsu
   VirtualCam: {fileID: 1378555292}
+  spawnPoint: {fileID: 0}
 --- !u!60 &110640926
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -13400,6 +13401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::trabsu
   VirtualCam: {fileID: 1335636134}
+  spawnPoint: {fileID: 0}
 --- !u!60 &1167149695
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18592,6 +18594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::trabsu
   VirtualCam: {fileID: 45544936}
+  spawnPoint: {fileID: 0}
 --- !u!60 &1904029804
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -19588,6 +19591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::trabsu
   VirtualCam: {fileID: 2034442975}
+  spawnPoint: {fileID: 0}
 --- !u!1001 &8609017219074049014
 PrefabInstance:
   m_ObjectHideFlags: 0

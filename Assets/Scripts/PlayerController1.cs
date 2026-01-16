@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public CoinManager cm;
     //
     private bool estaMuerto = false;
+    private Vector2 checkpointActual; // Almacena la posición de reaparición
 
     public float speed = 6f;
 
@@ -61,6 +62,9 @@ public class PlayerController : MonoBehaviour
         originalGravityScale = rb.gravityScale;
 
         squishAndStretch = GetComponentInChildren<SquishAndStretch>();
+
+        // Inicializamos el checkpoint en la posición de inicio del diseño
+        checkpointActual = transform.position;
     }
 
     void FixedUpdate()
@@ -184,7 +188,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   private void StartDash()
+    private void StartDash()
     {
         canDash = false;
         isDashing = true;
@@ -198,7 +202,7 @@ public class PlayerController : MonoBehaviour
         // GetAxisRaw obtiene -1, 0 o 1 sin suavizado (perfecto para control preciso)
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        
+
         dashDir = new Vector2(x, y).normalized;
         if (dashDir == Vector2.zero)
         {
@@ -214,9 +218,9 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = false;
         rb.gravityScale = originalGravityScale;
-        
+
         rb.linearVelocity = dashDir * speed;
-        
+
         dashCooldownCounter = dashCooldown;
     }
 
@@ -229,6 +233,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Método para actualizar la posición de reaparición
+    public void ActualizarCheckpoint(Vector2 nuevaPos)
+    {
+        checkpointActual = nuevaPos;
+    }
 
     public void Morir()
     {
@@ -242,11 +251,28 @@ public class PlayerController : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic;        }
+            rb.bodyType = RigidbodyType2D.Static; // Cambiado para evitar caídas durante la muerte
+        }
 
         GetComponent<Renderer>().enabled = false;
 
-        Invoke("ReiniciarNivel", 1.0f);
+        Invoke("Respawn", 0.5f); // Llamamos a la lógica de reaparición tras un breve retraso
+    }
+
+    private void Respawn()
+    {
+        transform.position = checkpointActual;
+
+        estaMuerto = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.linearVelocity = Vector2.zero; // Evita que aparezca con inercia previa
+        rb.gravityScale = originalGravityScale;
+
+        GetComponent<Renderer>().enabled = true;
+
+        // Reset de mecánicas de movimiento
+        canDash = true;
+        isDashing = false;
     }
 
     private void ReiniciarNivel()
