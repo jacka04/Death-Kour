@@ -9,7 +9,7 @@ public class TimerManager : MonoBehaviour
     private float elapsedTime;
     private bool isTimerRunning = false;
     private bool isCountingDown = true;
-    private float countdownValue = 3f;
+    private float countdownValue = 3;
 
     void Start()
     {

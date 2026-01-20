@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private SquishAndStretch squishAndStretch;
     private bool wasGroundedLastFrame;
 
     //SISTEMA DE MONEDES
@@ -61,7 +60,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         originalGravityScale = rb.gravityScale;
 
-        squishAndStretch = GetComponentInChildren<SquishAndStretch>();
 
         // Inicializamos el checkpoint en la posición de inicio del diseño
         checkpointActual = transform.position;
@@ -94,10 +92,6 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && !isDashing) canDash = true;
 
-        if (!wasGroundedLastFrame && isGrounded)
-        {
-            if (squishAndStretch != null) squishAndStretch.PlayLandSquash();
-        }
         wasGroundedLastFrame = isGrounded;
 
         if (isGrounded)
@@ -158,8 +152,6 @@ public class PlayerController : MonoBehaviour
 
             jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
-
-            if (squishAndStretch != null) squishAndStretch.PlayJumpStretch();
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
@@ -210,8 +202,6 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.linearVelocity = dashDir * dashForce;
-
-        if (squishAndStretch != null) squishAndStretch.PlayJumpStretch();
     }
 
     private void StopDash()
