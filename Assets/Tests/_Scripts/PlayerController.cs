@@ -19,11 +19,19 @@ namespace PlayerSystem
 
         private float _time;
 
+        private bool _dashToConsume;
+        private bool _isDashing;
+        private int _dashesRemaining;
+        private float _timeDashStarted;
+        private Vector2 _dashDirection;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+
+            _dashesRemaining = _stats.MaxAirDashes;
         }
 
         private void Update()
@@ -38,6 +46,7 @@ namespace PlayerSystem
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
+                DashDown = Input.GetKeyDown(KeyCode.UpArrow),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
 
@@ -52,12 +61,18 @@ namespace PlayerSystem
                 _jumpToConsume = true;
                 _timeJumpWasPressed = _time;
             }
+
+            if (_frameInput.DashDown && _dashesRemaining > 0)
+            {
+                _dashToConsume = true;
+            }
         }
 
         private void FixedUpdate()
         {
             CheckCollisions();
             HandleJump();
+            HandleDash();
             HandleDirection();
             HandleGravity();
             ApplyMovement();
@@ -81,6 +96,7 @@ namespace PlayerSystem
                 _coyoteUsable = true;
                 _bufferedJumpUsable = true;
                 _endedJumpEarly = false;
+                _dashesRemaining = _stats.MaxAirDashes;
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
             }
             else if (_grounded && !groundHit)
@@ -123,8 +139,33 @@ namespace PlayerSystem
             Jumped?.Invoke();
         }
 
+        private void HandleDash()
+        {
+            if (_dashToConsume && _dashesRemaining > 0)
+            {
+                if (_frameInput.Move.x != 0 || _frameInput.Move.y != 0)
+                    _dashDirection = _frameInput.Move.normalized;
+                else
+                    _dashDirection = new Vector2(transform.localScale.x, 0);
+
+                _isDashing = true;
+                _dashesRemaining--;
+                _timeDashStarted = _time;
+                _endedJumpEarly = false;
+            }
+
+            _dashToConsume = false;
+
+            if (_isDashing && _time >= _timeDashStarted + _stats.DashDuration)
+            {
+                _isDashing = false;
+            }
+        }
+
         private void HandleDirection()
         {
+            if (_isDashing && !_stats.DashAllowSteer) return;
+
             if (_frameInput.Move.x == 0)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
@@ -138,6 +179,12 @@ namespace PlayerSystem
 
         private void HandleGravity()
         {
+            if (_isDashing && _stats.DashCancelsGravity)
+            {
+                _frameVelocity = _dashDirection * _stats.DashSpeed;
+                return;
+            }
+
             if (_grounded && _frameVelocity.y <= 0f)
             {
                 _frameVelocity.y = _stats.GroundingForce;
@@ -164,6 +211,7 @@ namespace PlayerSystem
     {
         public bool JumpDown;
         public bool JumpHeld;
+        public bool DashDown;
         public Vector2 Move;
     }
 

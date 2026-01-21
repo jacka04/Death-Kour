@@ -5,6 +5,7 @@ namespace PlayerSystem
     [CreateAssetMenu]
     public class ScriptableStats : ScriptableObject
     {
+
         [Header("LAYERS")]
         public LayerMask PlayerLayer;
 
@@ -30,8 +31,8 @@ namespace PlayerSystem
         public float JumpBuffer = .2f;
 
         [Header("DASH")]
-        public float DashSpeed = 65f;
-        public float DashDuration = 0.12f;
+        public float DashSpeed = 20f;
+        public float DashDuration = 0.12f;  
         public int MaxAirDashes = 1;
         public bool DashCancelsGravity = true;
         public bool DashAllowSteer = false;
