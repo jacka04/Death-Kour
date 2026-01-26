@@ -7,11 +7,15 @@ namespace PlayerSystem
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
+
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+
+        private bool _isDead = false;
+        private Vector2 _respawnPoint;
 
         public Vector2 FrameInput => _frameInput.Move;
         public event Action<bool, float> GroundedChanged;
@@ -25,17 +29,27 @@ namespace PlayerSystem
         private float _timeDashStarted;
         private Vector2 _dashDirection;
 
+        private bool _jumpToConsume;
+        private bool _bufferedJumpUsable;
+        private bool _endedJumpEarly;
+        private bool _coyoteUsable;
+        private float _timeJumpWasPressed;
+        private float _frameLeftGrounded = float.MinValue;
+        private bool _grounded;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-
             _dashesRemaining = _stats.MaxAirDashes;
+            _respawnPoint = transform.position;
         }
 
         private void Update()
         {
+            if (_isDead) return;
+
             _time += Time.deltaTime;
             GatherInput();
         }
@@ -70,6 +84,8 @@ namespace PlayerSystem
 
         private void FixedUpdate()
         {
+            if (_isDead) return;
+
             CheckCollisions();
             HandleJump();
             HandleDash();
@@ -78,8 +94,43 @@ namespace PlayerSystem
             ApplyMovement();
         }
 
-        private float _frameLeftGrounded = float.MinValue;
-        private bool _grounded;
+        public void Die()
+        {
+            if (_isDead) return;
+
+            _isDead = true;
+            _rb.linearVelocity = Vector2.zero;
+            _frameVelocity = Vector2.zero;
+            _rb.bodyType = RigidbodyType2D.Static;
+
+            Invoke(nameof(Respawn), 0.5f);
+        }
+
+        private void Respawn()
+        {
+            _isDead = false;
+            transform.position = _respawnPoint;
+            _rb.bodyType = RigidbodyType2D.Dynamic;
+            _rb.linearVelocity = Vector2.zero;
+            _frameVelocity = Vector2.zero;
+            _dashesRemaining = _stats.MaxAirDashes;
+            _isDashing = false;
+        }
+
+        public void SetCheckpoint(Vector2 newPos)
+        {
+            _respawnPoint = newPos;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Spike") || collision.CompareTag("Trap"))
+            {
+                Die();
+            }
+        }
+
+        #region Physics & Movement Logic
 
         private void CheckCollisions()
         {
@@ -108,12 +159,6 @@ namespace PlayerSystem
 
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
-
-        private bool _jumpToConsume;
-        private bool _bufferedJumpUsable;
-        private bool _endedJumpEarly;
-        private bool _coyoteUsable;
-        private float _timeJumpWasPressed;
 
         private bool HasBufferedJump => _bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer;
         private bool CanUseCoyote => _coyoteUsable && !_grounded && _time < _frameLeftGrounded + _stats.CoyoteTime;
@@ -156,9 +201,15 @@ namespace PlayerSystem
 
             _dashToConsume = false;
 
-            if (_isDashing && _time >= _timeDashStarted + _stats.DashDuration)
+            if (_isDashing)
             {
-                _isDashing = false;
+                _frameVelocity = _dashDirection * _stats.DashSpeed;
+
+                if (_time >= _timeDashStarted + _stats.DashDuration)
+                {
+                    _isDashing = false;
+                    _frameVelocity = Vector2.zero;
+                }
             }
         }
 
@@ -181,23 +232,29 @@ namespace PlayerSystem
         {
             if (_isDashing && _stats.DashCancelsGravity)
             {
-                _frameVelocity = _dashDirection * _stats.DashSpeed;
+                _frameVelocity.y = 0;
                 return;
             }
 
             if (_grounded && _frameVelocity.y <= 0f)
             {
-                _frameVelocity.y = _stats.GroundingForce;
+                _frameVelocity.y = -0.1f;
             }
             else
             {
                 var inAirGravity = _stats.FallAcceleration;
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
+
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
 
-        private void ApplyMovement() => _rb.linearVelocity = _frameVelocity;
+        private void ApplyMovement()
+        {
+            _rb.linearVelocity = _frameVelocity;
+        }
+
+        #endregion
 
 #if UNITY_EDITOR
         private void OnValidate()

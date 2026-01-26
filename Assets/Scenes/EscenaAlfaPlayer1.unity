@@ -4757,7 +4757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197114317}
   m_Layer: 0
-  m_Name: Spikes
+  m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5918,6 +5918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triangle (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1898038949304069744, guid: 40ad70866dbaf9843aa01dac9b2fa926, type: 3}
+      propertyPath: m_TagString
+      value: Spike
+      objectReference: {fileID: 0}
     - target: {fileID: 8073255592905276165, guid: 40ad70866dbaf9843aa01dac9b2fa926, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.45
@@ -6250,12 +6254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6976801bdfd9f05449bb9c33536eed7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquishAndStretch
-  spriteTransform: {fileID: 0}
-  originalScale: {x: 1, y: 1, z: 1}
-  jumpStretch: {x: 0.8, y: 1.2}
-  jumpDuration: 0.2
-  landSquash: {x: 1.3, y: 0.7}
-  landDuration: 0.15
 --- !u!1 &710576444
 GameObject:
   m_ObjectHideFlags: 0
@@ -14632,12 +14630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6976801bdfd9f05449bb9c33536eed7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquishAndStretch
-  spriteTransform: {fileID: 0}
-  originalScale: {x: 1, y: 1, z: 1}
-  jumpStretch: {x: 0.8, y: 1.2}
-  jumpDuration: 0.2
-  landSquash: {x: 1.3, y: 0.7}
-  landDuration: 0.15
 --- !u!4 &1314336515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8073255592905276165, guid: 40ad70866dbaf9843aa01dac9b2fa926, type: 3}

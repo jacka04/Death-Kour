@@ -30,8 +30,8 @@ MonoBehaviour:
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.15
   JumpBuffer: 0.2
-  DashSpeed: 30
+  DashSpeed: 45
   DashDuration: 0.12
   MaxAirDashes: 1
   DashCancelsGravity: 1
-  DashAllowSteer: 0
+  DashAllowSteer: 1
