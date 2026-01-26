@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 
-
 public class CoinManager : MonoBehaviour
 {
     public int coinCount = 0;

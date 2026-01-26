@@ -1,4 +1,5 @@
 using UnityEngine;
+using PlayerSystem;
 
 public class trabsu : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class trabsu : MonoBehaviour
             }
 
             Vector2 pos = spawnPoint != null ? (Vector2)spawnPoint.position : (Vector2)other.transform.position;
-            
+
             PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {

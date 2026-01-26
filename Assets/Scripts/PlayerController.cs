@@ -7,9 +7,11 @@ namespace PlayerSystem
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
+        [SerializeField] private CoinManager _coinManager;
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
+        private Renderer _renderer;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
@@ -41,9 +43,16 @@ namespace PlayerSystem
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
+            _renderer = GetComponent<Renderer>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _dashesRemaining = _stats.MaxAirDashes;
+
             _respawnPoint = transform.position;
+
+            if (_coinManager == null)
+            {
+                _coinManager = FindFirstObjectByType<CoinManager>();
+            }
         }
 
         private void Update()
@@ -60,7 +69,7 @@ namespace PlayerSystem
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
-                DashDown = Input.GetKeyDown(KeyCode.UpArrow),
+                DashDown = Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.X),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
 
@@ -103,23 +112,28 @@ namespace PlayerSystem
             _frameVelocity = Vector2.zero;
             _rb.bodyType = RigidbodyType2D.Static;
 
+            if (_renderer != null) _renderer.enabled = false;
+
             Invoke(nameof(Respawn), 0.5f);
         }
 
         private void Respawn()
         {
-            _isDead = false;
             transform.position = _respawnPoint;
+
+            _isDead = false;
             _rb.bodyType = RigidbodyType2D.Dynamic;
             _rb.linearVelocity = Vector2.zero;
             _frameVelocity = Vector2.zero;
             _dashesRemaining = _stats.MaxAirDashes;
             _isDashing = false;
+
+            if (_renderer != null) _renderer.enabled = true;
         }
 
-        public void SetCheckpoint(Vector2 newPos)
+        public void ActualizarCheckpoint(Vector2 nuevaPos)
         {
-            _respawnPoint = newPos;
+            _respawnPoint = nuevaPos;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -128,9 +142,15 @@ namespace PlayerSystem
             {
                 Die();
             }
+            else if (collision.CompareTag("Coin"))
+            {
+                if (_coinManager != null)
+                {
+                    _coinManager.AddCoin();
+                    Destroy(collision.gameObject);
+                }
+            }
         }
-
-        #region Physics & Movement Logic
 
         private void CheckCollisions()
         {
@@ -188,10 +208,14 @@ namespace PlayerSystem
         {
             if (_dashToConsume && _dashesRemaining > 0)
             {
-                if (_frameInput.Move.x != 0 || _frameInput.Move.y != 0)
+                if (_frameInput.Move.sqrMagnitude > 0.001f)
+                {
                     _dashDirection = _frameInput.Move.normalized;
+                }
                 else
-                    _dashDirection = new Vector2(transform.localScale.x, 0);
+                {
+                    _dashDirection = new Vector2(Mathf.Sign(transform.localScale.x), 0);
+                }
 
                 _isDashing = true;
                 _dashesRemaining--;
@@ -208,7 +232,7 @@ namespace PlayerSystem
                 if (_time >= _timeDashStarted + _stats.DashDuration)
                 {
                     _isDashing = false;
-                    _frameVelocity = Vector2.zero;
+                    _frameVelocity *= 0.5f;
                 }
             }
         }
@@ -232,7 +256,6 @@ namespace PlayerSystem
         {
             if (_isDashing && _stats.DashCancelsGravity)
             {
-                _frameVelocity.y = 0;
                 return;
             }
 
@@ -253,15 +276,6 @@ namespace PlayerSystem
         {
             _rb.linearVelocity = _frameVelocity;
         }
-
-        #endregion
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if (_stats == null) Debug.LogWarning("Please assign a ScriptableStats asset to the Player Controller's Stats slot", this);
-        }
-#endif
     }
 
     public struct FrameInput
