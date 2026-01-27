@@ -103,6 +103,12 @@ namespace PlayerSystem
             ApplyMovement();
         }
 
+        public void ApplyExternalImpulse(float force)
+        {
+            _endedJumpEarly = false;
+            _frameVelocity.y = force;
+        }
+
         public void Die()
         {
             if (_isDead) return;

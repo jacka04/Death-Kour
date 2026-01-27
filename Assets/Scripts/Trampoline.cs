@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Trampolin : MonoBehaviour
+public class Trampoline : MonoBehaviour
 {
     public float jumpForce = 20f;
 
@@ -8,12 +8,11 @@ public class Trampolin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            PlayerSystem.PlayerController controller = other.GetComponent<PlayerSystem.PlayerController>();
 
-            if (rb != null)
+            if (controller != null)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                controller.ApplyExternalImpulse(jumpForce);
             }
         }
     }
