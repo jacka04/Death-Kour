@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Proves Movement/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EscenaAlfaPlayer1.unity
     guid: ba2379bc0c121b546b91bcdc3f279a13
+  - enabled: 0
+    path: Assets/Scenes/EscenaMenu.unity
+    guid: cd421afb87004354cb987806fa0fcd67
+  - enabled: 1
+    path: Assets/Scenes/EscenaAlfaPlayer2.unity
+    guid: 353d55fc14d02f64d87fd5eaf6ea6120
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

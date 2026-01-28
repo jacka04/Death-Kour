@@ -17,6 +17,7 @@ namespace PlayerSystem
         private bool _cachedQueryStartInColliders;
 
         private bool _isDead = false;
+        public bool InputBlocked = false;
         private Vector2 _respawnPoint;
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -24,7 +25,6 @@ namespace PlayerSystem
         public event Action Jumped;
 
         private float _time;
-
         private bool _dashToConsume;
         private bool _isDashing;
         private int _dashesRemaining;
@@ -57,8 +57,7 @@ namespace PlayerSystem
 
         private void Update()
         {
-            if (_isDead) return;
-
+            if (_isDead || InputBlocked) return;
             _time += Time.deltaTime;
             GatherInput();
         }
@@ -93,7 +92,11 @@ namespace PlayerSystem
 
         private void FixedUpdate()
         {
-            if (_isDead) return;
+            if (_isDead || InputBlocked)
+            {
+                _rb.linearVelocity = Vector2.zero;
+                return;
+            }
 
             CheckCollisions();
             HandleJump();
@@ -101,12 +104,6 @@ namespace PlayerSystem
             HandleDirection();
             HandleGravity();
             ApplyMovement();
-        }
-
-        public void ApplyExternalImpulse(float force)
-        {
-            _endedJumpEarly = false;
-            _frameVelocity.y = force;
         }
 
         public void Die()
@@ -123,10 +120,20 @@ namespace PlayerSystem
             Invoke(nameof(Respawn), 0.5f);
         }
 
+        public void ApplyExternalImpulse(float force)
+        {
+            _frameVelocity.y = force;
+            _endedJumpEarly = false;
+        }
+
+        public void ActualizarCheckpoint(Vector2 nuevaPos)
+        {
+            _respawnPoint = nuevaPos;
+        }
+
         private void Respawn()
         {
             transform.position = _respawnPoint;
-
             _isDead = false;
             _rb.bodyType = RigidbodyType2D.Dynamic;
             _rb.linearVelocity = Vector2.zero;
@@ -135,11 +142,6 @@ namespace PlayerSystem
             _isDashing = false;
 
             if (_renderer != null) _renderer.enabled = true;
-        }
-
-        public void ActualizarCheckpoint(Vector2 nuevaPos)
-        {
-            _respawnPoint = nuevaPos;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -192,11 +194,8 @@ namespace PlayerSystem
         private void HandleJump()
         {
             if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.linearVelocity.y > 0) _endedJumpEarly = true;
-
             if (!_jumpToConsume && !HasBufferedJump) return;
-
             if (_grounded || CanUseCoyote) ExecuteJump();
-
             _jumpToConsume = false;
         }
 
@@ -214,14 +213,8 @@ namespace PlayerSystem
         {
             if (_dashToConsume && _dashesRemaining > 0)
             {
-                if (_frameInput.Move.sqrMagnitude > 0.001f)
-                {
-                    _dashDirection = _frameInput.Move.normalized;
-                }
-                else
-                {
-                    _dashDirection = new Vector2(Mathf.Sign(transform.localScale.x), 0);
-                }
+                if (_frameInput.Move.sqrMagnitude > 0.001f) _dashDirection = _frameInput.Move.normalized;
+                else _dashDirection = new Vector2(Mathf.Sign(transform.localScale.x), 0);
 
                 _isDashing = true;
                 _dashesRemaining--;
@@ -234,7 +227,6 @@ namespace PlayerSystem
             if (_isDashing)
             {
                 _frameVelocity = _dashDirection * _stats.DashSpeed;
-
                 if (_time >= _timeDashStarted + _stats.DashDuration)
                 {
                     _isDashing = false;
@@ -246,7 +238,6 @@ namespace PlayerSystem
         private void HandleDirection()
         {
             if (_isDashing && !_stats.DashAllowSteer) return;
-
             if (_frameInput.Move.x == 0)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
@@ -260,28 +251,17 @@ namespace PlayerSystem
 
         private void HandleGravity()
         {
-            if (_isDashing && _stats.DashCancelsGravity)
-            {
-                return;
-            }
-
-            if (_grounded && _frameVelocity.y <= 0f)
-            {
-                _frameVelocity.y = -0.1f;
-            }
+            if (_isDashing && _stats.DashCancelsGravity) return;
+            if (_grounded && _frameVelocity.y <= 0f) _frameVelocity.y = -0.1f;
             else
             {
                 var inAirGravity = _stats.FallAcceleration;
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
-
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
 
-        private void ApplyMovement()
-        {
-            _rb.linearVelocity = _frameVelocity;
-        }
+        private void ApplyMovement() => _rb.linearVelocity = _frameVelocity;
     }
 
     public struct FrameInput

@@ -1,4 +1,5 @@
 using UnityEngine;
+using PlayerSystem; // Importante para reconocer el namespace
 
 public class SpikeTrigger : MonoBehaviour
 {
@@ -6,11 +7,12 @@ public class SpikeTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerController playerScript = other.GetComponent<PlayerController>();
+            // Referencia explícita al namespace para evitar errores de definición
+            PlayerSystem.PlayerController playerScript = other.GetComponentInParent<PlayerSystem.PlayerController>();
 
             if (playerScript != null)
             {
-                playerScript.Morir();
+                playerScript.Die();
             }
         }
     }

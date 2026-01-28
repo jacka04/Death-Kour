@@ -1,19 +1,19 @@
 using UnityEngine;
 using TMPro;
+using PlayerSystem;
 
 public class TimerManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public PlayerController player;
-
     private float elapsedTime;
     private bool isTimerRunning = false;
+    public float countdownValue = 3f;
     private bool isCountingDown = true;
-    private float countdownValue = 3;
 
     void Start()
     {
-        if (player != null) player.enabled = false;
+        if (player != null) player.InputBlocked = true;
         isTimerRunning = false;
         isCountingDown = true;
     }
@@ -26,14 +26,14 @@ public class TimerManager : MonoBehaviour
         }
         else if (isTimerRunning)
         {
-            UpdateChronometer();
+            elapsedTime += Time.deltaTime;
+            UpdateTimerDisplay();
         }
     }
 
     void HandleCountdown()
     {
         countdownValue -= Time.deltaTime;
-
         if (countdownValue > 0)
         {
             timerText.text = Mathf.Ceil(countdownValue).ToString();
@@ -43,26 +43,31 @@ public class TimerManager : MonoBehaviour
             timerText.text = "GO!";
             isCountingDown = false;
             isTimerRunning = true;
-            if (player != null) player.enabled = true;
+            if (player != null) player.InputBlocked = false;
             Invoke("ClearGoText", 1f);
         }
     }
 
-    void UpdateChronometer()
+    void UpdateTimerDisplay()
     {
-        elapsedTime += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
-        int milliseconds = Mathf.FloorToInt((elapsedTime * 100f) % 100f);
+        timerText.text = GetFormattedTime();
+    }
 
-        timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+    public string GetFormattedTime()
+    {
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        int milliseconds = Mathf.FloorToInt((elapsedTime * 100) % 100);
+        return string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
     }
 
     public void StopTimer()
     {
         isTimerRunning = false;
-        timerText.color = Color.yellow;
     }
 
-
+    void ClearGoText()
+    {
+        if (isTimerRunning) UpdateTimerDisplay();
+    }
 }
