@@ -1,5 +1,5 @@
 using UnityEngine;
-using PlayerSystem; // Importante para poder usar el PlayerController
+using PlayerSystem;
 
 public class Bala : MonoBehaviour
 {
@@ -8,14 +8,12 @@ public class Bala : MonoBehaviour
 
     void Start()
     {
-        // Para que la bala no se quede volando infinitamente si no choca con nada
         Destroy(gameObject, tiempoDeVida);
     }
 
     void Update()
     {
-        // Mueve la bala hacia adelante (derecha local del objeto)
-        transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+        transform.Translate(Vector2.left * velocidad * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D otro)
@@ -31,8 +29,7 @@ public class Bala : MonoBehaviour
 
             Destroy(gameObject);
         }
-        
-        if (otro.CompareTag("Suelo"))
+        else if (otro.CompareTag("Suelo"))
         {
             Destroy(gameObject);
         }
