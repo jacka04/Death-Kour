@@ -1,7 +1,7 @@
 using UnityEngine;
 using PlayerSystem;
 
-public class trabsu : MonoBehaviour
+public class Room : MonoBehaviour
 {
     public GameObject VirtualCam;
     public Transform spawnPoint;
