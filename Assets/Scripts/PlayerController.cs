@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlayerSystem
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Animator))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
@@ -11,6 +11,7 @@ namespace PlayerSystem
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
+        private Animator _anim;
         private Renderer _renderer;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
@@ -38,21 +39,19 @@ namespace PlayerSystem
         private float _timeJumpWasPressed;
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
+        private bool _onWall;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
+            _anim = GetComponent<Animator>();
             _renderer = GetComponent<Renderer>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _dashesRemaining = _stats.MaxAirDashes;
-
             _respawnPoint = transform.position;
 
-            if (_coinManager == null)
-            {
-                _coinManager = FindFirstObjectByType<CoinManager>();
-            }
+            if (_coinManager == null) _coinManager = FindFirstObjectByType<CoinManager>();
         }
 
         private void Update()
@@ -60,6 +59,7 @@ namespace PlayerSystem
             if (_isDead || InputBlocked) return;
             _time += Time.deltaTime;
             GatherInput();
+            HandleAnimations();
         }
 
         private void GatherInput()
@@ -84,10 +84,7 @@ namespace PlayerSystem
                 _timeJumpWasPressed = _time;
             }
 
-            if (_frameInput.DashDown && _dashesRemaining > 0)
-            {
-                _dashToConsume = true;
-            }
+            if (_frameInput.DashDown && _dashesRemaining > 0) _dashToConsume = true;
         }
 
         private void FixedUpdate()
@@ -106,17 +103,28 @@ namespace PlayerSystem
             ApplyMovement();
         }
 
+        private void HandleAnimations()
+        {
+            if (_frameInput.Move.x != 0)
+            {
+                transform.localScale = new Vector3(Mathf.Sign(_frameInput.Move.x), 1, 1);
+            }
+
+            _anim.SetFloat("Speed", Mathf.Abs(_frameInput.Move.x));
+            _anim.SetFloat("VerticalVelocity", _rb.linearVelocity.y);
+            _anim.SetBool("isGrounded", _grounded);
+            _anim.SetBool("isOnWall", _onWall);
+            _anim.SetBool("isDashing", _isDashing);
+        }
+
         public void Die()
         {
             if (_isDead) return;
-
             _isDead = true;
             _rb.linearVelocity = Vector2.zero;
             _frameVelocity = Vector2.zero;
             _rb.bodyType = RigidbodyType2D.Static;
-
             if (_renderer != null) _renderer.enabled = false;
-
             Invoke(nameof(Respawn), 0.5f);
         }
 
@@ -126,10 +134,7 @@ namespace PlayerSystem
             _endedJumpEarly = false;
         }
 
-        public void ActualizarCheckpoint(Vector2 nuevaPos)
-        {
-            _respawnPoint = nuevaPos;
-        }
+        public void ActualizarCheckpoint(Vector2 nuevaPos) => _respawnPoint = nuevaPos;
 
         private void Respawn()
         {
@@ -140,23 +145,16 @@ namespace PlayerSystem
             _frameVelocity = Vector2.zero;
             _dashesRemaining = _stats.MaxAirDashes;
             _isDashing = false;
-
             if (_renderer != null) _renderer.enabled = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Spike") || collision.CompareTag("Trap"))
+            if (collision.CompareTag("Spike") || collision.CompareTag("Trap")) Die();
+            else if (collision.CompareTag("Coin") && _coinManager != null)
             {
-                Die();
-            }
-            else if (collision.CompareTag("Coin"))
-            {
-                if (_coinManager != null)
-                {
-                    _coinManager.AddCoin();
-                    Destroy(collision.gameObject);
-                }
+                _coinManager.AddCoin();
+                Destroy(collision.gameObject);
             }
         }
 
@@ -166,6 +164,9 @@ namespace PlayerSystem
 
             bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
             bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
+
+            float sideDir = transform.localScale.x;
+            _onWall = !_grounded && Physics2D.Raycast(_col.bounds.center, Vector2.right * sideDir, _col.size.x / 2 + 0.1f, ~_stats.PlayerLayer);
 
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
 
@@ -207,6 +208,7 @@ namespace PlayerSystem
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+            _anim.SetTrigger("JumpTrigger");
         }
 
         private void HandleDash()
