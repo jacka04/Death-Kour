@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlayerSystem
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Animator))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
@@ -11,7 +11,6 @@ namespace PlayerSystem
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
-        private Animator _anim;
         private Renderer _renderer;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
@@ -45,7 +44,6 @@ namespace PlayerSystem
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
-            _anim = GetComponent<Animator>();
             _renderer = GetComponent<Renderer>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _dashesRemaining = _stats.MaxAirDashes;
@@ -59,7 +57,6 @@ namespace PlayerSystem
             if (_isDead || InputBlocked) return;
             _time += Time.deltaTime;
             GatherInput();
-            HandleAnimations();
         }
 
         private void GatherInput()
@@ -101,20 +98,6 @@ namespace PlayerSystem
             HandleDirection();
             HandleGravity();
             ApplyMovement();
-        }
-
-        private void HandleAnimations()
-        {
-            if (_frameInput.Move.x != 0)
-            {
-                transform.localScale = new Vector3(Mathf.Sign(_frameInput.Move.x), 1, 1);
-            }
-
-            _anim.SetFloat("Speed", Mathf.Abs(_frameInput.Move.x));
-            _anim.SetFloat("VerticalVelocity", _rb.linearVelocity.y);
-            _anim.SetBool("isGrounded", _grounded);
-            _anim.SetBool("isOnWall", _onWall);
-            _anim.SetBool("isDashing", _isDashing);
         }
 
         public void Die()
@@ -208,7 +191,6 @@ namespace PlayerSystem
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
-            _anim.SetTrigger("JumpTrigger");
         }
 
         private void HandleDash()
@@ -240,14 +222,18 @@ namespace PlayerSystem
         private void HandleDirection()
         {
             if (_isDashing && !_stats.DashAllowSteer) return;
-            if (_frameInput.Move.x == 0)
+
+            if (_frameInput.Move.x != 0)
             {
-                var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+                // Volteo del personaje (Visual)
+                transform.localScale = new Vector3(Mathf.Sign(_frameInput.Move.x), 1, 1);
+
+                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
             }
             else
             {
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+                var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
+                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
             }
         }
 
