@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlayerSystem
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Animator))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
@@ -11,10 +11,16 @@ namespace PlayerSystem
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
+        private Animator _anim;
         private Renderer _renderer;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+
+        private static readonly int SpeedHash = Animator.StringToHash("Speed");
+        private static readonly int IsGroundedHash = Animator.StringToHash("isGrounded");
+        private static readonly int VerticalVelocityHash = Animator.StringToHash("VerticalVelocity");
+        private static readonly int JumpTriggerHash = Animator.StringToHash("JumpTrigger");
 
         private bool _isDead = false;
         public bool InputBlocked = false;
@@ -44,6 +50,7 @@ namespace PlayerSystem
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
+            _anim = GetComponent<Animator>();
             _renderer = GetComponent<Renderer>();
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _dashesRemaining = _stats.MaxAirDashes;
@@ -57,6 +64,14 @@ namespace PlayerSystem
             if (_isDead || InputBlocked) return;
             _time += Time.deltaTime;
             GatherInput();
+            UpdateAnimationParameters();
+        }
+
+        private void UpdateAnimationParameters()
+        {
+            _anim.SetFloat(SpeedHash, Mathf.Abs(_frameInput.Move.x));
+            _anim.SetBool(IsGroundedHash, _grounded);
+            _anim.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
         }
 
         private void GatherInput()
@@ -191,6 +206,7 @@ namespace PlayerSystem
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+            _anim.SetTrigger(JumpTriggerHash);
         }
 
         private void HandleDash()
@@ -225,9 +241,7 @@ namespace PlayerSystem
 
             if (_frameInput.Move.x != 0)
             {
-                // Volteo del personaje (Visual)
                 transform.localScale = new Vector3(Mathf.Sign(_frameInput.Move.x), 1, 1);
-
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
             }
             else
