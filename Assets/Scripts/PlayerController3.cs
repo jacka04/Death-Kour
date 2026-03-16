@@ -141,9 +141,9 @@ namespace PlayerSystem
             _rb.linearVelocity = Vector2.zero;
             _frameVelocity = Vector2.zero;
             _rb.bodyType = RigidbodyType2D.Static;
-            
+
             _anim.SetTrigger(DieTriggerHash);
-            
+
             Invoke(nameof(Respawn), 0.8f);
         }
 
@@ -164,9 +164,9 @@ namespace PlayerSystem
             _frameVelocity = Vector2.zero;
             _dashesRemaining = _stats.MaxAirDashes;
             _isDashing = false;
-            
+
             if (_renderer != null) _renderer.enabled = true;
-            _anim.Play("IdlePlayer"); 
+            _anim.Play("IdleNew");
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -217,7 +217,7 @@ namespace PlayerSystem
         {
             if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.linearVelocity.y > 0) _endedJumpEarly = true;
             if (!_jumpToConsume && !HasBufferedJump) return;
-            
+
             if (_grounded || CanUseCoyote || _isWallGrabbing)
             {
                 ExecuteJump();
@@ -248,7 +248,7 @@ namespace PlayerSystem
                 _dashesRemaining--;
                 _timeDashStarted = _time;
                 _endedJumpEarly = false;
-                
+
                 _anim.SetTrigger(DashTriggerHash);
             }
 
