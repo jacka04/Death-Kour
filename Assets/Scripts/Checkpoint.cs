@@ -8,7 +8,7 @@ public class Checkpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Usamos GetComponentInParent por si el collider está en un objeto hijo
-            PlayerController player = other.GetComponentInParent<PlayerController>();
+            PlayerController3 player = other.GetComponentInParent<PlayerController3>();
             
             if (player != null)
             {

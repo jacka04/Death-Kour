@@ -9,7 +9,7 @@ public class Trampoline : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerSystem.PlayerController controller = other.GetComponentInParent<PlayerSystem.PlayerController>();
+            PlayerSystem.PlayerController3 controller = other.GetComponentInParent<PlayerSystem.PlayerController3>();
 
             if (controller != null)
             {

@@ -144,7 +144,7 @@ namespace PlayerSystem
 
             _anim.SetTrigger(DieTriggerHash);
 
-            Invoke(nameof(Respawn), 0.8f);
+            Invoke(nameof(Respawn), 1.4f);
         }
 
         public void ApplyExternalImpulse(float force)
