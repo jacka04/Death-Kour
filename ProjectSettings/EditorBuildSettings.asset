@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EscenaMenu.unity
     guid: cd421afb87004354cb987806fa0fcd67
   - enabled: 1
-    path: Assets/Scenes/NouMapa 1.unity
+    path: Assets/Scenes/OfficialBetaScene.unity
     guid: 64ca2434be5080244a5334cc3ff1f7bf
   - enabled: 1
     path: Assets/Scenes/EscenaAlfaPlayer2.unity
