@@ -72,12 +72,14 @@ namespace PlayerSystem
         }
 
         private void UpdateAnimationParameters()
-        {
-            _anim.SetFloat(SpeedHash, Mathf.Abs(_frameInput.Move.x));
-            _anim.SetBool(IsGroundedHash, _grounded);
-            _anim.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
-            _anim.SetBool(IsOnWallHash, _isWallGrabbing);
-        }
+{
+    float horizontalSpeed = _isWallGrabbing ? 0 : Mathf.Abs(_frameInput.Move.x);
+    
+    _anim.SetFloat(SpeedHash, horizontalSpeed);
+    _anim.SetBool(IsGroundedHash, _grounded);
+    _anim.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
+    _anim.SetBool(IsOnWallHash, _isWallGrabbing);
+}
 
         private void GatherInput()
         {
