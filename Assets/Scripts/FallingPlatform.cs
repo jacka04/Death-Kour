@@ -7,18 +7,24 @@ public class FallingPlatform : MonoBehaviour
 {
     [Header("Tiempos (Segundos)")]
     [SerializeField] private float _shakeDuration = 0.5f;
-    [SerializeField] private float _fallDurationBeforeDestroy = 0.3f;
+    [SerializeField] private float _fallDurationBeforeDisable = 2.0f;
+    [SerializeField] private float _respawnTime = 4.0f;
 
     [Header("Efecto")]
     [SerializeField] private float _shakeAmount = 0.05f;
 
     private Rigidbody2D _rb;
+    private Collider2D _collider;
+    private SpriteRenderer _renderer;
     private Vector3 _startPos;
     private bool _isFalling = false;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
+        _renderer = GetComponent<SpriteRenderer>();
+        
         _rb.bodyType = RigidbodyType2D.Kinematic;
         _rb.useFullKinematicContacts = true;
         _startPos = transform.position;
@@ -53,8 +59,19 @@ public class FallingPlatform : MonoBehaviour
         _rb.bodyType = RigidbodyType2D.Dynamic;
         _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-        yield return new WaitForSeconds(_fallDurationBeforeDestroy);
+        yield return new WaitForSeconds(_fallDurationBeforeDisable);
 
-        Destroy(gameObject);
+        _renderer.enabled = false;
+        _collider.enabled = false;
+        _rb.bodyType = RigidbodyType2D.Kinematic;
+        _rb.linearVelocity = Vector2.zero;
+        _rb.angularVelocity = 0f;
+
+        yield return new WaitForSeconds(_respawnTime);
+
+        transform.position = _startPos;
+        _renderer.enabled = true;
+        _collider.enabled = true;
+        _isFalling = false;
     }
 }

@@ -72,14 +72,13 @@ namespace PlayerSystem
         }
 
         private void UpdateAnimationParameters()
-{
-    float horizontalSpeed = _isWallGrabbing ? 0 : Mathf.Abs(_frameInput.Move.x);
-    
-    _anim.SetFloat(SpeedHash, horizontalSpeed);
-    _anim.SetBool(IsGroundedHash, _grounded);
-    _anim.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
-    _anim.SetBool(IsOnWallHash, _isWallGrabbing);
-}
+        {
+            float horizontalSpeed = _isWallGrabbing ? 0 : Mathf.Abs(_frameInput.Move.x);
+            _anim.SetFloat(SpeedHash, horizontalSpeed);
+            _anim.SetBool(IsGroundedHash, _grounded);
+            _anim.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
+            _anim.SetBool(IsOnWallHash, _isWallGrabbing);
+        }
 
         private void GatherInput()
         {
@@ -126,7 +125,6 @@ namespace PlayerSystem
         private void HandleWallGrab()
         {
             _isWallGrabbing = _onWall && _frameInput.JumpHeld && !_grounded;
-
             if (_isWallGrabbing)
             {
                 _frameVelocity.y = 0;
@@ -143,19 +141,17 @@ namespace PlayerSystem
             _rb.linearVelocity = Vector2.zero;
             _frameVelocity = Vector2.zero;
             _rb.bodyType = RigidbodyType2D.Static;
-
             _anim.SetTrigger(DieTriggerHash);
-
             Invoke(nameof(Respawn), 1.4f);
         }
+
+        public void ActualizarCheckpoint(Vector2 nuevaPos) => _respawnPoint = nuevaPos;
 
         public void ApplyExternalImpulse(float force)
         {
             _frameVelocity.y = force;
             _endedJumpEarly = false;
         }
-
-        public void ActualizarCheckpoint(Vector2 nuevaPos) => _respawnPoint = nuevaPos;
 
         private void Respawn()
         {
@@ -166,7 +162,6 @@ namespace PlayerSystem
             _frameVelocity = Vector2.zero;
             _dashesRemaining = _stats.MaxAirDashes;
             _isDashing = false;
-
             if (_renderer != null) _renderer.enabled = true;
             _anim.Play("IdleNew");
         }
@@ -184,10 +179,8 @@ namespace PlayerSystem
         private void CheckCollisions()
         {
             Physics2D.queriesStartInColliders = false;
-
             bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
             bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
-
             float sideDir = transform.localScale.x;
             _onWall = Physics2D.Raycast(_col.bounds.center, Vector2.right * sideDir, _col.size.x / 2 + 0.1f, ~_stats.PlayerLayer);
 
@@ -208,54 +201,38 @@ namespace PlayerSystem
                 _frameLeftGrounded = _time;
                 GroundedChanged?.Invoke(false, 0);
             }
-
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
-
-        private bool HasBufferedJump => _bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer;
-        private bool CanUseCoyote => _coyoteUsable && !_grounded && _time < _frameLeftGrounded + _stats.CoyoteTime;
 
         private void HandleJump()
         {
             if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.linearVelocity.y > 0) _endedJumpEarly = true;
-            if (!_jumpToConsume && !HasBufferedJump) return;
-
-            if (_grounded || CanUseCoyote || _isWallGrabbing)
+            if (!_jumpToConsume && !(_bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer)) return;
+            if (_grounded || (_coyoteUsable && !_grounded && _time < _frameLeftGrounded + _stats.CoyoteTime) || _isWallGrabbing)
             {
-                ExecuteJump();
+                _endedJumpEarly = false;
+                _timeJumpWasPressed = 0;
+                _bufferedJumpUsable = false;
+                _coyoteUsable = false;
+                _frameVelocity.y = _stats.JumpPower;
+                Jumped?.Invoke();
+                _anim.SetTrigger(JumpTriggerHash);
             }
-
             _jumpToConsume = false;
-        }
-
-        private void ExecuteJump()
-        {
-            _endedJumpEarly = false;
-            _timeJumpWasPressed = 0;
-            _bufferedJumpUsable = false;
-            _coyoteUsable = false;
-            _frameVelocity.y = _stats.JumpPower;
-            Jumped?.Invoke();
-            _anim.SetTrigger(JumpTriggerHash);
         }
 
         private void HandleDash()
         {
             if (_dashToConsume && _dashesRemaining > 0)
             {
-                if (_frameInput.Move.sqrMagnitude > 0.001f) _dashDirection = _frameInput.Move.normalized;
-                else _dashDirection = new Vector2(Mathf.Sign(transform.localScale.x), 0);
-
+                _dashDirection = _frameInput.Move.sqrMagnitude > 0.001f ? _frameInput.Move.normalized : new Vector2(Mathf.Sign(transform.localScale.x), 0);
                 _isDashing = true;
                 _dashesRemaining--;
                 _timeDashStarted = _time;
                 _endedJumpEarly = false;
-
                 _anim.SetTrigger(DashTriggerHash);
             }
-
             _dashToConsume = false;
-
             if (_isDashing)
             {
                 _frameVelocity = _dashDirection * _stats.DashSpeed;
@@ -270,7 +247,6 @@ namespace PlayerSystem
         private void HandleDirection()
         {
             if (_isDashing && !_stats.DashAllowSteer) return;
-
             if (_frameInput.Move.x != 0)
             {
                 transform.localScale = new Vector3(Mathf.Sign(_frameInput.Move.x), 1, 1);
@@ -285,8 +261,7 @@ namespace PlayerSystem
 
         private void HandleGravity()
         {
-            if (_isWallGrabbing) return;
-            if (_isDashing && _stats.DashCancelsGravity) return;
+            if (_isWallGrabbing || (_isDashing && _stats.DashCancelsGravity)) return;
             if (_grounded && _frameVelocity.y <= 0f) _frameVelocity.y = -0.1f;
             else
             {
