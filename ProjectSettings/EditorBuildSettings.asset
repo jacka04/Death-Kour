@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfficialBetaScene.unity
     guid: 64ca2434be5080244a5334cc3ff1f7bf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EscenaAlfaPlayer2.unity
     guid: 353d55fc14d02f64d87fd5eaf6ea6120
   m_configObjects:
