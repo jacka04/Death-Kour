@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 608b1e83c931dd842909fe7357b3e6b4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3151411845902079278
+    second: PressKeyForJump_0
+  - first:
+      213: 8796081688034030470
+    second: PressKeyForJump_1
+  - first:
+      213: -2065716587726020344
+    second: PressKeyForJump_2
+  - first:
+      213: 4215946138155273482
+    second: PressKeyForJump_3
+  - first:
+      213: 1626149147233806369
+    second: PressKeyForJump_4
+  - first:
+      213: -7079022847942863097
+    second: PressKeyForJump_5
+  - first:
+      213: 5507836399502730909
+    second: PressKeyForJump_6
+  - first:
+      213: 8181986027661795415
+    second: PressKeyForJump_7
+  - first:
+      213: 8205226998846548396
+    second: PressKeyForJump_8
+  - first:
+      213: 4017773357268216946
+    second: PressKeyForJump_9
+  - first:
+      213: -638527283996868684
+    second: PressKeyForJump_10
+  - first:
+      213: 6536382339980696928
+    second: PressKeyForJump_11
+  - first:
+      213: -5259064867990800914
+    second: PressKeyForJump_12
+  - first:
+      213: 401756719740782271
+    second: PressKeyForJump_13
+  - first:
+      213: -7894749408093438265
+    second: PressKeyForJump_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PressKeyForJump_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da6c008f9fe344d0800000000000000
+      internalID: -3151411845902079278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683369e01b5f11a70800000000000000
+      internalID: 8796081688034030470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80165f545b91553e0800000000000000
+      internalID: -2065716587726020344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0dcce4fcac028a30800000000000000
+      internalID: 4215946138155273482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128eca0a80e319610800000000000000
+      internalID: 1626149147233806369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707dd7fd93242cd90800000000000000
+      internalID: -7079022847942863097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d96a3590604cf6c40800000000000000
+      internalID: 5507836399502730909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_7
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 83
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750adff21f04c8170800000000000000
+      internalID: 8181986027661795415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 83
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca961b77b72ded170800000000000000
+      internalID: 8205226998846548396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_9
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 83
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c2004d49ff1c730800000000000000
+      internalID: 4017773357268216946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_10
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bfb8f971de7327f0800000000000000
+      internalID: -638527283996868684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 28
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d9fa26b15e5ba50800000000000000
+      internalID: 6536382339980696928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 28
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5fba4cd5c0407b0800000000000000
+      internalID: -5259064867990800914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_13
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 28
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb68646ab93539500800000000000000
+      internalID: 401756719740782271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForJump_14
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 28
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce7dd3dd37307290800000000000000
+      internalID: -7894749408093438265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PressKeyForJump_0: -3151411845902079278
+      PressKeyForJump_1: 8796081688034030470
+      PressKeyForJump_10: -638527283996868684
+      PressKeyForJump_11: 6536382339980696928
+      PressKeyForJump_12: -5259064867990800914
+      PressKeyForJump_13: 401756719740782271
+      PressKeyForJump_14: -7894749408093438265
+      PressKeyForJump_2: -2065716587726020344
+      PressKeyForJump_3: 4215946138155273482
+      PressKeyForJump_4: 1626149147233806369
+      PressKeyForJump_5: -7079022847942863097
+      PressKeyForJump_6: 5507836399502730909
+      PressKeyForJump_7: 8181986027661795415
+      PressKeyForJump_8: 8205226998846548396
+      PressKeyForJump_9: 4017773357268216946
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 893f30f3a7968bd4eb4d9557226ca6c1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1556346754683519570
+    second: PressKeyForDash_0
+  - first:
+      213: 1504415970196714164
+    second: PressKeyForDash_1
+  - first:
+      213: 5120649117833312135
+    second: PressKeyForDash_2
+  - first:
+      213: 1104249150013263961
+    second: PressKeyForDash_3
+  - first:
+      213: -2692845798579983324
+    second: PressKeyForDash_4
+  - first:
+      213: 7822082819005197483
+    second: PressKeyForDash_5
+  - first:
+      213: -4233521207680012157
+    second: PressKeyForDash_6
+  - first:
+      213: -6143104524297455445
+    second: PressKeyForDash_7
+  - first:
+      213: -4377403348949590964
+    second: PressKeyForDash_8
+  - first:
+      213: 3539166203843482881
+    second: PressKeyForDash_9
+  - first:
+      213: -6540372771280573997
+    second: PressKeyForDash_10
+  - first:
+      213: -4034324603383554027
+    second: PressKeyForDash_11
+  - first:
+      213: -471454645505288291
+    second: PressKeyForDash_12
+  - first:
+      213: 2536429417785928820
+    second: PressKeyForDash_13
+  - first:
+      213: 3277513730708564450
+    second: PressKeyForDash_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PressKeyForDash_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2524e34a021499510800000000000000
+      internalID: 1556346754683519570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2fff9aa52c0e410800000000000000
+      internalID: 1504415970196714164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7873fd70e33301740800000000000000
+      internalID: 5120649117833312135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950511a50c4135f00800000000000000
+      internalID: 1104249150013263961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cacb4730711aad0800000000000000
+      internalID: -2692845798579983324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacad7671ee9d8c60800000000000000
+      internalID: 7822082819005197483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_6
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 83
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 380762b44e28f35c0800000000000000
+      internalID: -4233521207680012157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_7
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 83
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba8b7239bfe4fbaa0800000000000000
+      internalID: -6143104524297455445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 83
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4c114bb8d65043c0800000000000000
+      internalID: -4377403348949590964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_9
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 83
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105982d39e4ad1130800000000000000
+      internalID: 3539166203843482881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_10
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 83
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d92f2ded9deb35a0800000000000000
+      internalID: -6540372771280573997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_11
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 28
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51064b2e5233308c0800000000000000
+      internalID: -4034324603383554027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 28
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9713fe6f7e0579f0800000000000000
+      internalID: -471454645505288291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 28
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47c2bfced15333320800000000000000
+      internalID: 2536429417785928820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PressKeyForDash_14
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 28
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e969518f511c7d20800000000000000
+      internalID: 3277513730708564450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PressKeyForDash_0: 1556346754683519570
+      PressKeyForDash_1: 1504415970196714164
+      PressKeyForDash_10: -6540372771280573997
+      PressKeyForDash_11: -4034324603383554027
+      PressKeyForDash_12: -471454645505288291
+      PressKeyForDash_13: 2536429417785928820
+      PressKeyForDash_14: 3277513730708564450
+      PressKeyForDash_2: 5120649117833312135
+      PressKeyForDash_3: 1104249150013263961
+      PressKeyForDash_4: -2692845798579983324
+      PressKeyForDash_5: 7822082819005197483
+      PressKeyForDash_6: -4233521207680012157
+      PressKeyForDash_7: -6143104524297455445
+      PressKeyForDash_8: -4377403348949590964
+      PressKeyForDash_9: 3539166203843482881
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,2262 @@
+fileFormatVersion: 2
+guid: a21141d0c5f288140834ea0957a84114
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3651089571421460596
+    second: ControlsFont3_0
+  - first:
+      213: -6582432725526736868
+    second: ControlsFont3_1
+  - first:
+      213: 4919451666240676599
+    second: ControlsFont3_2
+  - first:
+      213: 3113967196049974334
+    second: ControlsFont3_3
+  - first:
+      213: -2283743206673557223
+    second: ControlsFont3_4
+  - first:
+      213: -3320021026326831506
+    second: ControlsFont3_5
+  - first:
+      213: 4610343890146781720
+    second: ControlsFont3_6
+  - first:
+      213: 3653935410429359597
+    second: ControlsFont3_7
+  - first:
+      213: 750314113031934713
+    second: ControlsFont3_8
+  - first:
+      213: 7222861476227700937
+    second: ControlsFont3_9
+  - first:
+      213: 4018089675784306012
+    second: ControlsFont3_10
+  - first:
+      213: -6724112896977331817
+    second: ControlsFont3_11
+  - first:
+      213: -964854600322273773
+    second: ControlsFont3_12
+  - first:
+      213: -949079685584240716
+    second: ControlsFont3_13
+  - first:
+      213: -2927096876074753973
+    second: ControlsFont3_14
+  - first:
+      213: -2153519925592171829
+    second: ControlsFont3_15
+  - first:
+      213: 2458854437447172148
+    second: ControlsFont3_16
+  - first:
+      213: -4475875183041621252
+    second: ControlsFont3_17
+  - first:
+      213: -6614426013313994946
+    second: ControlsFont3_18
+  - first:
+      213: 626429643997259085
+    second: ControlsFont3_19
+  - first:
+      213: 7846493442663711977
+    second: ControlsFont3_20
+  - first:
+      213: 2377756242522285072
+    second: ControlsFont3_21
+  - first:
+      213: 8058940597932826475
+    second: ControlsFont3_22
+  - first:
+      213: 3748647112558752869
+    second: ControlsFont3_23
+  - first:
+      213: 4474141441077215978
+    second: ControlsFont3_24
+  - first:
+      213: -5137648991341048675
+    second: ControlsFont3_25
+  - first:
+      213: -3835309947094357031
+    second: ControlsFont3_26
+  - first:
+      213: -3052355283107597245
+    second: ControlsFont3_27
+  - first:
+      213: 3439915332603115486
+    second: ControlsFont3_28
+  - first:
+      213: 2083032569138902422
+    second: ControlsFont3_29
+  - first:
+      213: 4187684998029008576
+    second: ControlsFont3_30
+  - first:
+      213: -8758456661757336137
+    second: ControlsFont3_31
+  - first:
+      213: 1351016994094360810
+    second: ControlsFont3_32
+  - first:
+      213: -614701049817204733
+    second: ControlsFont3_33
+  - first:
+      213: -6539403977592538382
+    second: ControlsFont3_34
+  - first:
+      213: -8557803034806358561
+    second: ControlsFont3_35
+  - first:
+      213: 2294772322547540159
+    second: ControlsFont3_36
+  - first:
+      213: 1987125272139886242
+    second: ControlsFont3_37
+  - first:
+      213: -548460969584418177
+    second: ControlsFont3_38
+  - first:
+      213: -7125364772753533227
+    second: ControlsFont3_39
+  - first:
+      213: 4632744792607020609
+    second: ControlsFont3_40
+  - first:
+      213: -6426731971907365430
+    second: ControlsFont3_41
+  - first:
+      213: 8529740958594558729
+    second: ControlsFont3_42
+  - first:
+      213: -4681161355175889820
+    second: ControlsFont3_43
+  - first:
+      213: 2615655841081439241
+    second: ControlsFont3_44
+  - first:
+      213: -6712005935095385827
+    second: ControlsFont3_45
+  - first:
+      213: -6324551727582683289
+    second: ControlsFont3_46
+  - first:
+      213: 3505540485674320029
+    second: ControlsFont3_47
+  - first:
+      213: 1550559265925506404
+    second: ControlsFont3_48
+  - first:
+      213: -5477017704475808170
+    second: ControlsFont3_49
+  - first:
+      213: -5389009671451710783
+    second: ControlsFont3_50
+  - first:
+      213: -8835878551667623054
+    second: ControlsFont3_51
+  - first:
+      213: -8282058291021130956
+    second: ControlsFont3_52
+  - first:
+      213: -7931476437323849367
+    second: ControlsFont3_53
+  - first:
+      213: 2063124715821149750
+    second: ControlsFont3_54
+  - first:
+      213: -6369870654039413072
+    second: ControlsFont3_55
+  - first:
+      213: -9153005127319599674
+    second: ControlsFont3_56
+  - first:
+      213: -2951560022445043849
+    second: ControlsFont3_57
+  - first:
+      213: 1724137531674331997
+    second: ControlsFont3_58
+  - first:
+      213: -6907357555699600967
+    second: ControlsFont3_59
+  - first:
+      213: -1100546811006400366
+    second: ControlsFont3_60
+  - first:
+      213: 1551838710387963833
+    second: ControlsFont3_61
+  - first:
+      213: 6896468677195504536
+    second: ControlsFont3_62
+  - first:
+      213: -4657569380216172158
+    second: ControlsFont3_63
+  - first:
+      213: -7711516321278152253
+    second: ControlsFont3_64
+  - first:
+      213: 7184143534424136044
+    second: ControlsFont3_65
+  - first:
+      213: 6241989840832882693
+    second: ControlsFont3_66
+  - first:
+      213: -3970278442339310280
+    second: ControlsFont3_67
+  - first:
+      213: 4486803061481732296
+    second: ControlsFont3_68
+  - first:
+      213: -1337053210855618776
+    second: ControlsFont3_69
+  - first:
+      213: -7839171448769921785
+    second: ControlsFont3_70
+  - first:
+      213: -7412258562294261379
+    second: ControlsFont3_71
+  - first:
+      213: -1074682177350859364
+    second: ControlsFont3_72
+  - first:
+      213: -7059522971658849844
+    second: ControlsFont3_73
+  - first:
+      213: -323670356973057839
+    second: ControlsFont3_74
+  - first:
+      213: -4177417760983834318
+    second: ControlsFont3_75
+  - first:
+      213: -5376468004445451716
+    second: ControlsFont3_76
+  - first:
+      213: 250317822321982512
+    second: ControlsFont3_77
+  - first:
+      213: 7550134691949788543
+    second: ControlsFont3_78
+  - first:
+      213: 2862174588366509293
+    second: ControlsFont3_79
+  - first:
+      213: 7477785080655504690
+    second: ControlsFont3_80
+  - first:
+      213: -249138680522721144
+    second: ControlsFont3_81
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ControlsFont3_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 489
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47895b3fe964ba230800000000000000
+      internalID: 3651089571421460596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 491
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c109215bf4086a4a0800000000000000
+      internalID: -6582432725526736868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_2
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 491
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2aaffd937654440800000000000000
+      internalID: 4919451666240676599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 491
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3427c29aa8073b20800000000000000
+      internalID: 3113967196049974334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 491
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919d20047a38e40e0800000000000000
+      internalID: -2283743206673557223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_5
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 491
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6e16fe777aece1d0800000000000000
+      internalID: -3320021026326831506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 491
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a6798675b3bff30800000000000000
+      internalID: 4610343890146781720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_7
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 491
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5fcda75e265b230800000000000000
+      internalID: 3653935410429359597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_8
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 491
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f21b31e5b6a96a00800000000000000
+      internalID: 750314113031934713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 494
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c8d7688e32cc3460800000000000000
+      internalID: 7222861476227700937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_10
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 495
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5db9c8754f13c730800000000000000
+      internalID: 4018089675784306012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7991b0232f62fa2a0800000000000000
+      internalID: -6724112896977331817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_12
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 495
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ea3ef5ad52c92f0800000000000000
+      internalID: -964854600322273773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_13
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf363ded0134d2f0800000000000000
+      internalID: -949079685584240716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_14
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b40a86e46ecd067d0800000000000000
+      internalID: -2927096876074753973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_15
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 495
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca5a5a99092d12e0800000000000000
+      internalID: -2153519925592171829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_16
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 495
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4308e62551b9f1220800000000000000
+      internalID: 2458854437447172148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_17
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 495
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf251d73c3f72e1c0800000000000000
+      internalID: -4475875183041621252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_18
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 495
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3fe05be596d434a0800000000000000
+      internalID: -6614426013313994946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_19
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d452b37317681b800800000000000000
+      internalID: 626429643997259085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_20
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 495
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4076ea63854ec60800000000000000
+      internalID: 7846493442663711977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_21
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 495
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 014220664bc7ff020800000000000000
+      internalID: 2377756242522285072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_22
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6f92c596cb17df60800000000000000
+      internalID: 8058940597932826475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_23
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 495
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 564bb5c00bed50430800000000000000
+      internalID: 3748647112558752869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_24
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae203468fe7571e30800000000000000
+      internalID: 4474141441077215978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_25
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c097a767763b8b0800000000000000
+      internalID: -5137648991341048675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_26
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db2be76ced36cac0800000000000000
+      internalID: -3835309947094357031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_27
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344b516ca0bd3a5d0800000000000000
+      internalID: -3052355283107597245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_28
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed77a3105c80dbf20800000000000000
+      internalID: 3439915332603115486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_29
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 495
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695f713d51b68ec10800000000000000
+      internalID: 2083032569138902422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_30
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 495
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce50c28155ad1a30800000000000000
+      internalID: 4187684998029008576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_31
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b5ec470216b37680800000000000000
+      internalID: -8758456661757336137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_32
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 495
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8a2825cc6cfb210800000000000000
+      internalID: 1351016994094360810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_33
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 495
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 308f59ae6a42877f0800000000000000
+      internalID: -614701049817204733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_34
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2faf1d8cabe5f35a0800000000000000
+      internalID: -6539403977592538382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_35
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd6b942b739c3980800000000000000
+      internalID: -8557803034806358561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_36
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 495
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb028d5e44ba8df10800000000000000
+      internalID: 2294772322547540159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_37
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 495
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae691228efa39b10800000000000000
+      internalID: 1987125272139886242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 472
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7221ce67a97368f0800000000000000
+      internalID: -548460969584418177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_39
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 472
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d691f0bd7e9d1d90800000000000000
+      internalID: -7125364772753533227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_40
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 472
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 146d162f7d0da4040800000000000000
+      internalID: 4632744792607020609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_41
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 472
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5d0d36259afc6a0800000000000000
+      internalID: -6426731971907365430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_42
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 467
+        width: 9
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90be027953abf5670800000000000000
+      internalID: 8529740958594558729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_43
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 468
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4647470ac8c290fb0800000000000000
+      internalID: -4681161355175889820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_44
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 472
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 904b55e012dac4420800000000000000
+      internalID: 2615655841081439241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_45
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d11735ce92a2ad2a0800000000000000
+      internalID: -6712005935095385827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_46
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 472
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76fd9d176bdaa38a0800000000000000
+      internalID: -6324551727582683289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_47
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 472
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d904e52af7e26a030800000000000000
+      internalID: 3505540485674320029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_48
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4652ea8ef61b48510800000000000000
+      internalID: 1550559265925506404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_49
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ea1309a69bdf3b0800000000000000
+      internalID: -5477017704475808170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_50
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cae9f981446635b0800000000000000
+      internalID: -5389009671451710783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_51
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27bbb519547a06580800000000000000
+      internalID: -8835878551667623054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_52
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 472
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4335b925dd7301d80800000000000000
+      internalID: -8282058291021130956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_53
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 472
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9616ee8f33cbde190800000000000000
+      internalID: -7931476437323849367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_54
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 472
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e29d58ff0b1ac10800000000000000
+      internalID: 2063124715821149750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_55
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 472
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0beabc0a36ca997a0800000000000000
+      internalID: -6369870654039413072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_56
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 472
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c549c6d45ef9f080800000000000000
+      internalID: -9153005127319599674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_57
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 480
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f4be03cc3f907d0800000000000000
+      internalID: -2951560022445043849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_58
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 472
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b0e5f33fd5de710800000000000000
+      internalID: 1724137531674331997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_59
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 472
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b13aeb56e22420a0800000000000000
+      internalID: -6907357555699600967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_60
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 472
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298464f91821ab0f0800000000000000
+      internalID: -1100546811006400366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_61
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 472
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b7ff59c51d398510800000000000000
+      internalID: 1551838710387963833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_62
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 473
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b98dc09bd25bf50800000000000000
+      internalID: 6896468677195504536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_63
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2819a77535dfc5fb0800000000000000
+      internalID: -4657569380216172158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_64
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1b69e53c03bf490800000000000000
+      internalID: -7711516321278152253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_65
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6915c83b7433b360800000000000000
+      internalID: 7184143534424136044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_66
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 476
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 508e07250b000a650800000000000000
+      internalID: 6241989840832882693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_67
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83569f8caccb6e8c0800000000000000
+      internalID: -3970278442339310280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_68
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 476
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c8f0c0cc93544e30800000000000000
+      internalID: 4486803061481732296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_69
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 476
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 827c7215035d17de0800000000000000
+      internalID: -1337053210855618776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_70
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 476
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d3faed91ba53390800000000000000
+      internalID: -7839171448769921785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_71
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d795a130c1e522990800000000000000
+      internalID: -7412258562294261379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_72
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 476
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c950f8ce046f511f0800000000000000
+      internalID: -1074682177350859364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_73
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 476
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1709e9249870e90800000000000000
+      internalID: -7059522971658849844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_74
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 476
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d80c447687128bf0800000000000000
+      internalID: -323670356973057839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_75
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 476
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231a626eda4d606c0800000000000000
+      internalID: -4177417760983834318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_76
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a86c0f5d2f265b0800000000000000
+      internalID: -5376468004445451716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_77
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 476
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c7370bbbe497300800000000000000
+      internalID: 250317822321982512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_78
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 477
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d3500008777c860800000000000000
+      internalID: 7550134691949788543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_79
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 479
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de45cb8af9c78b720800000000000000
+      internalID: 2862174588366509293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 462
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 235ef2f69ed66c760800000000000000
+      internalID: 7477785080655504690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsFont3_81
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 465
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88832a7a0b1ea8cf0800000000000000
+      internalID: -249138680522721144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ControlsFont3_0: 3651089571421460596
+      ControlsFont3_1: -6582432725526736868
+      ControlsFont3_10: 4018089675784306012
+      ControlsFont3_11: -6724112896977331817
+      ControlsFont3_12: -964854600322273773
+      ControlsFont3_13: -949079685584240716
+      ControlsFont3_14: -2927096876074753973
+      ControlsFont3_15: -2153519925592171829
+      ControlsFont3_16: 2458854437447172148
+      ControlsFont3_17: -4475875183041621252
+      ControlsFont3_18: -6614426013313994946
+      ControlsFont3_19: 626429643997259085
+      ControlsFont3_2: 4919451666240676599
+      ControlsFont3_20: 7846493442663711977
+      ControlsFont3_21: 2377756242522285072
+      ControlsFont3_22: 8058940597932826475
+      ControlsFont3_23: 3748647112558752869
+      ControlsFont3_24: 4474141441077215978
+      ControlsFont3_25: -5137648991341048675
+      ControlsFont3_26: -3835309947094357031
+      ControlsFont3_27: -3052355283107597245
+      ControlsFont3_28: 3439915332603115486
+      ControlsFont3_29: 2083032569138902422
+      ControlsFont3_3: 3113967196049974334
+      ControlsFont3_30: 4187684998029008576
+      ControlsFont3_31: -8758456661757336137
+      ControlsFont3_32: 1351016994094360810
+      ControlsFont3_33: -614701049817204733
+      ControlsFont3_34: -6539403977592538382
+      ControlsFont3_35: -8557803034806358561
+      ControlsFont3_36: 2294772322547540159
+      ControlsFont3_37: 1987125272139886242
+      ControlsFont3_38: -548460969584418177
+      ControlsFont3_39: -7125364772753533227
+      ControlsFont3_4: -2283743206673557223
+      ControlsFont3_40: 4632744792607020609
+      ControlsFont3_41: -6426731971907365430
+      ControlsFont3_42: 8529740958594558729
+      ControlsFont3_43: -4681161355175889820
+      ControlsFont3_44: 2615655841081439241
+      ControlsFont3_45: -6712005935095385827
+      ControlsFont3_46: -6324551727582683289
+      ControlsFont3_47: 3505540485674320029
+      ControlsFont3_48: 1550559265925506404
+      ControlsFont3_49: -5477017704475808170
+      ControlsFont3_5: -3320021026326831506
+      ControlsFont3_50: -5389009671451710783
+      ControlsFont3_51: -8835878551667623054
+      ControlsFont3_52: -8282058291021130956
+      ControlsFont3_53: -7931476437323849367
+      ControlsFont3_54: 2063124715821149750
+      ControlsFont3_55: -6369870654039413072
+      ControlsFont3_56: -9153005127319599674
+      ControlsFont3_57: -2951560022445043849
+      ControlsFont3_58: 1724137531674331997
+      ControlsFont3_59: -6907357555699600967
+      ControlsFont3_6: 4610343890146781720
+      ControlsFont3_60: -1100546811006400366
+      ControlsFont3_61: 1551838710387963833
+      ControlsFont3_62: 6896468677195504536
+      ControlsFont3_63: -4657569380216172158
+      ControlsFont3_64: -7711516321278152253
+      ControlsFont3_65: 7184143534424136044
+      ControlsFont3_66: 6241989840832882693
+      ControlsFont3_67: -3970278442339310280
+      ControlsFont3_68: 4486803061481732296
+      ControlsFont3_69: -1337053210855618776
+      ControlsFont3_7: 3653935410429359597
+      ControlsFont3_70: -7839171448769921785
+      ControlsFont3_71: -7412258562294261379
+      ControlsFont3_72: -1074682177350859364
+      ControlsFont3_73: -7059522971658849844
+      ControlsFont3_74: -323670356973057839
+      ControlsFont3_75: -4177417760983834318
+      ControlsFont3_76: -5376468004445451716
+      ControlsFont3_77: 250317822321982512
+      ControlsFont3_78: 7550134691949788543
+      ControlsFont3_79: 2862174588366509293
+      ControlsFont3_8: 750314113031934713
+      ControlsFont3_80: 7477785080655504690
+      ControlsFont3_81: -249138680522721144
+      ControlsFont3_9: 7222861476227700937
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
