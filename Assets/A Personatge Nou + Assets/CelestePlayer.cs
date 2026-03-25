@@ -26,17 +26,17 @@ public class CelestePlayer : MonoBehaviour
     // -------------------------------------------------------------------------
 
     // Gravedad
-    private const float Gravity            = 90f;
+    private const float Gravity            = 75f;
     private const float HalfGravThreshold  = 40f;   // si Speed.Y < esto y Jump held → mitad de gravedad
     private const float MaxFall            = 16f;
-    private const float FastMaxFall        = 240f;
-    private const float FastMaxAccel       = 300f;
+    private const float FastMaxFall        = 200f;
+    private const float FastMaxAccel       = 250f;
 
     // Correr
-    private const float MaxRun    = 9f;
-    private const float RunAccel  = 100f;
-    private const float RunReduce = 400f;
-    private const float AirMult   = 0.65f;
+    private const float MaxRun    = 6f;
+    private const float RunAccel  = 750f;
+    private const float RunReduce = 350f;
+    private const float AirMult   = 0.45f;
 
     // Salto normal
     private const float JumpSpeed      = 12f;
@@ -52,7 +52,7 @@ public class CelestePlayer : MonoBehaviour
     private const float WallSpeedRetentionTime = 0.06f;
 
     // Wall Slide
-    private const float WallSlideStartMax = 20f;
+    private const float WallSlideStartMax = 10f;
     private const float WallSlideTime     = 1.2f;
 
     // Super Wall Jump
@@ -213,6 +213,9 @@ private bool animIsGrounded;
 
         // Aplica movimiento al CharacterController
         cc.Move(new Vector3(speed.x, speed.y, 0f) * Time.deltaTime);
+        Vector3 pos = transform.position;
+pos.z = 0f;
+transform.position = pos;
     }
     private void LateUpdate() 
     {
@@ -226,7 +229,7 @@ private bool animIsGrounded;
     sprite.flipX = (facing == -1);
 
     bool isClimbing = currentState == State.Climb;
-    bool isRunning  = animIsGrounded && Mathf.Abs(speed.x) > 0.5f;
+bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
 
     anim.SetBool("isRunning",      isRunning);
     anim.SetBool("isGrounded",     animIsGrounded);
@@ -364,14 +367,14 @@ private bool animIsGrounded;
         float dt = Time.deltaTime;
 
         // --- Grab / Climb ---
-        if (GrabHeld && isTouchingWall && speed.y >= 0f && Mathf.Sign(speed.x) != -facing)
-        {
-            if (CheckWallInDir(facing))
-            {
-                EnterClimb();
-                return;
-            }
-        }
+       if (GrabHeld && isTouchingWall && speed.y >= 0f && Mathf.Sign(speed.x) != -facing)
+{
+    if (CheckWallInDir(facing))
+    {
+        EnterClimb();
+        return;
+    }
+}
 
         // --- Dash ---
         if (CanDash)
