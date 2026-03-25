@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b775f6f77fffa814aa4772c170fe33e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CelestePlayer
-  anim: {fileID: 0}
-  sprite: {fileID: 0}
+  anim: {fileID: 1011396918}
+  sprite: {fileID: 1011396916}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -661,6 +661,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1853506662}
-  - {fileID: 1011396917}
   - {fileID: 700835301}
   - {fileID: 1460858194}
+  - {fileID: 1011396917}

@@ -115,6 +115,10 @@ public class CelestePlayer : MonoBehaviour
     // -------------------------------------------------------------------------
     // RUNTIME — velocidad y timers
     // -------------------------------------------------------------------------
+
+    private const float GroundedGraceTime = 0.08f;
+private float coyoteGroundedTimer;
+private bool animIsGrounded;
     private Vector2 speed;          // velocidad lógica (unidades/segundo)
     private int     facing = 1;     // 1 = derecha, -1 = izquierda
 
@@ -215,31 +219,25 @@ public class CelestePlayer : MonoBehaviour
         UpdateAnimations();
     }
 
-    private void UpdateAnimations()
-    {
-        if (anim == null || sprite == null) return;
+   private void UpdateAnimations()
+{
+    if (anim == null || sprite == null) return;
 
-        // Giro del personaje según la variable facing
-        sprite.flipX = (facing == -1);
+    sprite.flipX = (facing == -1);
 
-        // Lógica de parámetros para tus animaciones
-        bool isRunning = Mathf.Abs(speed.x) > 0.1f && onGround;
-        
-        anim.SetBool("isRunning", isRunning);
-        anim.SetBool("isGrounded", onGround);
-        anim.SetFloat("verticalSpeed", speed.y);
-        anim.SetBool("isClimbing", currentState == State.Climb);
-        
-        // Pausa la animación si estamos colgados pero quietos
-        if (currentState == State.Climb)
-        {
-            anim.speed = (Mathf.Abs(InputY) > 0.1f) ? 1f : 0f;
-        }
-        else
-        {
-            anim.speed = 1f;
-        }
-    }
+    bool isClimbing = currentState == State.Climb;
+    bool isRunning  = animIsGrounded && Mathf.Abs(speed.x) > 0.5f;
+
+    anim.SetBool("isRunning",      isRunning);
+    anim.SetBool("isGrounded",     animIsGrounded);
+    anim.SetFloat("verticalSpeed", speed.y);
+    anim.SetBool("isClimbing",     isClimbing);
+
+    if (isClimbing)
+        anim.speed = Mathf.Abs(InputY) > 0.1f ? 1f : 0f;
+    else
+        anim.speed = 1f;
+}
     
 
     // -------------------------------------------------------------------------
@@ -291,24 +289,27 @@ public class CelestePlayer : MonoBehaviour
     // GROUND / WALL CHECKS
     // -------------------------------------------------------------------------
     private void UpdateGroundCheck()
+{
+    bool rawGround = cc.isGrounded;
+
+    if (rawGround)
+        coyoteGroundedTimer = GroundedGraceTime;
+    else if (coyoteGroundedTimer > 0)
+        coyoteGroundedTimer -= Time.deltaTime;
+
+    onGround       = rawGround;
+    animIsGrounded = coyoteGroundedTimer > 0f;
+
+    if (onGround)
     {
-        bool wasOnGround = onGround;
-        onGround = cc.isGrounded;
-
-        if (onGround)
-        {
-            jumpGraceTimer = JumpGraceTime;
-            wallSlideTimer = WallSlideTime;
-            maxFall        = MaxFall;
-
-            // Refill dash al tocar suelo
-            if (dashRefillCooldownTimer <= 0)
-                RefillDash();
-
-            stamina = ClimbMaxStamina;
-        }
+        jumpGraceTimer = JumpGraceTime;
+        wallSlideTimer = WallSlideTime;
+        maxFall        = MaxFall;
+        if (dashRefillCooldownTimer <= 0)
+            RefillDash();
+        stamina = ClimbMaxStamina;
     }
-
+}
     private void UpdateWallCheck()
     {
         isTouchingWall = false;
