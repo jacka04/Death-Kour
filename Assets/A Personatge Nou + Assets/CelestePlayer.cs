@@ -33,16 +33,16 @@ public class CelestePlayer : MonoBehaviour
     private const float FastMaxAccel       = 250f;
 
     // Correr
-    private const float MaxRun    = 6f;
-    private const float RunAccel  = 750f;
-    private const float RunReduce = 350f;
-    private const float AirMult   = 0.45f;
+    private const float MaxRun    = 9f;
+    private const float RunAccel  = 950f;
+    private const float RunReduce = 450f;
+    private const float AirMult   = 0.65f;
 
     // Salto normal
     private const float JumpSpeed      = 12f;
-    private const float JumpHBoost     = 4f;
+    private const float JumpHBoost     = 8f;
     private const float VarJumpTime    = 0.2f;
-    private const float JumpGraceTime  = 0.1f;   // coyote time
+    private const float JumpGraceTime  = 0.4f;   // coyote time
     private const int   UpwardCornerCorrection = 4;
 
     // Wall Jump
@@ -80,10 +80,10 @@ public class CelestePlayer : MonoBehaviour
     private const float ClimbJumpBoostTime = 0.2f;
 
     // Dash
-    private const float DashSpeed              = 14f;
+    private const float DashSpeed              = 20f;
     private const float EndDashSpeed           = 9f;
     private const float EndDashUpMult          = 1f;
-    private const float DashTime               = 0.10f;
+    private const float DashTime               = 0.20f;
     private const float DashCooldown           = 0.2f;
     private const float DashRefillCooldown     = 0.1f;
     private const int   DashCornerCorrection    = 4;
@@ -319,7 +319,10 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         wallDir        = 0;
 
         // Detecta muro a la derecha o izquierda con un pequeño raycast
-        float checkDist = cc.radius + WallJumpCheckDist * 0.1f;
+        float checkDist = 0.9f;
+        Debug.Log($"checkDist={checkDist} | radius={cc.radius}");
+        Debug.DrawRay(transform.position, Vector3.right * checkDist, Color.red);
+        Debug.DrawRay(transform.position, Vector3.left * checkDist, Color.blue);
         if (Physics.Raycast(transform.position, Vector3.right, checkDist, wallLayer))
         {
             isTouchingWall = true;
@@ -330,12 +333,14 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
             isTouchingWall = true;
             wallDir        = -1;
         }
+        Debug.DrawRay(transform.position, Vector3.right * 0.6f, Color.red);
+        Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.blue);
     }
 
     private bool CheckWallInDir(int dir)
     {
         if (dir == 0) return false;
-        float checkDist = cc.radius + WallJumpCheckDist * 0.1f;
+        float checkDist = 1.5f;
         Vector3 d = dir > 0 ? Vector3.right : Vector3.left;
         return Physics.Raycast(transform.position, d, checkDist, wallLayer);
     }
@@ -364,12 +369,15 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
     // -------------------------------------------------------------------------
     private void UpdateNormal()
     {
+        Debug.Log($"GrabHeld={GrabHeld} | isTouchingWall={isTouchingWall} | wallDir={wallDir} | facing={facing} | speedY={speed.y:F1}");
+        Debug.DrawRay(transform.position, Vector3.right * 0.6f, Color.red);
+        Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.blue);
         float dt = Time.deltaTime;
 
         // --- Grab / Climb ---
-       if (GrabHeld && isTouchingWall && speed.y >= 0f && Mathf.Sign(speed.x) != -facing)
-{
-    if (CheckWallInDir(facing))
+        if (GrabHeld && isTouchingWall && Mathf.Sign(speed.x) != -facing)
+        {
+            if (CheckWallInDir(facing))
     {
         EnterClimb();
         return;
