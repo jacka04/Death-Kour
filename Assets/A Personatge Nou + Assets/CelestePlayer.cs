@@ -160,6 +160,51 @@ private bool animIsGrounded;
     private int   wallDir;           // dirección del muro tocado
     private float climbTimer;        // para evitar trepar al instante al agarrar
 
+    // -------------------------------------------------------------------------
+    // RESPAWN / MUERTE
+    // -------------------------------------------------------------------------
+    private Vector3 respawnPoint;
+    private bool isDead = false;
+
+    private void Start()
+    {
+        respawnPoint = transform.position;
+    }
+
+    public void ActualizarCheckpoint(Vector3 newPosition)
+    {
+        respawnPoint = newPosition;
+    }
+
+    public void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        StartCoroutine(RespawnCoroutine());
+    }
+
+    private IEnumerator RespawnCoroutine()
+    {
+        // Aquí puedes añadir: animación de muerte, fade, etc.
+        cc.enabled = false;
+        speed = Vector2.zero;
+
+        yield return new WaitForSeconds(0.8f); // pausa antes de reaparecer
+
+        transform.position = respawnPoint;
+        cc.enabled = true;
+
+        // Resetear estado
+        currentState = State.Normal;
+        stamina = ClimbMaxStamina;
+        dashes = dashCount;
+        speed = Vector2.zero;
+        varJumpTimer = 0f;
+        jumpGraceTimer = 0f;
+        dashCooldownTimer = 0f;
+
+        isDead = false;
+    }
     // Dash coroutine
     private Coroutine dashCoroutine;
 
@@ -803,7 +848,7 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         forceMoveX      = 0;
         forceMoveXTimer = ClimbHopForceTime;
     }
-
+    
     // -------------------------------------------------------------------------
     // HELPERS
     // -------------------------------------------------------------------------
