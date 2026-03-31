@@ -1,12 +1,5 @@
 using System.Collections;
 using UnityEngine;
-
-/// <summary>
-/// Celeste-style Player Controller para Unity
-/// Requiere: CharacterController en el mismo GameObject
-/// Mecánicas portadas: Dash, Wall Jump y Climb
-/// Constantes extraídas 1:1 del source original de Celeste
-/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class CelestePlayer : MonoBehaviour
 {
@@ -33,16 +26,16 @@ public class CelestePlayer : MonoBehaviour
     private const float FastMaxAccel       = 250f;
 
     // Correr
-    private const float MaxRun    = 9f;
+    private const float MaxRun    = 15f;
     private const float RunAccel  = 950f;
     private const float RunReduce = 450f;
     private const float AirMult   = 0.65f;
 
     // Salto normal
-    private const float JumpSpeed      = 12f;
-    private const float JumpHBoost     = 8f;
+    private const float JumpSpeed      = 18f;
+    private const float JumpHBoost     = 10f;
     private const float VarJumpTime    = 0.2f;
-    private const float JumpGraceTime  = 0.4f;   // coyote time
+    private const float JumpGraceTime  = 1f;   // coyote time
     private const int   UpwardCornerCorrection = 4;
 
     // Wall Jump
@@ -67,7 +60,7 @@ public class CelestePlayer : MonoBehaviour
     private const float ClimbStillCost     = 100f / 10f;
     private const float ClimbJumpCost      = 110f / 4f;
     private const int   ClimbCheckDist     = 2;
-    private const float ClimbNoMoveTime    = 0.1f;
+    private const float ClimbNoMoveTime    = 0.05f;
     public  const float ClimbTiredThreshold = 20f;
     private const float ClimbUpSpeed       = 4.5f;
     private const float ClimbDownSpeed     = -8f;
@@ -83,8 +76,8 @@ public class CelestePlayer : MonoBehaviour
     private const float DashSpeed              = 20f;
     private const float EndDashSpeed           = 9f;
     private const float EndDashUpMult          = 1f;
-    private const float DashTime               = 0.20f;
-    private const float DashCooldown           = 0.2f;
+    private const float DashTime               = 0.10f;
+    private const float DashCooldown           = 0.4f;
     private const float DashRefillCooldown     = 0.1f;
     private const int   DashCornerCorrection    = 4;
     private const float DashAttackTime         = 0.3f;
@@ -455,8 +448,8 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
             else
                 maxFall = Approach(maxFall, MaxFall, FastMaxAccel * dt);
 
-            float gravMult = (Mathf.Abs(speed.y) < HalfGravThreshold && (JumpHeld)) ? 0.5f : 1f;
-            speed.y = Approach(speed.y, -maxFall, Gravity * gravMult * dt);
+            bool isDashing = currentState == State.Dash;
+            float gravMult = (!isDashing && Mathf.Abs(speed.y) < HalfGravThreshold && JumpHeld) ? 0.5f : 1f;            speed.y = Approach(speed.y, -maxFall, Gravity * gravMult * dt);
         }
         else
         {
@@ -464,13 +457,13 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         }
 
         // --- Variable Jump ---
-        if (varJumpTimer > 0f)
-        {
-            if (JumpHeld)
-                speed.y = Mathf.Min(speed.y, varJumpSpeed);
-            else
-                varJumpTimer = 0f;
-        }
+        if (varJumpTimer > 0f && currentState != State.Dash)
+{
+    if (JumpHeld)
+        speed.y = Mathf.Min(speed.y, varJumpSpeed);
+    else
+        varJumpTimer = 0f;
+}
 
         // --- Wall Slide ---
         UpdateWallSlideCheck();
