@@ -21,19 +21,19 @@ public class CelestePlayer : MonoBehaviour
     // Gravedad
     private const float Gravity            = 75f;
     private const float HalfGravThreshold  = 40f;   // si Speed.Y < esto y Jump held → mitad de gravedad
-    private const float MaxFall            = 16f;
+    private const float MaxFall            = 20f;
     private const float FastMaxFall        = 200f;
     private const float FastMaxAccel       = 250f;
 
     // Correr
-    private const float MaxRun    = 15f;
+    private const float MaxRun    = 12f;
     private const float RunAccel  = 950f;
     private const float RunReduce = 450f;
     private const float AirMult   = 0.65f;
 
     // Salto normal
-    private const float JumpSpeed      = 18f;
-    private const float JumpHBoost     = 10f;
+    private const float JumpSpeed      = 15f;
+    private const float JumpHBoost     = 8f;
     private const float VarJumpTime    = 0.2f;
     private const float JumpGraceTime  = 1f;   // coyote time
     private const int   UpwardCornerCorrection = 4;
@@ -52,7 +52,7 @@ public class CelestePlayer : MonoBehaviour
     private const float SuperWallJumpSpeed   = -160f;
     private const float SuperWallJumpVarTime = 0.25f;
     private const float SuperWallJumpForceTime = 0.2f;
-    private const float SuperWallJumpH       = MaxRun + JumpHBoost * 2f; // 170 u/s
+    private const float SuperWallJumpH       = MaxRun + JumpHBoost * 2f; 
 
     // Climb
     private const float ClimbMaxStamina    = 110f;
