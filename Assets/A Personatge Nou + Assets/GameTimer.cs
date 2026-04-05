@@ -65,18 +65,19 @@ public class GameTimer : MonoBehaviour
     }
 
     private void UpdateTimerText()
-    {
-        if (timerText == null) return;
+{
+    if (timerText == null) return;
 
-        int seconds = Mathf.CeilToInt(timeLeft);
-        timerText.text = seconds.ToString();
+    int seconds      = (int)timeLeft;
+    int milliseconds = (int)((timeLeft - seconds) * 100);
 
-        if (seconds <= 5)
-            timerText.color = Color.red;
-        else
-            timerText.color = Color.white;
-    }
+    timerText.text = string.Format("{0:00}:{1:00}", seconds, milliseconds);
 
+    if (timeLeft <= 5f)
+        timerText.color = Color.red;
+    else
+        timerText.color = Color.white;
+}
     public void StopTimer()
     {
         isRunning = false;

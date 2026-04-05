@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class CelestePlayer : MonoBehaviour
 {
@@ -82,7 +83,8 @@ public class CelestePlayer : MonoBehaviour
     private const int   DashCornerCorrection    = 4;
     private const float DashAttackTime         = 0.3f;
     private const float DodgeSlideSpeedMult    = 1.2f;
-
+[Header("FX")]
+[SerializeField] private DashTrail dashTrail;
     //animmacions
     [Header("Animación")]
     [SerializeField] private Animator anim;
@@ -207,13 +209,34 @@ private bool animIsGrounded;
     // -------------------------------------------------------------------------
     // INPUT (simple wrappers — sustituye por tu Input System favorito)
     // -------------------------------------------------------------------------
-    private float InputX      => Input.GetAxisRaw("Horizontal");
-    private float InputY      => Input.GetAxisRaw("Vertical");
-    private bool  JumpPressed => Input.GetButtonDown("Jump");
-    private bool  JumpHeld    => Input.GetButton("Jump");
-    private bool  GrabHeld    => Input.GetButton("Fire1");   // asigna "Fire1" al grab
-    private bool  DashPressed => Input.GetButtonDown("Fire2"); // asigna "Fire2" al dash
+    private Vector2 moveInput;
+private bool jumpPressed;
+private bool jumpHeld;
+private bool grabHeld;
+private bool dashPressed;
 
+private float InputX => moveInput.x;
+private float InputY => moveInput.y;
+private bool JumpPressed { get { bool v = jumpPressed; jumpPressed = false; return v; } }
+private bool JumpHeld    => jumpHeld;
+private bool GrabHeld    => grabHeld;
+private bool DashPressed { get { bool v = dashPressed; dashPressed = false; return v; } }
+
+private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
+private void OnJump(InputValue value)
+{
+    jumpHeld = value.isPressed;
+    if (value.isPressed) jumpPressed = true;
+}
+private void OnDash(InputValue value)
+{
+    if (value.isPressed) dashPressed = true;
+}
+private void OnGrab(InputValue value)
+{
+    grabHeld = value.isPressed;
+    Debug.Log("GrabHeld: " + grabHeld);
+}
     private int MoveX
     {
         get
@@ -267,13 +290,14 @@ transform.position = pos;
     sprite.flipX = (facing == -1);
 
     bool isClimbing = currentState == State.Climb;
-bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
+    bool isRunning  = onGround && Mathf.Abs(speed.x) > 0.5f;
 
-    anim.SetBool("isRunning",      isRunning);
     anim.SetBool("isGrounded",     animIsGrounded);
-    anim.SetFloat("verticalSpeed", speed.y);
+    anim.SetBool("isRunning",      isRunning);
     anim.SetBool("isClimbing",     isClimbing);
+    anim.SetFloat("verticalSpeed", speed.y);
 
+    // Climb: pausar animación si no se mueve
     if (isClimbing)
         anim.speed = Mathf.Abs(InputY) > 0.1f ? 1f : 0f;
     else
@@ -613,6 +637,25 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
 
     private void StartDash()
     {
+            Debug.Log("1. StartDash iniciado");
+    dashes            = Mathf.Max(0, dashes - 1);
+    dashCooldownTimer = DashCooldown;
+    dashRefillCooldownTimer = DashRefillCooldown;
+    dashStartedOnGround = onGround;
+    dashAttackTimer   = DashAttackTime;
+    currentState      = State.Dash;
+    speed             = Vector2.zero;
+
+    Debug.Log("2. Antes del trail");
+    dashTrail.StartTrail();
+    Debug.Log("3. Antes del shake");
+    CameraShake.Instance.Shake();
+    Debug.Log("4. Antes de la coroutine");
+
+    if (dashCoroutine != null)
+        StopCoroutine(dashCoroutine);
+    dashCoroutine = StartCoroutine(DashCoroutine());
+    Debug.Log("5. Coroutine arrancada");
         dashes            = Mathf.Max(0, dashes - 1);
         dashCooldownTimer = DashCooldown;
         dashRefillCooldownTimer = DashRefillCooldown;
@@ -620,7 +663,8 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         dashAttackTimer   = DashAttackTime;
         currentState      = State.Dash;
         speed             = Vector2.zero;
-
+        dashTrail.StartTrail();        
+    CameraShake.Instance.Shake();  
         if (dashCoroutine != null)
             StopCoroutine(dashCoroutine);
         dashCoroutine = StartCoroutine(DashCoroutine());
@@ -689,6 +733,7 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
             speed = dashDir * EndDashSpeed;
         if (speed.y < 0f)
             speed.y *= EndDashUpMult;
+            dashTrail.StopTrail();
 
         currentState = State.Normal;
     }
@@ -709,8 +754,9 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
     // -------------------------------------------------------------------------
     // CLIMB
     // -------------------------------------------------------------------------
-    private void EnterClimb()
+   private void EnterClimb()
     {
+        if (!grabHeld) return;
         currentState     = State.Climb;
         speed.x          = 0f;
         speed.y         *= ClimbGrabYMult;
@@ -719,7 +765,7 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         wallBoostTimer   = 0f;
         lastClimbMove    = 0;
 
-        // Snap al muro
+        // Snap al muro 
         for (int i = 0; i < ClimbCheckDist; i++)
         {
             if (!CheckWallInDir(facing))
@@ -739,8 +785,10 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
             stamina = ClimbMaxStamina;
 
         // Soltar muro
+       // Soltar muro
         if (!GrabHeld)
         {
+            grabHeld = false;
             currentState = State.Normal;
             return;
         }
@@ -748,7 +796,7 @@ bool isRunning = onGround && Mathf.Abs(speed.x) > 0.1f;
         // Muro desapareció
         if (!CheckWallInDir(facing))
         {
-            // Climb hop (subir al borde)
+            grabHeld = false;
             if (speed.y < 0f)
                 ClimbHop();
             currentState = State.Normal;

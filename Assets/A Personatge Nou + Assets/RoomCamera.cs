@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class RoomCamera : MonoBehaviour
 {
-    [Header("Fade")]
+  [Header("Fade")]
     [SerializeField] private Image fadePanel;
     [SerializeField] private float fadeDuration = 0.25f;
+
+    [Header("Refs")]
+    [SerializeField] private CelestePlayer playerController;
 [Header("Room inicial")]
 [SerializeField] private RoomTrigger startRoom;
 
@@ -32,6 +35,7 @@ private void Start()
     private IEnumerator TransitionCoroutine(RoomTrigger newRoom)
     {
         isTransitioning = true;
+        playerController.enabled = false;
 
         yield return StartCoroutine(Fade(0f, 1f));  // fade a negro
 
@@ -41,8 +45,9 @@ private void Start()
         transform.position = pos;
         currentRoom = newRoom;
 
-        yield return StartCoroutine(Fade(1f, 0f));  // fade a transparente
+       yield return StartCoroutine(Fade(1f, 0f));  // fade a transparente
 
+        playerController.enabled = true;
         isTransitioning = false;
     }
 
