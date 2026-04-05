@@ -6,7 +6,6 @@ public class DashTrail : MonoBehaviour
 {
     [Header("Trail")]
     [SerializeField] private SpriteRenderer playerSprite;
-    [SerializeField] private int trailLength     = 8;
     [SerializeField] private float trailInterval = 0.02f;
     [SerializeField] private float fadeDuration  = 0.15f;
     [SerializeField] private Color trailColor    = new Color(0.4f, 0.9f, 1f, 0.7f);
