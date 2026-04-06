@@ -21508,7 +21508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerSprite: {fileID: 1011396916}
-  trailLength: 8
   trailInterval: 0.02
   fadeDuration: 0.15
   trailColor: {r: 0.4, g: 0.9, b: 1, a: 0.7}
@@ -34401,7 +34400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd37b1b4799e1848a20886ce660e667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  totalTime: 10
+  totalTime: 30
   playerController: {fileID: 1011396924}
   player: {fileID: 1011396917}
   timerText: {fileID: 2030181745}
