@@ -2810,8 +2810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9234fc66910a775408c7be0521988779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  amplitud: 10
-  velocidad: 1.5
+  amplitud: 4.7
+  velocidad: 0.92
 --- !u!1 &1897611887
 GameObject:
   m_ObjectHideFlags: 0
