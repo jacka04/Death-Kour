@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Configuración de Colores")]
     public TextMeshProUGUI textoBoton;
@@ -11,26 +11,37 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Color color2 = Color.yellow;
     public float velocidad = 0.2f;
 
-    private Color colorOriginal;
-    private Coroutine rutinaParpadeo;
-    private Vector3 escalaOriginal;
-
     [Header("Zoom")]
     public float escalaHover = 1.15f;
     public float velocidadZoom = 0.1f;
+
+    [Header("Sonidos")]
+    public AudioClip sonidoHover;
+    public AudioClip sonidoClick;
+
+    private Color colorOriginal;
+    private Coroutine rutinaParpadeo;
+    private Vector3 escalaOriginal;
+    private AudioSource audioSource;
 
     void Awake()
     {
         if (textoBoton == null) textoBoton = GetComponentInChildren<TextMeshProUGUI>();
         colorOriginal = textoBoton.color;
         escalaOriginal = transform.localScale;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0f; // sonido 2D
     }
 
-    // Se activa al pasar el mouse por encima
-   public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
     {
         rutinaParpadeo = StartCoroutine(Parpadear());
         StartCoroutine(Zoom(escalaOriginal * escalaHover));
+
+        if (sonidoHover != null)
+            audioSource.PlayOneShot(sonidoHover);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -38,6 +49,12 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
         StopCoroutine(rutinaParpadeo);
         textoBoton.color = colorOriginal;
         StartCoroutine(Zoom(escalaOriginal));
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (sonidoClick != null)
+            audioSource.PlayOneShot(sonidoClick);
     }
 
     IEnumerator Zoom(Vector3 targetScale)
@@ -61,7 +78,6 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         while (true)
         {
-            // Cambia entre color1 y color2
             textoBoton.color = (textoBoton.color == color1) ? color2 : color1;
             yield return new WaitForSeconds(velocidad);
         }
