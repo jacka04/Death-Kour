@@ -83,6 +83,11 @@ public class CelestePlayer : MonoBehaviour
     private const int   DashCornerCorrection    = 4;
     private const float DashAttackTime         = 0.3f;
     private const float DodgeSlideSpeedMult    = 1.2f;
+
+    
+
+[Header("Sonido")]
+[SerializeField] private CharacterSounds playerSounds; // Este es el "hueco" que aparecerá en Unity   
 [Header("FX")]
 [SerializeField] private DashTrail dashTrail;
     //animmacions
@@ -353,6 +358,7 @@ transform.position = pos;
     // -------------------------------------------------------------------------
     // GROUND / WALL CHECKS
     // -------------------------------------------------------------------------
+    private bool wasOnGround;
     private void UpdateGroundCheck()
 {
     bool rawGround = cc.isGrounded;
@@ -361,7 +367,9 @@ transform.position = pos;
         coyoteGroundedTimer = GroundedGraceTime;
     else if (coyoteGroundedTimer > 0)
         coyoteGroundedTimer -= Time.deltaTime;
-
+     if (rawGround && !wasOnGround)
+        playerSounds?.PlayLand();
+         wasOnGround = rawGround;
     onGround       = rawGround;
     animIsGrounded = coyoteGroundedTimer > 0f;
 
@@ -565,6 +573,7 @@ transform.position = pos;
         speed.x    += JumpHBoost * MoveX;
         speed.y     = JumpSpeed;
         varJumpSpeed = speed.y;
+        playerSounds?.PlayJump();
     }
 
     private void WallJump(int dir)
@@ -586,6 +595,7 @@ transform.position = pos;
         varJumpSpeed = speed.y;
 
         facing = dir;
+        playerSounds?.PlayWallJump();
     }
 
     private void SuperWallJump(int dir)
@@ -645,7 +655,7 @@ transform.position = pos;
     dashAttackTimer   = DashAttackTime;
     currentState      = State.Dash;
     speed             = Vector2.zero;
-
+playerSounds?.PlayDash();
     Debug.Log("2. Antes del trail");
     dashTrail.StartTrail();
     Debug.Log("3. Antes del shake");
@@ -764,7 +774,7 @@ transform.position = pos;
         climbNoMoveTimer = ClimbNoMoveTime;
         wallBoostTimer   = 0f;
         lastClimbMove    = 0;
-
+        playerSounds?.PlayGrab();
         // Snap al muro 
         for (int i = 0; i < ClimbCheckDist; i++)
         {
