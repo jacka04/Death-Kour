@@ -445,13 +445,11 @@ transform.position = pos;
         float dt = Time.deltaTime;
 
         // --- Grab / Climb ---
-        if (GrabHeld && isTouchingWall && Mathf.Sign(speed.x) != -facing)
-        {
-            if (CheckWallInDir(facing))
-    {
-        EnterClimb();
-        return;
-    }
+        // DESPUÉS — permite agarrar independientemente de la velocidad horizontal:
+if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
+{
+    EnterClimb();
+    return;
 }
 
         // --- Dash ---
@@ -645,46 +643,29 @@ transform.position = pos;
 
     private bool IsDashingUp() => dashDir.x == 0f && dashDir.y < 0f && dashAttackTimer > 0f;
 
-    private void StartDash()
-    {
-            Debug.Log("1. StartDash iniciado");
-    dashes            = Mathf.Max(0, dashes - 1);
-    dashCooldownTimer = DashCooldown;
+  private void StartDash()
+{
+    dashes                  = Mathf.Max(0, dashes - 1);
+    dashCooldownTimer       = DashCooldown;
     dashRefillCooldownTimer = DashRefillCooldown;
-    dashStartedOnGround = onGround;
-    dashAttackTimer   = DashAttackTime;
-    currentState      = State.Dash;
-    speed             = Vector2.zero;
-playerSounds?.PlayDash();
-    Debug.Log("2. Antes del trail");
+    dashStartedOnGround     = onGround;
+    dashAttackTimer         = DashAttackTime;
+    currentState            = State.Dash;
+    speed                   = Vector2.zero;
+    playerSounds?.PlayDash();
     dashTrail.StartTrail();
-    Debug.Log("3. Antes del shake");
     CameraShake.Instance.Shake();
-    Debug.Log("4. Antes de la coroutine");
 
-    if (dashCoroutine != null)
-        StopCoroutine(dashCoroutine);
+    if (dashCoroutine != null) StopCoroutine(dashCoroutine);
     dashCoroutine = StartCoroutine(DashCoroutine());
-    Debug.Log("5. Coroutine arrancada");
-        dashes            = Mathf.Max(0, dashes - 1);
-        dashCooldownTimer = DashCooldown;
-        dashRefillCooldownTimer = DashRefillCooldown;
-        dashStartedOnGround = onGround;
-        dashAttackTimer   = DashAttackTime;
-        currentState      = State.Dash;
-        speed             = Vector2.zero;
-        dashTrail.StartTrail();        
-    CameraShake.Instance.Shake();  
-        if (dashCoroutine != null)
-            StopCoroutine(dashCoroutine);
-        dashCoroutine = StartCoroutine(DashCoroutine());
-    }
+}
 
     private IEnumerator DashCoroutine()
     {
         // Primer frame: calcular dirección
         yield return null;
-
+varJumpTimer = 0f;   
+varJumpSpeed = 0f;
         // Dirección de aim (8 direcciones)
         Vector2 aim = GetAimVector();
         Vector2 newSpeed = aim * DashSpeed;
@@ -740,9 +721,11 @@ playerSounds?.PlayDash();
 
         // Post-dash: reducir velocidad
         if (dashDir.y <= 0f)
-            speed = dashDir * EndDashSpeed;
-        if (speed.y < 0f)
-            speed.y *= EndDashUpMult;
+    speed = dashDir * EndDashSpeed;
+else if (dashDir.x == 0f)   // dash puro arriba
+    speed = new Vector2(0f, EndDashSpeed);   // corta la inercia vertical
+if (speed.y < 0f)
+    speed.y *= EndDashUpMult;
             dashTrail.StopTrail();
 
         currentState = State.Normal;
@@ -776,13 +759,14 @@ playerSounds?.PlayDash();
         lastClimbMove    = 0;
         playerSounds?.PlayGrab();
         // Snap al muro 
-        for (int i = 0; i < ClimbCheckDist; i++)
-        {
-            if (!CheckWallInDir(facing))
-                transform.position += new Vector3(facing * 0.1f, 0f, 0f);
-            else
-                break;
-        }
+        // DESPUÉS:
+for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
+{
+    if (!CheckWallInDir(facing))
+        transform.position += new Vector3(facing * 0.1f, 0f, 0f);
+    else
+        break;
+}
     }
 
     private void UpdateClimb()
