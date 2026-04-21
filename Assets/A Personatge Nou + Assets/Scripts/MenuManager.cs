@@ -15,8 +15,8 @@ public class MenuManager : MonoBehaviour
     {
         TransitionManager.Instance.TransitionCanvas(() =>
         {
-            panelMain.SetActive(false);
-            panelLevelSelect.SetActive(true);
+            if (panelMain) panelMain.SetActive(false);
+            if (panelLevelSelect) panelLevelSelect.SetActive(true);
         });
     }
 
@@ -24,8 +24,8 @@ public class MenuManager : MonoBehaviour
     {
         TransitionManager.Instance.TransitionCanvas(() =>
         {
-            panelMain.SetActive(false);
-            panelOptions.SetActive(true);
+            if (panelMain) panelMain.SetActive(false);
+            if (panelOptions) panelOptions.SetActive(true);
         });
     }
 
@@ -33,8 +33,8 @@ public class MenuManager : MonoBehaviour
     {
         TransitionManager.Instance.TransitionCanvas(() =>
         {
-            panelLevelSelect.SetActive(false);
-            panelMain.SetActive(true);
+            if (panelLevelSelect) panelLevelSelect.SetActive(false);
+            if (panelMain) panelMain.SetActive(true);
         });
     }
 
@@ -42,19 +42,14 @@ public class MenuManager : MonoBehaviour
     {
         TransitionManager.Instance.TransitionCanvas(() =>
         {
-            panelOptions.SetActive(false);
-            panelMain.SetActive(true);
+            if (panelOptions) panelOptions.SetActive(false);
+            if (panelMain) panelMain.SetActive(true);
         });
     }
 
     public void OnBotonNivel(int index)
     {
-        if (index < 0 || index >= levelSceneNames.Length)
-        {
-            Debug.LogWarning($"Índice de nivel {index} fuera de rango.");
-            return;
-        }
-
+        if (index < 0 || index >= levelSceneNames.Length) return;
         TransitionManager.Instance.TransitionScene(levelSceneNames[index]);
     }
 
@@ -65,6 +60,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnBotonVolverAlMenu()
     {
+        Time.timeScale = 1f;
         TransitionManager.Instance.TransitionScene(mainMenuSceneName);
     }
 

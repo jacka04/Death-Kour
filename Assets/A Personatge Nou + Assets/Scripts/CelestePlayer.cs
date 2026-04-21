@@ -389,7 +389,7 @@ transform.position = pos;
         wallDir        = 0;
 
         // Detecta muro a la derecha o izquierda con un pequeño raycast
-        float checkDist = 0.9f;
+        float checkDist = 1.1f;
         Debug.Log($"checkDist={checkDist} | radius={cc.radius}");
         Debug.DrawRay(transform.position, Vector3.right * checkDist, Color.red);
         Debug.DrawRay(transform.position, Vector3.left * checkDist, Color.blue);
