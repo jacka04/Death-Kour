@@ -7,10 +7,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject panelOptions;
     [SerializeField] private GameObject panelLevelSelect;
 
-    [Header("Nombres de escenas")]
+    [Header("Escenas")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string[] levelSceneNames;
-
-    // ── Navegación entre panels ─────────────────────────────────────────────
 
     public void OnBotonJugar()
     {
@@ -48,8 +47,6 @@ public class MenuManager : MonoBehaviour
         });
     }
 
-    // ── Carga de niveles ────────────────────────────────────────────────────
-
     public void OnBotonNivel(int index)
     {
         if (index < 0 || index >= levelSceneNames.Length)
@@ -66,7 +63,10 @@ public class MenuManager : MonoBehaviour
         TransitionManager.Instance.TransitionScene(sceneName);
     }
 
-    // ── Salir de la aplicación ──────────────────────────────────────────────
+    public void OnBotonVolverAlMenu()
+    {
+        TransitionManager.Instance.TransitionScene(mainMenuSceneName);
+    }
 
     public void OnBotonSalir()
     {
