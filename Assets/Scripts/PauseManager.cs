@@ -1,70 +1,77 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject pausePanel;
-    public GameObject settingsPanel;
-    public AudioMixer mainMixer;
-    public Image brightnessOverlay;
+    public static PauseManager Instance;
+
+    [Header("Panels")]
+    [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject optionsPanel;
+
+    [Header("Escenas")]
+    [SerializeField] private string mainMenuSceneName = "Menu";
+
     private bool isPaused = false;
 
-    void Update()
+    private void Awake()
+    {
+        Instance = this;
+        pauseCanvas.SetActive(false); 
+        pausePanel.SetActive(false);
+        optionsPanel.SetActive(false);
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused) Resume();
-            else Pause();
-        }
+            TogglePause();
+    }
+    public void Retry()
+{
+    Time.timeScale = 1f;
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+}
+    public void TogglePause()
+    {
+        if (isPaused) Resume();
+        else Pause();
     }
 
     public void Pause()
     {
-        pausePanel.SetActive(true);
-        Time.timeScale = 0f;
         isPaused = true;
+        Time.timeScale = 0f;
+        pauseCanvas.SetActive(true);
+        pausePanel.SetActive(true);
+        optionsPanel.SetActive(false);
     }
 
     public void Resume()
     {
-        pausePanel.SetActive(false);
-        settingsPanel.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
+        Time.timeScale = 1f;
+        pauseCanvas.SetActive(false);
+        pausePanel.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
-    public void SetVolume(float value)
-    {
-        mainMixer.SetFloat("MasterVol", Mathf.Log10(value) * 20);
-    }
-
-    public void SetBrightness(float value)
-    {
-        if (brightnessOverlay != null)
-        {
-            Color c = brightnessOverlay.color;
-            c.a = 1f - value;
-            brightnessOverlay.color = c;
-        }
-    }
-
-    public void OpenSettings()
+    public void OpenOptions()
     {
         pausePanel.SetActive(false);
-        settingsPanel.SetActive(true);
+        optionsPanel.SetActive(true);
     }
 
-    public void CloseSettings()
+    public void CloseOptions()
     {
-        settingsPanel.SetActive(false);
+        optionsPanel.SetActive(false);
         pausePanel.SetActive(true);
     }
 
-    public void GoToMenu(string menuSceneName)
+    public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(menuSceneName);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }

@@ -32,7 +32,7 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-        audioSource.spatialBlend = 0f; // sonido 2D
+        audioSource.spatialBlend = 0f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -64,7 +64,7 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         while (timer < velocidadZoom)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = timer / velocidadZoom;
             t = t * t * (3f - 2f * t);
             transform.localScale = Vector3.Lerp(startScale, targetScale, t);
@@ -79,7 +79,7 @@ public class BotonIntermitente : MonoBehaviour, IPointerEnterHandler, IPointerEx
         while (true)
         {
             textoBoton.color = (textoBoton.color == color1) ? color2 : color1;
-            yield return new WaitForSeconds(velocidad);
+            yield return new WaitForSecondsRealtime(velocidad);
         }
     }
 }
