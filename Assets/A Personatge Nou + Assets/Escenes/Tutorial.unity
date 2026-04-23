@@ -36295,8 +36295,8 @@ MonoBehaviour:
   timeoutCanvas: {fileID: 474124636}
   timeoutFadePanel: {fileID: 1366336654}
   timeoutPanel: {fileID: 815922594}
-  fadeDuration: 1
-  zoomDuration: 2
+  fadeDuration: 0.2
+  zoomDuration: 0.5
   zoomTargetSize: 3
 --- !u!4 &1552936921
 Transform:
