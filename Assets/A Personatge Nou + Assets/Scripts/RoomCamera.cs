@@ -37,15 +37,15 @@ private void Start()
         isTransitioning = true;
         playerController.enabled = false;
 
-        yield return StartCoroutine(Fade(0f, 1f));  // fade a negro
+        yield return StartCoroutine(Fade(0f, 1f));  
 
-        // Mover cámara
+        
         Vector3 pos = newRoom.cameraPosition;
         pos.z = transform.position.z;
         transform.position = pos;
         currentRoom = newRoom;
 
-       yield return StartCoroutine(Fade(1f, 0f));  // fade a transparente
+       yield return StartCoroutine(Fade(1f, 0f));  
 
         playerController.enabled = true;
         isTransitioning = false;

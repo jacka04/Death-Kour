@@ -103,7 +103,7 @@ public class GameTimer : MonoBehaviour
     yield return StartCoroutine(Fade(1f, 0f, fadeDuration));
     yield return StartCoroutine(ZoomIn());
 
-    // Mostrar panel con animación
+    
     timeoutPanel.SetActive(true);
     yield return StartCoroutine(AnimatePanel());
 }

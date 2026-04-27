@@ -7,8 +7,8 @@ public class TimerBar : MonoBehaviour
     [SerializeField] private Image fillImage;
 
     [Header("Colores")]
-    [SerializeField] private Color colorFull    = new Color(0.4f, 0.8f, 1f);   // azul espectral
-    [SerializeField] private Color colorWarning = new Color(1f, 0.6f, 0.1f);   // naranja
+    [SerializeField] private Color colorFull    = new Color(0.4f, 0.8f, 1f);   
+    [SerializeField] private Color colorWarning = new Color(1f, 0.6f, 0.1f);   
     [SerializeField] private Color colorCritical = Color.red;
 
     [Header("Umbrales (0-1)")]
@@ -26,10 +26,10 @@ public class TimerBar : MonoBehaviour
         float ratio = GameTimer.Instance.TimeLeft / GameTimer.Instance.TotalTime;
         ratio = Mathf.Clamp01(ratio);
 
-        // Fill
+        
         fillImage.fillAmount = ratio;
 
-        // Color
+        
         Color targetColor;
         if (ratio <= criticalThreshold)
             targetColor = colorCritical;
@@ -40,7 +40,7 @@ public class TimerBar : MonoBehaviour
             targetColor = Color.Lerp(colorWarning, colorFull,
                           (ratio - warningThreshold) / (1f - warningThreshold));
 
-        // Pulso en zona crítica
+        
         if (ratio <= criticalThreshold)
         {
             float pulse = Mathf.Lerp(pulseMin, 1f, (Mathf.Sin(Time.time * pulseSpeed) + 1f) * 0.5f);

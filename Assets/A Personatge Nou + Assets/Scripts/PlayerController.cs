@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MadelineController : MonoBehaviour
 {
-    // --- CONSTANTES ORIGINALES DE CELESTE ---
+    
     private const float MaxFall = 1.6f;
     private const float Gravity = 9.0f;
     private const float HalfGravThreshold = 0.4f;
@@ -20,11 +20,11 @@ public class MadelineController : MonoBehaviour
     private const float ClimbDownSpeed = 0.8f;
     private const float WallJumpHSpeed = MaxRun + 0.4f;
 
-    // --- ESTADOS ---
+    
     public enum State { Normal, Climb, Dash }
     public State currentState = State.Normal;
 
-    // --- VARIABLES DE CONTROL ---
+    
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isGrounded;
@@ -44,7 +44,7 @@ public class MadelineController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // Manejamos la gravedad manualmente como en el original
+        rb.gravityScale = 0; 
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class MadelineController : MonoBehaviour
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (moveInput.x != 0) facing = (int)moveInput.x;
 
-        // Timers de asistencia
+        
         if (isGrounded)
         {
             coyoteTimer = 0.1f;
@@ -80,14 +80,14 @@ public class MadelineController : MonoBehaviour
         {
             case State.Normal: NormalUpdate(); break;
             case State.Climb: ClimbUpdate(); break;
-            case State.Dash: break; // Manejado por Corrutina
+            case State.Dash: break; 
         }
     }
 
-    // --- L�GICA DE MOVIMIENTO NORMAL ---
+    
     void NormalUpdate()
     {
-        // 1. Check Transiciones
+        
         if (Input.GetKeyDown(KeyCode.X) && dashes > 0) StartCoroutine(DashRoutine());
         if (Input.GetKey(KeyCode.Z) && IsTouchingWall() && stamina > 0)
         {
@@ -95,14 +95,14 @@ public class MadelineController : MonoBehaviour
             return;
         }
 
-        // 2. Movimiento Horizontal con Inercia de Celeste
+        
         float mult = isGrounded ? 1 : AirMult;
         float targetSpeed = moveInput.x * MaxRun;
         float accel = Mathf.Abs(rb.linearVelocity.x) > MaxRun && Mathf.Sign(rb.linearVelocity.x) == moveInput.x ? RunReduce : RunAccel;
 
         float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * mult * Time.deltaTime);
 
-        // 3. Gravedad Variable (Apex del salto es m�s ligero)
+        
         float grav = Gravity;
         if (!isGrounded && Mathf.Abs(rb.linearVelocity.y) < HalfGravThreshold && Input.GetButton("Jump")) grav *= 0.5f;
 
@@ -110,7 +110,7 @@ public class MadelineController : MonoBehaviour
 
         rb.linearVelocity = new Vector2(newX, newY);
 
-        // 4. Salto / Variable Jump
+        
         if (jumpBufferTimer > 0 && coyoteTimer > 0)
         {
             MadelineJump();
@@ -126,7 +126,7 @@ public class MadelineController : MonoBehaviour
         CollisionCheck();
     }
 
-    // --- L�GICA DE ESCALADA (CLIMB) ---
+    
     void ClimbUpdate()
     {
         if (!Input.GetKey(KeyCode.Z) || !IsTouchingWall() || stamina <= 0)
@@ -148,7 +148,7 @@ public class MadelineController : MonoBehaviour
         }
     }
 
-    // --- DASH (CORRUTINA ID�NTICA) ---
+    
     IEnumerator DashRoutine()
     {
         currentState = State.Dash;
@@ -157,14 +157,14 @@ public class MadelineController : MonoBehaviour
 
         rb.linearVelocity = dir * DashSpeed;
 
-        // El "Freeze" frame de Celeste
+        
         Time.timeScale = 0.05f;
         yield return new WaitForSecondsRealtime(0.05f);
         Time.timeScale = 1f;
 
         yield return new WaitForSeconds(DashTime);
 
-        rb.linearVelocity = dir * MaxRun; // Salida del dash
+        rb.linearVelocity = dir * MaxRun; 
         currentState = State.Normal;
     }
 
@@ -176,19 +176,19 @@ public class MadelineController : MonoBehaviour
         varJumpTimer = VarJumpTime;
     }
 
-    // --- DETECCI�N PIXEL-PERFECT (SIMULADA) ---
+    
     void CollisionCheck()
     {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.8f, 0.1f), 0, solidLayer);
 
-        // Corner Correction (Empuje hacia arriba si golpeas la cabeza en una esquina)
+        
         if (rb.linearVelocity.y > 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 0.5f, Vector2.up, 0.2f, solidLayer);
             if (hit)
             {
-                // Si hay espacio a los lados, desplazar Madeline lateralmente para "esquivar" la esquina
+                
                 transform.position += new Vector3(facing * -0.1f, 0, 0);
             }
         }

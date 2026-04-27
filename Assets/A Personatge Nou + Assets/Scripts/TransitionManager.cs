@@ -22,26 +22,26 @@ public class TransitionManager : MonoBehaviour
     DontDestroyOnLoad(gameObject);
 
     screenWidth = Screen.width;
-    // ya no necesitas posicionarlo aquí
+    
 }   
 
-    // ─── Para cambiar de CANVAS / panel en el mismo menú ───────────────────
+    
     public void TransitionCanvas(System.Action onMidpoint)
     {
         StartCoroutine(DoCanvasTransition(onMidpoint));
     }
 
-    // ─── Para cambiar de ESCENA ─────────────────────────────────────────────
+    
     public void TransitionScene(string sceneName)
     {
         StartCoroutine(DoSceneTransition(sceneName));
     }
 
-    // ───────────────────────────────────────────────────────────────────────
+    
     private IEnumerator DoCanvasTransition(System.Action onMidpoint)
     {
         yield return StartCoroutine(SlideIn());
-        onMidpoint?.Invoke();          // aquí cambias el canvas activo
+        onMidpoint?.Invoke();          
         yield return new WaitForSeconds(0.05f);
         yield return StartCoroutine(SlideOut());
     }
@@ -57,15 +57,15 @@ public class TransitionManager : MonoBehaviour
             yield return null;
 
         load.allowSceneActivation = true;
-        yield return null; // espera un frame a que la escena esté lista
+        yield return null; 
 
         yield return StartCoroutine(SlideOut());
     }
 
-    // ─── Swipe LEFT: entra desde la derecha, sale hacia la izquierda ────────
+    
    private IEnumerator SlideIn()
 {
-    swipePanel.gameObject.SetActive(true); // se activa justo antes de entrar
+    swipePanel.gameObject.SetActive(true); 
     Vector2 start = new Vector2(screenWidth, 0);
     Vector2 end   = new Vector2(0, 0);
     yield return Slide(start, end);
@@ -78,7 +78,7 @@ private IEnumerator SlideOut()
     yield return Slide(start, end);
 
     swipePanel.anchoredPosition = new Vector2(screenWidth, 0);
-    swipePanel.gameObject.SetActive(false); // se desactiva al salir de pantalla
+    swipePanel.gameObject.SetActive(false); 
 }
 
     private IEnumerator Slide(Vector2 from, Vector2 to)

@@ -38,7 +38,7 @@ public class DashTrail : MonoBehaviour
 
     private void SpawnGhost()
     {
-        // Crear ghost nuevo cada vez, sin pool
+        
         GameObject go = new GameObject("Ghost");
         go.transform.position = playerSprite.transform.position;
         go.transform.rotation = playerSprite.transform.rotation;

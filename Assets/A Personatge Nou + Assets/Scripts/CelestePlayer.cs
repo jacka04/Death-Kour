@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class CelestePlayer : MonoBehaviour
 {
-    // -------------------------------------------------------------------------
-    // ESTADOS
-    // -------------------------------------------------------------------------
+    
+    
+    
     private enum State
     {
         Normal,
@@ -15,47 +15,47 @@ public class CelestePlayer : MonoBehaviour
         WallSlide
     }
 
-    // -------------------------------------------------------------------------
-    // CONSTANTES — valores originales de Player.cs de Celeste
-    // -------------------------------------------------------------------------
+    
+    
+    
 
-    // Gravedad
+    
     private const float Gravity            = 75f;
-    private const float HalfGravThreshold  = 40f;   // si Speed.Y < esto y Jump held → mitad de gravedad
+    private const float HalfGravThreshold  = 40f;   
     private const float MaxFall            = 20f;
     private const float FastMaxFall        = 200f;
     private const float FastMaxAccel       = 250f;
 
-    // Correr
+    
     private const float MaxRun    = 12f;
     private const float RunAccel  = 950f;
     private const float RunReduce = 450f;
     private const float AirMult   = 0.65f;
 
-    // Salto normal
+    
     private const float JumpSpeed      = 15f;
     private const float JumpHBoost     = 8f;
     private const float VarJumpTime    = 0.2f;
-    private const float JumpGraceTime  = 1f;   // coyote time
+    private const float JumpGraceTime  = 1f;   
     private const int   UpwardCornerCorrection = 4;
 
-    // Wall Jump
+    
     private const int   WallJumpCheckDist  = 3;
     private const float WallJumpForceTime  = 0.16f;
-    private const float WallJumpHSpeed     = MaxRun + JumpHBoost;  // 130 u/s
+    private const float WallJumpHSpeed     = MaxRun + JumpHBoost;  
     private const float WallSpeedRetentionTime = 0.06f;
 
-    // Wall Slide
+    
     private const float WallSlideStartMax = 10f;
     private const float WallSlideTime     = 1.2f;
 
-    // Super Wall Jump
+    
     private const float SuperWallJumpSpeed   = -160f;
     private const float SuperWallJumpVarTime = 0.25f;
     private const float SuperWallJumpForceTime = 0.2f;
     private const float SuperWallJumpH       = MaxRun + JumpHBoost * 2f; 
 
-    // Climb
+    
     private const float ClimbMaxStamina    = 110f;
     private const float ClimbUpCost        = 100f / 2.2f;
     private const float ClimbStillCost     = 100f / 10f;
@@ -73,7 +73,7 @@ public class CelestePlayer : MonoBehaviour
     private const float ClimbHopForceTime  = 0.2f;
     private const float ClimbJumpBoostTime = 0.2f;
 
-    // Dash
+    
     private const float DashSpeed              = 20f;
     private const float EndDashSpeed           = 9f;
     private const float EndDashUpMult          = 1f;
@@ -87,17 +87,17 @@ public class CelestePlayer : MonoBehaviour
     
 
 [Header("Sonido")]
-[SerializeField] private CharacterSounds playerSounds; // Este es el "hueco" que aparecerá en Unity   
+[SerializeField] private CharacterSounds playerSounds; 
 [Header("FX")]
 [SerializeField] private DashTrail dashTrail;
-    //animmacions
+    
     [Header("Animación")]
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer sprite;
 
-    // -------------------------------------------------------------------------
-    // INSPECTOR
-    // -------------------------------------------------------------------------
+    
+    
+    
     [Header("Refs")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
@@ -107,44 +107,44 @@ public class CelestePlayer : MonoBehaviour
     [SerializeField] private float stamina;
     [SerializeField] private int   dashes = 1;
 
-    // -------------------------------------------------------------------------
-    // COMPONENTES
-    // -------------------------------------------------------------------------
+    
+    
+    
     private CharacterController cc;
 
-    // -------------------------------------------------------------------------
-    // RUNTIME — velocidad y timers
-    // -------------------------------------------------------------------------
+    
+    
+    
 
     private const float GroundedGraceTime = 0.08f;
 private float coyoteGroundedTimer;
 private bool animIsGrounded;
-    private Vector2 speed;          // velocidad lógica (unidades/segundo)
-    private int     facing = 1;     // 1 = derecha, -1 = izquierda
+    private Vector2 speed;          
+    private int     facing = 1;     
 
-    // Salto / coyote
+    
     private float jumpGraceTimer;
     private float varJumpTimer;
     private float varJumpSpeed;
     private bool  onGround;
 
-    // Wall slide
+    
     private float wallSlideTimer = WallSlideTime;
     private int   wallSlideDir;
 
-    // Wall speed retention
+    
     private float wallSpeedRetentionTimer;
     private float wallSpeedRetained;
 
-    // Wall boost (climb jump lateral)
+    
     private int   wallBoostDir;
     private float wallBoostTimer;
 
-    // Force move X (post wall-jump)
+    
     private int   forceMoveX;
     private float forceMoveXTimer;
 
-    // Dash
+    
     private int   dashCount = 1;
     private float dashCooldownTimer;
     private float dashRefillCooldownTimer;
@@ -153,16 +153,16 @@ private bool animIsGrounded;
     private bool  dashStartedOnGround;
     private bool  wasDashStarted;
 
-    // Climb
+    
     private float climbNoMoveTimer;
     private int   lastClimbMove;
     private bool  isTouchingWall;
-    private int   wallDir;           // dirección del muro tocado
-    private float climbTimer;        // para evitar trepar al instante al agarrar
+    private int   wallDir;           
+    private float climbTimer;        
 
-    // -------------------------------------------------------------------------
-    // RESPAWN / MUERTE
-    // -------------------------------------------------------------------------
+    
+    
+    
     private Vector3 respawnPoint;
     private bool isDead = false;
 
@@ -185,16 +185,16 @@ private bool animIsGrounded;
 
     private IEnumerator RespawnCoroutine()
     {
-        // Aquí puedes añadir: animación de muerte, fade, etc.
+        
         cc.enabled = false;
         speed = Vector2.zero;
 
-        yield return new WaitForSeconds(0.8f); // pausa antes de reaparecer
+        yield return new WaitForSeconds(0.8f); 
 
         transform.position = respawnPoint;
         cc.enabled = true;
 
-        // Resetear estado
+        
         currentState = State.Normal;
         stamina = ClimbMaxStamina;
         dashes = dashCount;
@@ -205,15 +205,15 @@ private bool animIsGrounded;
 
         isDead = false;
     }
-    // Dash coroutine
+    
     private Coroutine dashCoroutine;
 
-    // Max fall dinámico (fast fall)
+    
     private float maxFall;
 
-    // -------------------------------------------------------------------------
-    // INPUT (simple wrappers — sustituye por tu Input System favorito)
-    // -------------------------------------------------------------------------
+    
+    
+    
     private Vector2 moveInput;
 private bool jumpPressed;
 private bool jumpHeld;
@@ -251,9 +251,9 @@ private void OnGrab(InputValue value)
         }
     }
 
-    // -------------------------------------------------------------------------
-    // UNITY LIFECYCLE
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void Awake()
     {
         cc       = GetComponent<CharacterController>();
@@ -272,12 +272,12 @@ private void OnGrab(InputValue value)
         switch (currentState)
         {
             case State.Normal:    UpdateNormal();    break;
-            case State.Dash:      /* manejado por coroutine */ break;
+            case State.Dash:       break;
             case State.Climb:     UpdateClimb();     break;
             case State.WallSlide: UpdateWallSlide(); break;
         }
 
-        // Aplica movimiento al CharacterController
+        
         cc.Move(new Vector3(speed.x, speed.y, 0f) * Time.deltaTime);
         Vector3 pos = transform.position;
 pos.z = 0f;
@@ -302,7 +302,7 @@ transform.position = pos;
     anim.SetBool("isClimbing",     isClimbing);
     anim.SetFloat("verticalSpeed", speed.y);
 
-    // Climb: pausar animación si no se mueve
+    
     if (isClimbing)
         anim.speed = Mathf.Abs(InputY) > 0.1f ? 1f : 0f;
     else
@@ -310,9 +310,9 @@ transform.position = pos;
 }
     
 
-    // -------------------------------------------------------------------------
-    // TIMERS GENERALES
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void UpdateTimers()
     {
         float dt = Time.deltaTime;
@@ -326,7 +326,7 @@ transform.position = pos;
         if (wallBoostTimer    > 0)
         {
             wallBoostTimer -= dt;
-            // Si el jugador pulsa hacia el lado del wall boost, convertir en wall jump speed
+            
             if (MoveX == wallBoostDir)
             {
                 speed.x      = WallJumpHSpeed * MoveX;
@@ -347,7 +347,7 @@ transform.position = pos;
                 wallSpeedRetentionTimer -= dt;
         }
 
-        // Wall slide decay
+        
         if (wallSlideDir != 0)
         {
             wallSlideTimer = Mathf.Max(wallSlideTimer - dt, 0f);
@@ -355,9 +355,9 @@ transform.position = pos;
         }
     }
 
-    // -------------------------------------------------------------------------
-    // GROUND / WALL CHECKS
-    // -------------------------------------------------------------------------
+    
+    
+    
     private bool wasOnGround;
     private void UpdateGroundCheck()
 {
@@ -388,7 +388,7 @@ transform.position = pos;
         isTouchingWall = false;
         wallDir        = 0;
 
-        // Detecta muro a la derecha o izquierda con un pequeño raycast
+        
         float checkDist = 1.1f;
         Debug.Log($"checkDist={checkDist} | radius={cc.radius}");
         Debug.DrawRay(transform.position, Vector3.right * checkDist, Color.red);
@@ -415,9 +415,9 @@ transform.position = pos;
         return Physics.Raycast(transform.position, d, checkDist, wallLayer);
     }
 
-    // -------------------------------------------------------------------------
-    // DASH REFILL
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void UpdateDashRefill()
     {
         if (dashRefillCooldownTimer <= 0 && onGround && currentState != State.Dash)
@@ -434,9 +434,9 @@ transform.position = pos;
         return false;
     }
 
-    // -------------------------------------------------------------------------
-    // STATE: NORMAL
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void UpdateNormal()
     {
         Debug.Log($"GrabHeld={GrabHeld} | isTouchingWall={isTouchingWall} | wallDir={wallDir} | facing={facing} | speedY={speed.y:F1}");
@@ -444,35 +444,35 @@ transform.position = pos;
         Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.blue);
         float dt = Time.deltaTime;
 
-        // --- Grab / Climb ---
-        // DESPUÉS — permite agarrar independientemente de la velocidad horizontal:
+        
+        
 if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
 {
     EnterClimb();
     return;
 }
 
-        // --- Dash ---
+        
         if (CanDash)
         {
             StartDash();
             return;
         }
 
-        // --- Horizontal ---
+        
         float mult = onGround ? 1f : AirMult;
         if (Mathf.Abs(speed.x) > MaxRun && Mathf.Sign(speed.x) == MoveX)
             speed.x = Approach(speed.x, MaxRun * MoveX, RunReduce * mult * dt);
         else
             speed.x = Approach(speed.x, MaxRun * MoveX, RunAccel * mult * dt);
 
-        // Facing
+        
         if (MoveX != 0) facing = MoveX;
 
-        // --- Gravedad / Fast Fall ---
+        
         if (!onGround)
         {
-            // Fast fall
+            
             if (InputY < -0.5f && speed.y <= -maxFall)
                 maxFall = Approach(maxFall, FastMaxFall, FastMaxAccel * dt);
             else
@@ -486,7 +486,7 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
             speed.y = Mathf.Min(speed.y, 0f);
         }
 
-        // --- Variable Jump ---
+        
         if (varJumpTimer > 0f && currentState != State.Dash)
 {
     if (JumpHeld)
@@ -495,10 +495,10 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
         varJumpTimer = 0f;
 }
 
-        // --- Wall Slide ---
+        
         UpdateWallSlideCheck();
 
-        // --- Salto ---
+        
         if (JumpPressed)
         {
             if (jumpGraceTimer > 0f)
@@ -507,7 +507,7 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
             }
             else
             {
-                // Wall jump derecha
+                
                 if (CheckWallInDir(1))
                 {
                     if (facing == 1 && GrabHeld && stamina > 0f)
@@ -517,7 +517,7 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
                     else
                         WallJump(-1);
                 }
-                // Wall jump izquierda
+                
                 else if (CheckWallInDir(-1))
                 {
                     if (facing == -1 && GrabHeld && stamina > 0f)
@@ -531,9 +531,9 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
         }
     }
 
-    // -------------------------------------------------------------------------
-    // WALL SLIDE (dentro de Normal)
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void UpdateWallSlideCheck()
     {
         if ((MoveX == facing || (MoveX == 0 && GrabHeld)) && InputY >= -0.1f)
@@ -553,13 +553,13 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
 
     private void UpdateWallSlide()
     {
-        // Redirige al estado normal; la lógica de slide está en UpdateNormal
+        
         currentState = State.Normal;
     }
 
-    // -------------------------------------------------------------------------
-    // JUMP
-    // -------------------------------------------------------------------------
+    
+    
+    
     private void Jump(bool particles = true)
     {
         jumpGraceTimer = 0f;
@@ -616,7 +616,7 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
         if (!onGround)
             stamina -= ClimbJumpCost;
 
-        // Reutiliza Jump normal
+        
         jumpGraceTimer  = 0f;
         varJumpTimer    = VarJumpTime;
         wallSlideTimer  = WallSlideTime;
@@ -636,9 +636,9 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
         currentState = State.Normal;
     }
 
-    // -------------------------------------------------------------------------
-    // DASH
-    // -------------------------------------------------------------------------
+    
+    
+    
     private bool CanDash => DashPressed && dashCooldownTimer <= 0f && dashes > 0;
 
     private bool IsDashingUp() => dashDir.x == 0f && dashDir.y < 0f && dashAttackTimer > 0f;
@@ -662,11 +662,11 @@ if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
 
     private IEnumerator DashCoroutine()
     {
-        // Primer frame: calcular dirección
+        
         yield return null;
 varJumpTimer = 0f;   
 varJumpSpeed = 0f;
-        // Dirección de aim (8 direcciones)
+        
         Vector2 aim = GetAimVector();
         Vector2 newSpeed = aim * DashSpeed;
 
@@ -676,7 +676,7 @@ varJumpSpeed = 0f;
         if (dashDir.x != 0f)
             facing = Mathf.RoundToInt(dashDir.x);
 
-        // Dash slide: si vamos diagonal abajo en suelo, convertir en slide horizontal
+        
         if (onGround && dashDir.x != 0f && dashDir.y > 0f && speed.y > 0f)
         {
             dashDir = new Vector2(Mathf.Sign(dashDir.x), 0f);
@@ -684,13 +684,13 @@ varJumpSpeed = 0f;
             speed.x *= DodgeSlideSpeedMult;
         }
 
-        // Esperar duración del dash
+        
         float timer = 0f;
         while (timer < DashTime)
         {
             timer += Time.deltaTime;
 
-            // Wall jump durante dash (dirección pura horizontal o vertical)
+            
             if (dashDir.x == 0f && dashDir.y < 0f)
             {
                 if (JumpPressed)
@@ -708,7 +708,7 @@ varJumpSpeed = 0f;
                 }
             }
 
-            // Super Jump durante dash horizontal
+            
             if (dashDir.y == 0f && JumpPressed && jumpGraceTimer > 0f)
             {
                 SuperJump();
@@ -719,11 +719,11 @@ varJumpSpeed = 0f;
             yield return null;
         }
 
-        // Post-dash: reducir velocidad
+        
         if (dashDir.y <= 0f)
     speed = dashDir * EndDashSpeed;
-else if (dashDir.x == 0f)   // dash puro arriba
-    speed = new Vector2(0f, EndDashSpeed);   // corta la inercia vertical
+else if (dashDir.x == 0f)   
+    speed = new Vector2(0f, EndDashSpeed);   
 if (speed.y < 0f)
     speed.y *= EndDashUpMult;
             dashTrail.StopTrail();
@@ -744,9 +744,9 @@ if (speed.y < 0f)
         varJumpSpeed = speed.y;
     }
 
-    // -------------------------------------------------------------------------
-    // CLIMB
-    // -------------------------------------------------------------------------
+    
+    
+    
    private void EnterClimb()
     {
         if (!grabHeld) return;
@@ -758,9 +758,9 @@ if (speed.y < 0f)
         wallBoostTimer   = 0f;
         lastClimbMove    = 0;
         playerSounds?.PlayGrab();
-        // Snap al muro 
-        // DESPUÉS:
-for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
+        
+        
+for (int i = 0; i < 8; i++)   
 {
     if (!CheckWallInDir(facing))
         transform.position += new Vector3(facing * 0.1f, 0f, 0f);
@@ -774,12 +774,12 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         float dt = Time.deltaTime;
         climbNoMoveTimer -= dt;
 
-        // Refill estamina en suelo
+        
         if (onGround)
             stamina = ClimbMaxStamina;
 
-        // Soltar muro
-       // Soltar muro
+        
+       
         if (!GrabHeld)
         {
             grabHeld = false;
@@ -787,7 +787,7 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
             return;
         }
 
-        // Muro desapareció
+        
         if (!CheckWallInDir(facing))
         {
             grabHeld = false;
@@ -797,7 +797,7 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
             return;
         }
 
-        // --- Jump desde climb ---
+        
         if (JumpPressed)
         {
             if (MoveX == -facing)
@@ -807,24 +807,24 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
             return;
         }
 
-        // --- Dash desde climb ---
+        
         if (CanDash)
         {
             StartDash();
             return;
         }
 
-        // --- Movimiento vertical ---
+        
         float target      = 0f;
         bool  trySlip     = false;
 
         if (climbNoMoveTimer <= 0f)
         {
-            if (InputY > 0.5f)      // arriba (InputY positivo = arriba en Unity)
+            if (InputY > 0.5f)      
             {
                 target = ClimbUpSpeed;
 
-                // Comprueba bloqueo arriba
+                
                 if (CheckCeiling())
                 {
                     speed.y = 0f;
@@ -832,7 +832,7 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
                     trySlip = true;
                 }
             }
-            else if (InputY < -0.5f) // abajo
+            else if (InputY < -0.5f) 
             {
                 target = ClimbDownSpeed;
                 if (onGround)
@@ -849,26 +849,26 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
 
         lastClimbMove = (int)Mathf.Sign(target);
 
-        // Slip (resbalar si manos por encima del borde)
+        
         if (trySlip && SlipCheck())
             target = ClimbSlipSpeed;
 
         speed.y = Approach(speed.y, target, ClimbAccel * dt);
 
-        // Límite bajada voluntaria
+        
         if (InputY >= -0.1f && speed.y > 0f && !CheckWallInDir(facing))
             speed.y = 0f;
 
-        // --- Estamina ---
+        
         if (climbNoMoveTimer <= 0f)
         {
-            if (lastClimbMove == -1)          // subiendo (negativo = arriba)
+            if (lastClimbMove == -1)          
                 stamina -= ClimbUpCost * dt;
             else if (lastClimbMove == 0)
                 stamina -= ClimbStillCost * dt;
         }
 
-        // Sin estamina → soltar
+        
         if (stamina <= 0f)
         {
             currentState = State.Normal;
@@ -884,11 +884,11 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         forceMoveXTimer = ClimbHopForceTime;
     }
     
-    // -------------------------------------------------------------------------
-    // HELPERS
-    // -------------------------------------------------------------------------
+    
+    
+    
 
-    /// <summary>Obtiene vector de aim en 8 direcciones normalizado.</summary>
+    
     private Vector2 GetAimVector()
     {
         float x = InputX;
@@ -900,13 +900,13 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         else
             aim = new Vector2(x, y).normalized;
 
-        // Snap a 8 direcciones (45°)
+        
         float angle = Mathf.Atan2(aim.y, aim.x);
         float snap  = Mathf.Round(angle / (Mathf.PI / 4f)) * (Mathf.PI / 4f);
         return new Vector2(Mathf.Cos(snap), Mathf.Sin(snap));
     }
 
-    /// <summary>Acercamiento lineal (equivalente a Calc.Approach de Monocle).</summary>
+    
     private static float Approach(float val, float target, float maxMove)
     {
         if (val < target) return Mathf.Min(val + maxMove, target);
@@ -914,7 +914,7 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         return target;
     }
 
-    /// <summary>¿Hay techo encima del jugador?</summary>
+    
     private bool CheckCeiling()
     {
         return Physics.Raycast(
@@ -925,10 +925,10 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         );
     }
 
-    /// <summary>
-    /// Slip check: ¿las manos del jugador están por encima del borde del muro?
-    /// (simplificado: comprueba si no hay colisión en la parte superior del muro)
-    /// </summary>
+    
+    
+    
+    
     private bool SlipCheck(float addY = 0f)
     {
         Vector3 topOffset = new Vector3(
@@ -944,9 +944,9 @@ for (int i = 0; i < 8; i++)   // hasta 0.8u de corrección
         );
     }
 
-    // -------------------------------------------------------------------------
-    // PROPIEDADES PÚBLICAS (útiles para animación, UI, etc.)
-    // -------------------------------------------------------------------------
+    
+    
+    
     public bool  IsOnGround      => onGround;
     public bool  IsDashAttacking => dashAttackTimer > 0f;
     public bool  IsClimbing      => currentState == State.Climb;

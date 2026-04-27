@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        // Patrón Singleton: destruye duplicados si ya existe
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,13 +27,13 @@ public class AudioManager : MonoBehaviour
         audioSource.loop = true;
         audioSource.playOnAwake = false;
 
-        // Carga el volumen guardado (o el valor por defecto)
+        
         float savedVolume = PlayerPrefs.GetFloat(VolumeKey, DefaultVolume);
         audioSource.volume = savedVolume;
         audioSource.Play();
     }
 
-    /// <summary>Cambia el volumen (0.0 - 1.0) y lo persiste.</summary>
+    
     public void SetVolume(float volume)
     {
         audioSource.volume = volume;
@@ -41,13 +41,13 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    /// <summary>Devuelve el volumen actual para inicializar el slider.</summary>
+    
     public float GetVolume()
     {
         return audioSource.volume;
     }
 
-    /// <summary>Pausa/reanuda la música (útil si entras a un nivel con su propia música).</summary>
+    
     public void SetPaused(bool paused)
     {
         if (paused) audioSource.Pause();

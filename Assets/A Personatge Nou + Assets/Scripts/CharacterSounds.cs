@@ -7,7 +7,7 @@ public class CharacterSounds : MonoBehaviour
     [SerializeField] private AudioClip dashClip;
     [SerializeField] private AudioClip landClip;
     [SerializeField] private AudioClip grabClip;
-    [SerializeField] private AudioClip wallJumpClip; // opcional, puede ser el mismo que jump
+    [SerializeField] private AudioClip wallJumpClip; 
 
     [Header("Volumen")]
     [SerializeField] [Range(0f, 1f)] private float jumpVolume    = 0.8f;
@@ -22,7 +22,7 @@ public class CharacterSounds : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake  = false;
-        audioSource.spatialBlend = 0f; // 2D
+        audioSource.spatialBlend = 0f; 
     }
 
     public void PlayJump()     => Play(jumpClip,     jumpVolume);
