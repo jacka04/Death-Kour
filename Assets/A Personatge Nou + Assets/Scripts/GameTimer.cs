@@ -11,6 +11,10 @@ public class GameTimer : MonoBehaviour
     [Header("Tiempo")]
     [SerializeField] private float totalTime = 20f;
     private float timeLeft;
+    public float TotalTime => totalTime;
+
+    public float TotalTime => totalTime;
+
     private bool isRunning = false;
     private bool hasEnded = false;
 
