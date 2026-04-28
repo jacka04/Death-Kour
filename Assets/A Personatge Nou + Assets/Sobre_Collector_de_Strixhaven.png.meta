@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a74352d89058d41bdbe3ab9c71a04bf6
+guid: b65da673284c94a44898924bb3346095
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8827212693044737995
-    second: bartime_0
+      213: -3530022649283723966
+    second: Sobre_Collector_de_Strixhaven_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bartime_0
+      name: Sobre_Collector_de_Strixhaven_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 21
-        width: 700
-        height: 132
+        x: 0
+        y: 0
+        width: 470
+        height: 372
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc730cdfc2f808a70800000000000000
-      internalID: 8827212693044737995
+      spriteID: 24d3c547a17d20fc0800000000000000
+      internalID: -3530022649283723966
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bartime_0: 8827212693044737995
+      Sobre_Collector_de_Strixhaven_0: -3530022649283723966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
