@@ -237,11 +237,15 @@ private void OnDash(InputValue value)
 {
     if (value.isPressed) dashPressed = true;
 }
+private bool grabPressed;
+
 private void OnGrab(InputValue value)
 {
     grabHeld = value.isPressed;
-    Debug.Log("GrabHeld: " + grabHeld);
+    if (value.isPressed) grabPressed = true;   
 }
+
+private bool GrabPressed { get { bool v = grabPressed; grabPressed = false; return v; } }
     private int MoveX
     {
         get
@@ -386,25 +390,22 @@ transform.position = pos;
     private void UpdateWallCheck()
     {
         isTouchingWall = false;
-        wallDir        = 0;
+        wallDir =0;
 
         
         float checkDist = 1.1f;
-        Debug.Log($"checkDist={checkDist} | radius={cc.radius}");
-        Debug.DrawRay(transform.position, Vector3.right * checkDist, Color.red);
-        Debug.DrawRay(transform.position, Vector3.left * checkDist, Color.blue);
+        
         if (Physics.Raycast(transform.position, Vector3.right, checkDist, wallLayer))
         {
             isTouchingWall = true;
-            wallDir        = 1;
+            wallDir= 1;
         }
         else if (Physics.Raycast(transform.position, Vector3.left, checkDist, wallLayer))
         {
             isTouchingWall = true;
-            wallDir        = -1;
+            wallDir= -1;
         }
-        Debug.DrawRay(transform.position, Vector3.right * 0.6f, Color.red);
-        Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.blue);
+       
     }
 
     private bool CheckWallInDir(int dir)
@@ -414,6 +415,20 @@ transform.position = pos;
         Vector3 d = dir > 0 ? Vector3.right : Vector3.left;
         return Physics.Raycast(transform.position, d, checkDist, wallLayer);
     }
+    private bool CheckWallInDirClimb(int dir)
+{
+    if (dir == 0) return false;
+
+    float   checkDist = 1.5f;
+    Vector3 d         = dir > 0 ? Vector3.right : Vector3.left;
+
+    bool centerHit = Physics.Raycast(transform.position, d, checkDist, wallLayer);
+
+    Vector3 feetOrigin = transform.position - new Vector3(0f, cc.height * 0.45f, 0f);
+    bool feetHit       = Physics.Raycast(feetOrigin, d, checkDist, wallLayer);
+
+    return centerHit || feetHit;
+}
 
     
     
@@ -439,14 +454,12 @@ transform.position = pos;
     
     private void UpdateNormal()
     {
-        Debug.Log($"GrabHeld={GrabHeld} | isTouchingWall={isTouchingWall} | wallDir={wallDir} | facing={facing} | speedY={speed.y:F1}");
-        Debug.DrawRay(transform.position, Vector3.right * 0.6f, Color.red);
-        Debug.DrawRay(transform.position, Vector3.left * 0.6f, Color.blue);
+        
         float dt = Time.deltaTime;
 
         
         
-if (GrabHeld && isTouchingWall && CheckWallInDir(facing))
+if (GrabPressed && isTouchingWall && CheckWallInDir(facing))
 {
     EnterClimb();
     return;
@@ -788,7 +801,7 @@ for (int i = 0; i < 8; i++)
         }
 
         
-        if (!CheckWallInDir(facing))
+        if (!CheckWallInDirClimb(facing))
         {
             grabHeld = false;
             if (speed.y < 0f)
@@ -856,7 +869,7 @@ for (int i = 0; i < 8; i++)
         speed.y = Approach(speed.y, target, ClimbAccel * dt);
 
         
-        if (InputY >= -0.1f && speed.y > 0f && !CheckWallInDir(facing))
+if (InputY >= -0.1f && speed.y > 0f && !CheckWallInDirClimb(facing))
             speed.y = 0f;
 
         
