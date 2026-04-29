@@ -424,7 +424,7 @@ transform.position = pos;
 
     bool centerHit = Physics.Raycast(transform.position, d, checkDist, wallLayer);
 
-    Vector3 feetOrigin = transform.position - new Vector3(0f, cc.height * 0.45f, 0f);
+    Vector3 feetOrigin = transform.position - new Vector3(0f, cc.height * 0.55f, 0f);
     bool feetHit       = Physics.Raycast(feetOrigin, d, checkDist, wallLayer);
 
     return centerHit || feetHit;
