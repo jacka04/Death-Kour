@@ -35,7 +35,11 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float zoomTargetSize = 3f;
 
     private Camera cam;
-
+    public void AddTime(float amount)
+{
+    if (hasEnded) return;
+    timeLeft = Mathf.Min(timeLeft + amount, totalTime);
+}
     private void Awake()
     {
         Instance = this;
