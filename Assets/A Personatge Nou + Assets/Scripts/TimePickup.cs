@@ -19,10 +19,9 @@ public class TimePickup : MonoBehaviour
     {
         if (collected) return;
 
-        // Detecta si el player está dentro del radio, sin necesitar Rigidbody2D
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
 
-        if (hit != null)
+        if (hits.Length > 0)
             Collect();
     }
 
@@ -41,7 +40,6 @@ public class TimePickup : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Dibuja el radio de detección en el editor para que puedas ajustarlo visualmente
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
