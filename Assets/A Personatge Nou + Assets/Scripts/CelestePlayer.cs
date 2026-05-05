@@ -268,6 +268,7 @@ private bool GrabPressed { get { bool v = grabPressed; grabPressed = false; retu
 
     private void Update()
     {
+         if (!cc.enabled) return;
         UpdateTimers();
         UpdateGroundCheck();
         UpdateWallCheck();
