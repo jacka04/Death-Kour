@@ -42882,11 +42882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6833578096556256811, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.2
+      value: -16.37
       objectReference: {fileID: 0}
     - target: {fileID: 6833578096556256811, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.9
+      value: -3.18
       objectReference: {fileID: 0}
     - target: {fileID: 6833578096556256811, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42971,7 +42971,7 @@ PrefabInstance:
       objectReference: {fileID: 2030181745}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: totalTime
-      value: 30
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: timeoutPanel
@@ -43214,51 +43214,51 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1656437160906696838, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656437160906696838, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656437160906696838, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 1656437160906696838, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -540
       objectReference: {fileID: 0}
     - target: {fileID: 2690501178378672273, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2690501178378672273, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2690501178378672273, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1293.3333
       objectReference: {fileID: 0}
     - target: {fileID: 2690501178378672273, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -540
       objectReference: {fileID: 0}
     - target: {fileID: 3313829291527962532, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3313829291527962532, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3313829291527962532, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 626.6666
       objectReference: {fileID: 0}
     - target: {fileID: 3313829291527962532, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -540
       objectReference: {fileID: 0}
     - target: {fileID: 3851534930729391600, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_Pivot.x
@@ -43343,6 +43343,10 @@ PrefabInstance:
     - target: {fileID: 3971833524184487724, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: m_Name
       value: LevelCompleteCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971833524184487724, guid: d956bb157707847ca8d2689f509396fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5689191699862636495, guid: d956bb157707847ca8d2689f509396fd, type: 3}
       propertyPath: timeLeftText
