@@ -19,7 +19,7 @@ public class CelestePlayer : MonoBehaviour
     
     
 
-    
+    private float springLaunchTimer;
     private const float Gravity            = 75f;
     private const float HalfGravThreshold  = 40f;   
     private const float MaxFall            = 20f;
@@ -315,12 +315,19 @@ transform.position = pos;
 }
     
 
-    
+    public bool TryRefillDash()
+{
+    if (dashes >= dashCount) return false;
+    dashes = dashCount;
+    dashRefillCooldownTimer = 0f;
+    return true;
+}
     
     
     private void UpdateTimers()
     {
         float dt = Time.deltaTime;
+        if (springLaunchTimer > 0) springLaunchTimer -= dt;
 
         if (jumpGraceTimer    > 0) jumpGraceTimer    -= dt;
         if (varJumpTimer      > 0) varJumpTimer      -= dt;
@@ -391,7 +398,6 @@ transform.position = pos;
     private void UpdateWallCheck()
     {
         isTouchingWall = false;
-        wallDir =0;
 
         
         float checkDist = 1.1f;
@@ -399,12 +405,10 @@ transform.position = pos;
         if (Physics.Raycast(transform.position, Vector3.right, checkDist, wallLayer))
         {
             isTouchingWall = true;
-            wallDir= 1;
         }
         else if (Physics.Raycast(transform.position, Vector3.left, checkDist, wallLayer))
         {
             isTouchingWall = true;
-            wallDir= -1;
         }
        
     }
@@ -453,100 +457,119 @@ transform.position = pos;
     
     
     
-    private void UpdateNormal()
+   private void UpdateNormal()
+{
+    float dt = Time.deltaTime;
+
+    if (GrabPressed && isTouchingWall && CheckWallInDir(facing))
     {
-        
-        float dt = Time.deltaTime;
+        EnterClimb();
+        return;
+    }
 
-        
-        
-if (GrabPressed && isTouchingWall && CheckWallInDir(facing))
-{
-    EnterClimb();
-    return;
-}
+    if (CanDash)
+    {
+        StartDash();
+        return;
+    }
 
-        
-        if (CanDash)
-        {
-            StartDash();
-            return;
-        }
-
-        
-        float mult = onGround ? 1f : AirMult;
-        if (Mathf.Abs(speed.x) > MaxRun && Mathf.Sign(speed.x) == MoveX)
-            speed.x = Approach(speed.x, MaxRun * MoveX, RunReduce * mult * dt);
-        else
-            speed.x = Approach(speed.x, MaxRun * MoveX, RunAccel * mult * dt);
-
-        
-        if (MoveX != 0) facing = MoveX;
-
-        
-        if (!onGround)
-        {
-            
-            if (InputY < -0.5f && speed.y <= -maxFall)
-                maxFall = Approach(maxFall, FastMaxFall, FastMaxAccel * dt);
-            else
-                maxFall = Approach(maxFall, MaxFall, FastMaxAccel * dt);
-
-            bool isDashing = currentState == State.Dash;
-            float gravMult = (!isDashing && Mathf.Abs(speed.y) < HalfGravThreshold && JumpHeld) ? 0.5f : 1f;            speed.y = Approach(speed.y, -maxFall, Gravity * gravMult * dt);
-        }
-        else
-        {
-            speed.y = Mathf.Min(speed.y, 0f);
-        }
-
-        
-        if (varJumpTimer > 0f && currentState != State.Dash)
-{
-    if (JumpHeld)
-        speed.y = Mathf.Min(speed.y, varJumpSpeed);
+    float mult = onGround ? 1f : AirMult;
+    if (Mathf.Abs(speed.x) > MaxRun && Mathf.Sign(speed.x) == MoveX)
+        speed.x = Approach(speed.x, MaxRun * MoveX, RunReduce * mult * dt);
     else
-        varJumpTimer = 0f;
-}
+        speed.x = Approach(speed.x, MaxRun * MoveX, RunAccel * mult * dt);
 
-        
-        UpdateWallSlideCheck();
+    if (MoveX != 0) facing = MoveX;
 
-        
-        if (JumpPressed)
+    if (!onGround)
+    {
+        if (InputY < -0.5f && speed.y <= -maxFall)
+            maxFall = Approach(maxFall, FastMaxFall, FastMaxAccel * dt);
+        else
+            maxFall = Approach(maxFall, MaxFall, FastMaxAccel * dt);
+
+        bool isDashing = currentState == State.Dash;
+        float gravMult = (!isDashing && Mathf.Abs(speed.y) < HalfGravThreshold && JumpHeld) ? 0.5f : 1f;
+        speed.y = Approach(speed.y, -maxFall, Gravity * gravMult * dt);
+    }
+    else
+    {
+        // Protege el impulso del spring durante springLaunchTimer
+        if (springLaunchTimer <= 0f)
+            speed.y = Mathf.Min(speed.y, 0f);
+    }
+
+    if (varJumpTimer > 0f && currentState != State.Dash)
+    {
+        if (JumpHeld)
+            speed.y = Mathf.Min(speed.y, varJumpSpeed);
+        else
+            varJumpTimer = 0f;
+    }
+
+    UpdateWallSlideCheck();
+
+    if (JumpPressed)
+    {
+        if (jumpGraceTimer > 0f)
         {
-            if (jumpGraceTimer > 0f)
+            Jump();
+        }
+        else
+        {
+            if (CheckWallInDir(1))
             {
-                Jump();
+                if (facing == 1 && GrabHeld && stamina > 0f)
+                    ClimbJump();
+                else if (IsDashingUp())
+                    SuperWallJump(-1);
+                else
+                    WallJump(-1);
             }
-            else
+            else if (CheckWallInDir(-1))
             {
-                
-                if (CheckWallInDir(1))
-                {
-                    if (facing == 1 && GrabHeld && stamina > 0f)
-                        ClimbJump();
-                    else if (IsDashingUp())
-                        SuperWallJump(-1);
-                    else
-                        WallJump(-1);
-                }
-                
-                else if (CheckWallInDir(-1))
-                {
-                    if (facing == -1 && GrabHeld && stamina > 0f)
-                        ClimbJump();
-                    else if (IsDashingUp())
-                        SuperWallJump(1);
-                    else
-                        WallJump(1);
-                }
+                if (facing == -1 && GrabHeld && stamina > 0f)
+                    ClimbJump();
+                else if (IsDashingUp())
+                    SuperWallJump(1);
+                else
+                    WallJump(1);
             }
         }
     }
+}
 
     
-    
+    public void SpringLaunch(float launchSpeed, float hMult, bool refillDash)
+{
+    if (dashCoroutine != null)
+    {
+        StopCoroutine(dashCoroutine);
+        dashCoroutine = null;
+        dashTrail?.StopTrail();
+    }
+
+    if (currentState == State.Climb)
+        currentState = State.Normal;
+    springLaunchTimer = 0.1f;   
+    speed.x *= hMult;
+    speed.y  = launchSpeed;
+
+    varJumpTimer = VarJumpTime * 1.5f;
+    varJumpSpeed = launchSpeed;
+
+    jumpGraceTimer  = 0f;
+    dashAttackTimer = 0f;
+    wallBoostTimer  = 0f;
+
+    if (refillDash)
+    {
+        dashes = dashCount;
+        dashRefillCooldownTimer = 0f;
+    }
+
+    playerSounds?.PlayJump();
+}
     
     private void UpdateWallSlideCheck()
     {
