@@ -180,6 +180,10 @@ private bool animIsGrounded;
     {
         if (isDead) return;
         isDead = true;
+
+        if (anim != null)
+            anim.SetTrigger("Die");
+
         StartCoroutine(RespawnCoroutine());
     }
 
@@ -194,7 +198,12 @@ private bool animIsGrounded;
         transform.position = respawnPoint;
         cc.enabled = true;
 
-        
+        if (anim != null)
+        {
+            anim.Rebind();
+            anim.Update(0f);
+        }
+
         currentState = State.Normal;
         stamina = ClimbMaxStamina;
         dashes = dashCount;

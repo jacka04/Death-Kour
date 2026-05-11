@@ -15,6 +15,8 @@ public class DashRefillOrb : MonoBehaviour
     [SerializeField] private float particleLifetime = 0.5f;
     [SerializeField] private float particleSize = 0.08f;
     [SerializeField] private Color particleColor = new Color(0.4f, 0.8f, 1f);
+    public float glowSize = 0.8f;
+    public float glowPulseIntensity = 0.1f;
 
     [Header("Referencias")]
     [SerializeField] private SpriteRenderer orbSprite;
@@ -56,6 +58,23 @@ public class DashRefillOrb : MonoBehaviour
     {
         originPos = transform.position;
 
+        // Crear aura brillante (bloom) automáticamente si no hay sprite asignado
+        if (glowSprite == null)
+        {
+            GameObject glowObj = new GameObject("ProceduralGlow");
+            glowObj.transform.SetParent(transform);
+            glowObj.transform.localPosition = Vector3.zero;
+
+            glowSprite = glowObj.AddComponent<SpriteRenderer>();
+            glowSprite.sprite = CreateRadialGradientSprite(128); // Textura suave
+            
+            // Color base del orbe mezclado con blanco para que parezca luz
+            Color glowColor = Color.Lerp(particleColor, Color.white, 0.3f);
+            glowColor.a = 0.5f; 
+            glowSprite.color = glowColor;
+            glowSprite.sortingOrder = 4; // Asegurarse que se renderice detrás del orbe pero delante del fondo
+        }
+
         // Crear pool de partículas procedurales
         particles          = new Particle[burstCount];
         particleTransforms = new Transform[burstCount];
@@ -89,10 +108,10 @@ public class DashRefillOrb : MonoBehaviour
             // Rotación lenta del sprite (si es un quad 3D, usa transform.Rotate)
             transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
 
-            // Pulso de escala del glow
+            // Pulso de escala del glow (brillo/bloom)
             if (glowSprite != null)
             {
-                float pulse = 1f + 0.1f * Mathf.Sin(timeAlive * bobFrequency * 2f);
+                float pulse = glowSize + glowPulseIntensity * Mathf.Sin(timeAlive * bobFrequency * 2f);
                 glowSprite.transform.localScale = Vector3.one * pulse;
             }
         }
@@ -192,6 +211,34 @@ public class DashRefillOrb : MonoBehaviour
             col.a    = alpha;
             sr.color = col;
         }
+    }
+
+    // ── Utilidad: degradado circular suave (Aura Bloom) ──────────
+
+    private Sprite CreateRadialGradientSprite(int size)
+    {
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        var pixels = new Color[size * size];
+        Vector2 center = new Vector2(size / 2f, size / 2f);
+        float radius = size / 2f;
+
+        for (int y = 0; y < size; y++)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                float dist = Vector2.Distance(new Vector2(x, y), center);
+                float t = 1f - Mathf.Clamp01(dist / radius);
+                
+                // Efecto exponencial para concentrar la luz en el centro (bloom)
+                float alpha = t * t * t; 
+                pixels[y * size + x] = new Color(1, 1, 1, alpha);
+            }
+        }
+        tex.SetPixels(pixels);
+        tex.Apply();
+        
+        // El factor de pixeles por unidad define lo grande que es visualmente
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size / 4f);
     }
 
     // ── Utilidad: sprite cuadrado en runtime ─────────────────────

@@ -24,6 +24,12 @@ public class Key : MonoBehaviour
     [Header("Puerta que abre")]
     [SerializeField] private Door targetDoor;
 
+    [Header("Efectos")]
+    [SerializeField] private Color glowColor = new Color(1f, 0.9f, 0.4f, 0.5f); // Amarillo suave
+    public float glowSize = 0.8f;
+    public float glowPulseIntensity = 0.1f;
+    private SpriteRenderer glowSprite;
+
     // ─────────────────────────────────────────────────────────────────────────
 
     private enum KeyState { Idle, Following, Collected }
@@ -34,6 +40,19 @@ public class Key : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
+
+        // Crear aura brillante (bloom) automáticamente
+        if (glowSprite == null)
+        {
+            GameObject glowObj = new GameObject("ProceduralGlow");
+            glowObj.transform.SetParent(transform);
+            glowObj.transform.localPosition = Vector3.zero;
+
+            glowSprite = glowObj.AddComponent<SpriteRenderer>();
+            glowSprite.sprite = CreateRadialGradientSprite(128);
+            glowSprite.color = glowColor;
+            glowSprite.sortingOrder = 4;
+        }
     }
 
     private void Update()
@@ -67,6 +86,13 @@ public class Key : MonoBehaviour
                 // Nada, ya está desactivada
                 break;
         }
+
+        // Animación del pulso del brillo
+        if (glowSprite != null && state != KeyState.Collected)
+        {
+            float pulse = glowSize + glowPulseIntensity * Mathf.Sin(Time.time * floatSpeed * 2f);
+            glowSprite.transform.localScale = Vector3.one * pulse;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -92,5 +118,27 @@ public class Key : MonoBehaviour
 
         if (targetDoor != null)
             targetDoor.Open();
+    }
+
+    private Sprite CreateRadialGradientSprite(int size)
+    {
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+        var pixels = new Color[size * size];
+        Vector2 center = new Vector2(size / 2f, size / 2f);
+        float radius = size / 2f;
+
+        for (int y = 0; y < size; y++)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                float dist = Vector2.Distance(new Vector2(x, y), center);
+                float t = 1f - Mathf.Clamp01(dist / radius);
+                float alpha = t * t * t; 
+                pixels[y * size + x] = new Color(1, 1, 1, alpha);
+            }
+        }
+        tex.SetPixels(pixels);
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size / 4f);
     }
 }

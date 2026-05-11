@@ -13,11 +13,28 @@ public class TimePickup : MonoBehaviour
     [Header("Detección")]
     [SerializeField] private LayerMask playerLayer;
 
+    [Header("Animación")]
+    [SerializeField] private float bobAmplitude = 0.15f;
+    [SerializeField] private float bobFrequency = 2f;
+    [SerializeField] private float rotationSpeed = 90f;
+
     private bool collected = false;
+    private Vector3 originPos;
+    private float timeAlive;
+
+    private void Awake()
+    {
+        originPos = transform.position;
+    }
 
     private void Update()
     {
         if (collected) return;
+
+        // Animación de flote y rotación
+        timeAlive += Time.deltaTime;
+        transform.position = originPos + Vector3.up * Mathf.Sin(timeAlive * bobFrequency) * bobAmplitude;
+        transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
 
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
 
