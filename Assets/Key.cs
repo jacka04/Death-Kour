@@ -23,12 +23,25 @@ public class Key : MonoBehaviour
 
     [Header("Puerta que abre")]
     [SerializeField] private Door targetDoor;
+    [Tooltip("Distancia a la puerta para que se abra automáticamente")]
+    [SerializeField] private float doorOpenDistance = 1.5f;
 
     [Header("Efectos")]
     [SerializeField] private Color glowColor = new Color(1f, 0.9f, 0.4f, 0.5f); // Amarillo suave
     public float glowSize = 0.8f;
     public float glowPulseIntensity = 0.1f;
+
+    [Header("Sonidos")]
+    [SerializeField] private AudioClip idleSound;
+    [SerializeField] private AudioClip pickupSound;
+    [SerializeField] [Range(0f, 1f)] private float idleVolume = 0.5f;
+    [SerializeField] [Range(0f, 1f)] private float pickupVolume = 1f;
+    [SerializeField] [Range(0f, 1f)] private float spatialBlend = 1f; // 0 = 2D, 1 = 3D
+    [SerializeField] private float minDistance = 1f;
+    [SerializeField] private float maxDistance = 10f;
+
     private SpriteRenderer glowSprite;
+    private AudioSource idleAudioSource;
 
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -53,6 +66,20 @@ public class Key : MonoBehaviour
             glowSprite.color = glowColor;
             glowSprite.sortingOrder = 4;
         }
+
+        // Configurar y reproducir sonido 3D de idle
+        if (idleSound != null)
+        {
+            idleAudioSource = gameObject.AddComponent<AudioSource>();
+            idleAudioSource.clip = idleSound;
+            idleAudioSource.loop = true;
+            idleAudioSource.volume = idleVolume;
+            idleAudioSource.spatialBlend = spatialBlend;
+            idleAudioSource.minDistance = minDistance;
+            idleAudioSource.maxDistance = maxDistance;
+            idleAudioSource.rolloffMode = AudioRolloffMode.Linear;
+            idleAudioSource.Play();
+        }
     }
 
     private void Update()
@@ -76,10 +103,15 @@ public class Key : MonoBehaviour
                 transform.position = Vector3.MoveTowards(
                     transform.position, target, magnetSpeed * Time.deltaTime);
 
-                // Una vez cerca del jugador se considera recogida
-                float dist = Vector3.Distance(transform.position, playerTr.position);
-                if (dist <= collectDist)
-                    Collect();
+                // NUEVA LÓGICA: Solo se abre si la LLAVE está cerca de la PUERTA
+                if (targetDoor != null)
+                {
+                    float distToDoor = Vector3.Distance(transform.position, targetDoor.transform.position);
+                    if (distToDoor <= doorOpenDistance)
+                    {
+                        Collect();
+                    }
+                }
                 break;
 
             case KeyState.Collected:
@@ -104,6 +136,13 @@ public class Key : MonoBehaviour
         {
             playerTr = other.transform;
             state    = KeyState.Following;
+
+            // Detener el sonido de idle 3D
+            if (idleAudioSource != null) idleAudioSource.Stop();
+
+            // Reproducir sonido de recogida
+            if (pickupSound != null)
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position, pickupVolume);
 
             // Desactiva el collider para que no vuelva a triggear
             Collider col = GetComponent<Collider>();

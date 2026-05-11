@@ -19,10 +19,20 @@ public class TurretBullet : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        HandleImpact(collision.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        HandleImpact(other.gameObject);
+    }
+
+    private void HandleImpact(GameObject obj)
+    {
         // Mata al jugador
-        CelestePlayer player = other.GetComponent<CelestePlayer>();
+        CelestePlayer player = obj.GetComponent<CelestePlayer>();
         if (player != null)
         {
             player.Die();
@@ -31,7 +41,7 @@ public class TurretBullet : MonoBehaviour
         }
 
         // Destruye la bala si toca cualquier capa seleccionada en destroyLayers
-        if ((destroyLayers.value & (1 << other.gameObject.layer)) != 0)
+        if (((1 << obj.layer) & destroyLayers) != 0)
         {
             Destroy(gameObject);
         }

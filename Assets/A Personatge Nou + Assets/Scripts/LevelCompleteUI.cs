@@ -35,6 +35,7 @@ public class LevelCompleteUI : MonoBehaviour
     [SerializeField] private float panelPopDuration = 0.4f;
     [SerializeField] private float starDelay       = 0.25f;  // Retardo entre cada estrella
     [SerializeField] private float starPopDuration = 0.3f;
+    [SerializeField] private float starFinalScale  = 1.0f; // Nueva variable de tamaño
 
     private void Awake()
     {
@@ -123,7 +124,8 @@ public class LevelCompleteUI : MonoBehaviour
     private IEnumerator PopStar(RectTransform rect)
     {
         float timer = 0f;
-        Vector3 overshoot = new Vector3(1.3f, 1.3f, 1f);
+        Vector3 finalScale = Vector3.one * starFinalScale;
+        Vector3 overshoot  = finalScale * 1.3f;
 
         // Scale up con overshoot
         while (timer < starPopDuration * 0.6f)
@@ -140,11 +142,11 @@ public class LevelCompleteUI : MonoBehaviour
         {
             timer += Time.deltaTime;
             float t = timer / (starPopDuration * 0.4f);
-            rect.localScale = Vector3.Lerp(overshoot, Vector3.one, t);
+            rect.localScale = Vector3.Lerp(overshoot, finalScale, t);
             yield return null;
         }
 
-        rect.localScale = Vector3.one;
+        rect.localScale = finalScale;
     }
 
     // Pop del panel completo (igual que en GameTimer)

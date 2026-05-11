@@ -12,6 +12,7 @@ public class PauseManager : MonoBehaviour
 
     [Header("Escenas")]
     [SerializeField] private string mainMenuSceneName = "Menu";
+    [SerializeField] private string nextLevelSceneName;
 
     private bool isPaused = false;
 
@@ -73,5 +74,18 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void LoadNextLevel()
+    {
+        if (!string.IsNullOrEmpty(nextLevelSceneName))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(nextLevelSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("¡No se ha especificado el nombre del siguiente nivel en el PauseManager!");
+        }
     }
 }
