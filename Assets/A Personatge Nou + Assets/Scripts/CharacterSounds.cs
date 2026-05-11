@@ -8,6 +8,7 @@ public class CharacterSounds : MonoBehaviour
     [SerializeField] private AudioClip landClip;
     [SerializeField] private AudioClip grabClip;
     [SerializeField] private AudioClip wallJumpClip; 
+    [SerializeField] private AudioClip deathClip; 
 
     [Header("Volumen")]
     [SerializeField] [Range(0f, 1f)] private float jumpVolume    = 0.8f;
@@ -15,6 +16,7 @@ public class CharacterSounds : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float landVolume    = 0.9f;
     [SerializeField] [Range(0f, 1f)] private float grabVolume    = 0.7f;
     [SerializeField] [Range(0f, 1f)] private float wallJumpVolume = 0.8f;
+    [SerializeField] [Range(0f, 1f)] private float deathVolume    = 1f;
 
     private AudioSource audioSource;
 
@@ -30,6 +32,7 @@ public class CharacterSounds : MonoBehaviour
     public void PlayLand()     => Play(landClip,     landVolume);
     public void PlayGrab()     => Play(grabClip,     grabVolume);
     public void PlayWallJump() => Play(wallJumpClip ?? jumpClip, wallJumpVolume);
+    public void PlayDeath()    => Play(deathClip,    deathVolume);
 
     private void Play(AudioClip clip, float volume)
     {

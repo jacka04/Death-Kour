@@ -184,6 +184,8 @@ private bool animIsGrounded;
         if (anim != null)
             anim.SetTrigger("Die");
 
+        playerSounds?.PlayDeath();
+
         StartCoroutine(RespawnCoroutine());
     }
 
