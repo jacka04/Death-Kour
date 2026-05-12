@@ -46283,6 +46283,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1271075377}
     - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: openMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b626a93a31441e044a6e9ed92f2f3ce4, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: closeMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fe7183860ef5c948937a83b3da4e519, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
       propertyPath: nextLevelSceneName
       value: Level 1
       objectReference: {fileID: 0}

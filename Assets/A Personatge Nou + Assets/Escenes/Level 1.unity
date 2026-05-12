@@ -25027,7 +25027,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
   m_PrefabInstance: {fileID: 6546318807015627924}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1688335702}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbd37b1b4799e1848a20886ce660e667, type: 3}
@@ -27316,6 +27316,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6258d7b5fd29e0849bbd84dd2091b5ff, type: 3}
+--- !u!1 &1688335702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516346173317540750, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
+  m_PrefabInstance: {fileID: 6546318807015627924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1688335703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688335702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578046b3bb04797438ced858b3e446e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  menuMusic: {fileID: 0}
+  levelMusic: {fileID: 8300000, guid: e30cc14c664f4d248810ce451457b597, type: 3}
 --- !u!1001 &1692197348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35178,6 +35197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trampoli
       objectReference: {fileID: 0}
+    - target: {fileID: 5955765766350578580, guid: b2a10e6368370435ab5c427b9d2b79d0, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1030302597}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40056,7 +40079,7 @@ PrefabInstance:
       objectReference: {fileID: 2030181745}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: totalTime
-      value: 25
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: timeoutPanel
@@ -40121,7 +40144,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6516346173317540750, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1688335703}
   m_SourcePrefab: {fileID: 100100000, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
 --- !u!1001 &6680268058715503656
 PrefabInstance:
@@ -40143,6 +40169,18 @@ PrefabInstance:
       propertyPath: optionsPanel
       value: 
       objectReference: {fileID: 1271075377}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: openMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b626a93a31441e044a6e9ed92f2f3ce4, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: closeMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fe7183860ef5c948937a83b3da4e519, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: nextLevelSceneName
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6642203817511266793, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
       propertyPath: m_Name
       value: PauseManager
