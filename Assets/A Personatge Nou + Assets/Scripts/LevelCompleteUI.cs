@@ -30,6 +30,15 @@ public class LevelCompleteUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeLeftText;   // Opcional: muestra el tiempo sobrante
     [SerializeField] private TextMeshProUGUI starsLabelText; // Opcional: mensaje según estrellas
 
+    [Header("Objetos Extra")]
+    [Tooltip("Textos u objetos que deben aparecer junto con el panel final")]
+    [SerializeField] private GameObject[] extraElements;
+
+    [Header("Sonidos")]
+    [SerializeField] private AudioClip[] starPopClips;  // Un clip para cada estrella
+    [SerializeField] [Range(0f, 1f)] private float starPopVolume = 0.8f;
+    private AudioSource audioSource;
+
     [Header("Tiempos de animación")]
     [SerializeField] private float fadeDuration    = 0.6f;
     [SerializeField] private float panelPopDuration = 0.4f;
@@ -43,9 +52,24 @@ public class LevelCompleteUI : MonoBehaviour
         levelCompleteCanvas.SetActive(false);
         completePanel.SetActive(false);
 
-        // Empezar todas las estrellas apagadas
+        // Ocultar elementos extra inicialmente
+        if (extraElements != null)
+        {
+            foreach (var obj in extraElements)
+                if (obj != null) obj.SetActive(false);
+        }
+
+        // Configurar audio
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0f; // Sonido 2D para UI
+
+        // Empezar todas las estrellas apagadas y escala 0 para que puedan "popear"
         foreach (var star in starImages)
+        {
             star.sprite = starEmptySprite;
+            star.rectTransform.localScale = Vector3.zero;
+        }
     }
 
     // Llamado desde GoalTrigger cuando el jugador llega a la meta
@@ -66,6 +90,14 @@ public class LevelCompleteUI : MonoBehaviour
 
         // Mostrar panel con animación de pop
         completePanel.SetActive(true);
+
+        // Mostrar elementos extra (los que aparecían "de golpe")
+        if (extraElements != null)
+        {
+            foreach (var obj in extraElements)
+                if (obj != null) obj.SetActive(true);
+        }
+
         yield return StartCoroutine(AnimatePanel());
 
         // Calcular estrellas
@@ -112,11 +144,24 @@ public class LevelCompleteUI : MonoBehaviour
         {
             yield return new WaitForSeconds(starDelay);
 
+            // Cambiar sprite según si se ha ganado la estrella o no
             if (i < count)
             {
                 starImages[i].sprite = starFilledSprite;
-                yield return StartCoroutine(PopStar(starImages[i].rectTransform));
             }
+            else
+            {
+                starImages[i].sprite = starEmptySprite;
+            }
+            
+            // Reproducir sonido de estrella (cada una puede tener el suyo)
+            if (starPopClips != null && i < starPopClips.Length && starPopClips[i] != null)
+            {
+                audioSource.PlayOneShot(starPopClips[i], starPopVolume);
+            }
+
+            // Todas las estrellas hacen la animación de Pop
+            yield return StartCoroutine(PopStar(starImages[i].rectTransform));
         }
     }
 
