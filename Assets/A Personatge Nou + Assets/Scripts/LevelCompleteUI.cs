@@ -20,11 +20,13 @@ public class LevelCompleteUI : MonoBehaviour
     [SerializeField] private Sprite starFilledSprite;     // Sprite estrella llena
     [SerializeField] private Sprite starEmptySprite;      // Sprite estrella vacía
 
-    [Header("Umbrales de estrella (% de tiempo restante)")]
-    [Tooltip("Porcentaje mínimo de tiempo restante para 3 estrellas. Ej: 0.5 = 50%")]
-    [Range(0f, 1f)] [SerializeField] private float threshold3Stars = 0.50f;
-    [Tooltip("Porcentaje mínimo de tiempo restante para 2 estrellas. Ej: 0.25 = 25%")]
-    [Range(0f, 1f)] [SerializeField] private float threshold2Stars = 0.25f;
+    [Header("Umbrales de estrella (Segundos restantes)")]
+    [Tooltip("Tiempo mínimo restante para obtener 3 estrellas")]
+    [SerializeField] private float timeFor3Stars = 30f;
+    [Tooltip("Tiempo mínimo restante para obtener 2 estrellas")]
+    [SerializeField] private float timeFor2Stars = 20f;
+    [Tooltip("Tiempo mínimo restante para obtener 1 estrella")]
+    [SerializeField] private float timeFor1Star = 10f;
 
     [Header("Texto informativo")]
     [SerializeField] private TextMeshProUGUI timeLeftText;   // Opcional: muestra el tiempo sobrante
@@ -128,13 +130,15 @@ public class LevelCompleteUI : MonoBehaviour
     // Devuelve 1, 2 o 3 estrellas según el tiempo restante
     private int CalculateStars()
     {
-        if (GameTimer.Instance == null) return 1;
+        if (GameTimer.Instance == null) return 0;
 
-        float ratio = GameTimer.Instance.TimeLeft / GameTimer.Instance.TotalTime;
+        float timeLeft = GameTimer.Instance.TimeLeft;
 
-        if (ratio >= threshold3Stars) return 3;
-        if (ratio >= threshold2Stars) return 2;
-        return 1;
+        if (timeLeft >= timeFor3Stars) return 3;
+        if (timeLeft >= timeFor2Stars) return 2;
+        if (timeLeft >= timeFor1Star)  return 1;
+        
+        return 0; // Menos del tiempo mínimo para 1 estrella
     }
 
     // Anima las estrellas encendiéndose de izquierda a derecha
@@ -154,8 +158,8 @@ public class LevelCompleteUI : MonoBehaviour
                 starImages[i].sprite = starEmptySprite;
             }
             
-            // Reproducir sonido de estrella (cada una puede tener el suyo)
-            if (starPopClips != null && i < starPopClips.Length && starPopClips[i] != null)
+            // Reproducir sonido de estrella SOLO si se ha ganado (es decir, si i < count)
+            if (i < count && starPopClips != null && i < starPopClips.Length && starPopClips[i] != null)
             {
                 audioSource.PlayOneShot(starPopClips[i], starPopVolume);
             }
