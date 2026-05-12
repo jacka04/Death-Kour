@@ -10365,6 +10365,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5360027376040798949, guid: df18fcc25208e9a4b8e49ad645464430, type: 3}
   m_PrefabInstance: {fileID: 611003222}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &615197918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615197919}
+  - component: {fileID: 615197920}
+  m_Layer: 7
+  m_Name: FeetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615197919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615197918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.143, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1011396917}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615197920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615197918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344eb14d197914ebe94a9d91349eb4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDustFX
+  runDustColor: {r: 0.88, g: 0.9, b: 0.95, a: 0.85}
+  runDustSize: 1.5
+  runDustLifetime: 0.5
+  runDustSpeed: 2.2
+  runDustRate: 28
+  jumpDustColor: {r: 0.6, g: 0.65, b: 0.8, a: 0.95}
+  jumpDustSize: 0.4
+  jumpDustLifetime: 0.55
+  jumpDustSpeed: 3.5
+  jumpDustBurst: 22
+  landDustColor: {r: 0.82, g: 0.86, b: 0.96, a: 1}
+  landDustSize: 0.42
+  landDustLifetime: 0.6
+  landDustSpeed: 4.2
+  landDustBurst: 30
 --- !u!1001 &622261803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46034,6 +46093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785721114048935147, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
+      propertyPath: dustFX
+      value: 
+      objectReference: {fileID: 615197920}
     - target: {fileID: 5880071424828032018, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -46108,7 +46171,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6833578096556256811, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 615197919}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c03542f76ecbcb94a8bfb173f8fc52b8, type: 3}
 --- !u!1001 &6546318807015627924
@@ -46129,7 +46195,7 @@ PrefabInstance:
       objectReference: {fileID: 2030181745}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: totalTime
-      value: 40
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: timeoutPanel

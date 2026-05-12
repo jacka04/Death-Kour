@@ -90,6 +90,7 @@ public class CelestePlayer : MonoBehaviour
 [SerializeField] private CharacterSounds playerSounds; 
 [Header("FX")]
 [SerializeField] private DashTrail dashTrail;
+[SerializeField] private PlayerDustFX dustFX;
     
     [Header("Animación")]
     [SerializeField] private Animator anim;
@@ -391,7 +392,10 @@ transform.position = pos;
     else if (coyoteGroundedTimer > 0)
         coyoteGroundedTimer -= Time.deltaTime;
      if (rawGround && !wasOnGround)
+    {
         playerSounds?.PlayLand();
+        dustFX?.PlayLand();
+    }
          wasOnGround = rawGround;
     onGround       = rawGround;
     animIsGrounded = coyoteGroundedTimer > 0f;
@@ -620,6 +624,7 @@ transform.position = pos;
         speed.y     = JumpSpeed;
         varJumpSpeed = speed.y;
         playerSounds?.PlayJump();
+        dustFX?.PlayJump();
     }
 
     private void WallJump(int dir)
