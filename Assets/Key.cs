@@ -49,6 +49,8 @@ public class Key : MonoBehaviour
     private KeyState state    = KeyState.Idle;
     private Vector3  startPos;
     private Transform playerTr;
+    private CelestePlayer playerRef;
+
 
     private void Start()
     {
@@ -93,7 +95,15 @@ public class Key : MonoBehaviour
                 break;
 
             case KeyState.Following:
+                // Si el jugador muere, volver al sitio original
+                if (playerRef != null && playerRef.IsDead)
+                {
+                    ReturnToStartPos();
+                    break;
+                }
+
                 // Sigue al jugador hacia el offset, visible todo el tiempo
+
                 Vector3 target = playerTr.position + followOffset;
                 target.z = 0f;
 
@@ -135,7 +145,9 @@ public class Key : MonoBehaviour
         if (player != null)
         {
             playerTr = other.transform;
+            playerRef = player;
             state    = KeyState.Following;
+
 
             // Detener el sonido de idle 3D
             if (idleAudioSource != null) idleAudioSource.Stop();
@@ -157,6 +169,22 @@ public class Key : MonoBehaviour
 
         if (targetDoor != null)
             targetDoor.Open();
+    }
+
+    private void ReturnToStartPos()
+    {
+        state = KeyState.Idle;
+        transform.position = startPos;
+        playerTr = null;
+        playerRef = null;
+
+        // Re-habilitar collider
+        Collider col = GetComponent<Collider>();
+        if (col != null) col.enabled = true;
+
+        // Reiniciar sonido idle
+        if (idleAudioSource != null && !idleAudioSource.isPlaying)
+            idleAudioSource.Play();
     }
 
     private Sprite CreateRadialGradientSprite(int size)

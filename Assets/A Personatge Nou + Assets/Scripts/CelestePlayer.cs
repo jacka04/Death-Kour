@@ -166,6 +166,8 @@ private bool animIsGrounded;
     
     private Vector3 respawnPoint;
     private bool isDead = false;
+    public bool IsDead => isDead;
+
 
     private void Start()
     {
