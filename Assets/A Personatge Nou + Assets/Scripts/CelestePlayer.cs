@@ -511,9 +511,12 @@ transform.position = pos;
     }
     else
     {
-        // Protege el impulso del spring durante springLaunchTimer
+        // Al estar en el suelo, reseteamos la velocidad vertical.
+        // Usamos un pequeño valor negativo (-2) para que el CharacterController
+        // detecte mejor que sigue tocando el suelo (isGrounded).
         if (springLaunchTimer <= 0f)
-            speed.y = Mathf.Min(speed.y, 0f);
+            speed.y = -2f;
+
     }
 
     if (varJumpTimer > 0f && currentState != State.Dash)
