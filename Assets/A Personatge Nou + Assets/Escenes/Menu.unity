@@ -885,7 +885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nivel 2
+  m_text: Nivel 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b58674d98e45a54db76fdb1c6b616a4, type: 2}
   m_sharedMaterial: {fileID: -2553226029842824143, guid: 5b58674d98e45a54db76fdb1c6b616a4, type: 2}
@@ -2439,6 +2439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   menuMusic: {fileID: 8300000, guid: e30cc14c664f4d248810ce451457b597, type: 3}
+  levelMusic: {fileID: 0}
 --- !u!4 &1472686480
 Transform:
   m_ObjectHideFlags: 0
