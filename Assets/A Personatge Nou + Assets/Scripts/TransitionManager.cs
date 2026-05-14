@@ -42,7 +42,7 @@ public class TransitionManager : MonoBehaviour
     {
         yield return StartCoroutine(SlideIn());
         onMidpoint?.Invoke();          
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSecondsRealtime(0.05f);
         yield return StartCoroutine(SlideOut());
     }
 
@@ -86,7 +86,7 @@ private IEnumerator SlideOut()
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = curve.Evaluate(Mathf.Clamp01(elapsed / duration));
             swipePanel.anchoredPosition = Vector2.LerpUnclamped(from, to, t);
             yield return null;

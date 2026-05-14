@@ -45,11 +45,16 @@ public class GameTimer : MonoBehaviour
         Instance = this;
         cam = Camera.main;
         timeLeft = totalTime;
-        timeoutCanvas.SetActive(false);
-        timeoutPanel.SetActive(false);
+        if (timeoutCanvas != null) timeoutCanvas.SetActive(false);
+        if (timeoutPanel != null) timeoutPanel.SetActive(false);
     }
 
     private void Start()
+    {
+        // El timer ya no empieza solo, se llama desde StartCountdown
+    }
+
+    public void StartTimer()
     {
         isRunning = true;
     }
