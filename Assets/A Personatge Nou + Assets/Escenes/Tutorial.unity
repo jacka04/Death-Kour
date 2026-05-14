@@ -45802,6 +45802,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1541513308035022960, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
+      propertyPath: timeFor1Star
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541513308035022960, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
+      propertyPath: timeFor2Stars
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541513308035022960, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
+      propertyPath: timeFor3Stars
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 1680412971058460675, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -46195,7 +46207,7 @@ PrefabInstance:
       objectReference: {fileID: 2030181745}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: totalTime
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: timeoutPanel
