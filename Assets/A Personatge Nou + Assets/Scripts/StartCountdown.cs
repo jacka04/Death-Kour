@@ -58,7 +58,30 @@ public class StartCountdown : MonoBehaviour
         
         Time.timeScale = 1f;
         if (player != null) player.enabled = true;
-        if (gameTimer != null) gameTimer.StartTimer();
+        
+        // Si no se asignó en el inspector, intentar buscar la instancia
+        Debug.Log("StartCountdown: Buscando GameTimer...");
+        if (gameTimer == null) 
+        {
+            gameTimer = GameTimer.Instance;
+            if (gameTimer != null) Debug.Log("StartCountdown: GameTimer encontrado mediante Instance.");
+        }
+        
+        if (gameTimer == null) 
+        {
+            gameTimer = Object.FindFirstObjectByType<GameTimer>();
+            if (gameTimer != null) Debug.Log("StartCountdown: GameTimer encontrado mediante FindFirstObjectByType.");
+        }
+        
+        if (gameTimer != null) 
+        {
+            Debug.Log($"StartCountdown: Iniciando timer en el objeto '{gameTimer.gameObject.name}'.");
+            gameTimer.StartTimer();
+        }
+        else 
+        {
+            Debug.LogError("StartCountdown: ¡CRÍTICO! No se encontró ningún GameTimer en la escena.");
+        }
     }
 
     private IEnumerator AnimateNumber(string text, AudioClip clip)

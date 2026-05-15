@@ -42,6 +42,7 @@ public class GameTimer : MonoBehaviour
 }
     private void Awake()
     {
+        Debug.Log($"GameTimer: Awake ejecutado en el objeto '{gameObject.name}'. Seteando Instance.");
         Instance = this;
         cam = Camera.main;
         timeLeft = totalTime;
@@ -51,12 +52,14 @@ public class GameTimer : MonoBehaviour
 
     private void Start()
     {
-        // El timer ya no empieza solo, se llama desde StartCountdown
+        // Actualizar el texto al inicio para que se vea el tiempo total durante la cuenta atrás
+        UpdateTimerText();
     }
 
     public void StartTimer()
     {
         isRunning = true;
+        UpdateTimerText(); // Asegurar que se actualice al empezar
     }
 
     private void Update()
@@ -169,6 +172,7 @@ private IEnumerator AnimatePanel()
 
     public void OnRetryButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/A Personatge Nou + Assets/Escenes/Tutorial.unity
     guid: 06be50a3b7ad3e44bb29e2238e894541
   - enabled: 1
-    path: Assets/A Personatge Nou + Assets/Escenes/Level 2.unity
+    path: Assets/A Personatge Nou + Assets/Escenes/Level 2 mal.unity
     guid: 52683ca38903f46169bc19afcada4b90
   - enabled: 1
     path: Assets/Level 1.unity
