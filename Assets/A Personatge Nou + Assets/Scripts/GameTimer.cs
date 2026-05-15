@@ -42,8 +42,36 @@ public class GameTimer : MonoBehaviour
 }
     private void Awake()
     {
-        Debug.Log($"GameTimer: Awake ejecutado en el objeto '{gameObject.name}'. Seteando Instance.");
         Instance = this;
+        hasEnded = false;
+        isRunning = false;
+
+        // AUTO-BÚSQUEDA DE UI (Si se pierde al reiniciar)
+        if (timerText == null)
+        {
+            // Busca cualquier objeto que se llame "TimerText" o similar
+            GameObject tObj = GameObject.Find("TimerText") ?? GameObject.Find("TimeText");
+            if (tObj != null) timerText = tObj.GetComponent<TMPro.TextMeshProUGUI>();
+            
+            // Si aún no lo encuentra, busca el primero que haya en la escena
+            if (timerText == null) timerText = Object.FindFirstObjectByType<TMPro.TextMeshProUGUI>();
+        }
+
+        if (timerText == null) Debug.LogError("¡ERROR CRÍTICO!: No hay ningún componente de texto para mostrar el tiempo.");
+
+        // Auto-búsqueda del jugador si no está asignado
+        if (playerController == null || player == null)
+        {
+            GameObject p = GameObject.FindWithTag("Player");
+            if (p == null) p = GameObject.Find("Player");
+            
+            if (p != null)
+            {
+                if (player == null) player = p.transform;
+                if (playerController == null) playerController = p.GetComponent<CelestePlayer>();
+            }
+        }
+
         cam = Camera.main;
         timeLeft = totalTime;
         if (timeoutCanvas != null) timeoutCanvas.SetActive(false);
@@ -65,6 +93,10 @@ public class GameTimer : MonoBehaviour
     private void Update()
     {
         if (!isRunning || hasEnded) return;
+
+        // Asegurar que el texto sea visible
+        if (timerText != null && !timerText.gameObject.activeInHierarchy)
+            timerText.gameObject.SetActive(true);
 
         timeLeft -= Time.deltaTime;
 
