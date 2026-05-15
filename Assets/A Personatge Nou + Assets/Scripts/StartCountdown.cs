@@ -56,31 +56,29 @@ public class StartCountdown : MonoBehaviour
         // 4. Reanudar juego
         if (countdownPanel != null) countdownPanel.SetActive(false);
         
+        // FUERZA BRUTA: Asegurar que el tiempo sea 1
         Time.timeScale = 1f;
+        Debug.Log("StartCountdown: ¡TIEMPO REANUDADO A 1!");
+
         if (player != null) player.enabled = true;
         
-        // Si no se asignó en el inspector, intentar buscar la instancia
-        Debug.Log("StartCountdown: Buscando GameTimer...");
-        if (gameTimer == null) 
+        // SEGURIDAD: Re-activar el tiempo de forma robusta
+        if (gameTimer == null) gameTimer = GameTimer.Instance;
+        if (gameTimer == null) gameTimer = Object.FindFirstObjectByType<GameTimer>();
+
+        if (gameTimer != null)
         {
-            gameTimer = GameTimer.Instance;
-            if (gameTimer != null) Debug.Log("StartCountdown: GameTimer encontrado mediante Instance.");
-        }
-        
-        if (gameTimer == null) 
-        {
-            gameTimer = Object.FindFirstObjectByType<GameTimer>();
-            if (gameTimer != null) Debug.Log("StartCountdown: GameTimer encontrado mediante FindFirstObjectByType.");
-        }
-        
-        if (gameTimer != null) 
-        {
-            Debug.Log($"StartCountdown: Iniciando timer en el objeto '{gameTimer.gameObject.name}'.");
             gameTimer.StartTimer();
         }
-        else 
+        else
         {
-            Debug.LogError("StartCountdown: ¡CRÍTICO! No se encontró ningún GameTimer en la escena.");
+            // ÚLTIMA ALTERNATIVA: Buscar por nombre si todo falla
+            GameObject timerObj = GameObject.Find("GameTimer") ?? GameObject.Find("GameManager");
+            if (timerObj != null)
+            {
+                gameTimer = timerObj.GetComponent<GameTimer>();
+                if (gameTimer != null) gameTimer.StartTimer();
+            }
         }
     }
 
