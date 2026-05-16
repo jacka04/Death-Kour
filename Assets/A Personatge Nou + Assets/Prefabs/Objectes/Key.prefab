@@ -58,7 +58,7 @@ MonoBehaviour:
   glowPulseIntensity: 1
   idleSound: {fileID: 8300000, guid: a1168023e3f8d49d5b0a4bc413c0f047, type: 3}
   pickupSound: {fileID: 0}
-  idleVolume: 0.28
+  idleVolume: 0.031
   pickupVolume: 1
   spatialBlend: 1
   minDistance: 1

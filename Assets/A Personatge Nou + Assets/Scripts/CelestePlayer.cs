@@ -330,13 +330,13 @@ transform.position = pos;
     
 
     public bool TryRefillDash()
-{
-    if (dashes >= dashCount) return false;
-    dashes = dashCount;
-    dashRefillCooldownTimer = 0f;
-    return true;
-}
-    
+    {
+        if (dashes >= dashCount) return false;
+        dashes = dashCount;
+        dashRefillCooldownTimer = 0f;
+        dashCooldownTimer = 0f; // Elimina el retraso para poder dashear de nuevo al instante
+        return true;
+    }
     
     private void UpdateTimers()
     {

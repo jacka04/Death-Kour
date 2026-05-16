@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseCanvas;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject optionsPanel;
+
+    [Header("Controller Support")]
+    [SerializeField] private GameObject firstButtonPause;
+    [SerializeField] private GameObject firstButtonOptions;
 
     [Header("Escenas")]
     [SerializeField] private string mainMenuSceneName = "Menu";
@@ -75,6 +80,13 @@ public class PauseManager : MonoBehaviour
         pausePanel.SetActive(true);
         optionsPanel.SetActive(false);
 
+        // Seleccionar primer botón para mando
+        if (firstButtonPause != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstButtonPause);
+        }
+
         // Iniciar animación de entrada
         if (animationCoroutine != null) StopCoroutine(animationCoroutine);
         animationCoroutine = StartCoroutine(AnimateMenu(true));
@@ -138,12 +150,24 @@ public class PauseManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
         optionsPanel.SetActive(true);
+
+        if (firstButtonOptions != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstButtonOptions);
+        }
     }
 
     public void CloseOptions()
     {
         optionsPanel.SetActive(false);
         pausePanel.SetActive(true);
+
+        if (firstButtonPause != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstButtonPause);
+        }
     }
 
     public void GoToMainMenu()

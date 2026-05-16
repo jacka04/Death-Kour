@@ -24,8 +24,13 @@ public class CrumblingPlatform : MonoBehaviour
     [Tooltip("Sonido al romperse.")]
     public AudioClip breakSound;
 
+    [Header("Comportamiento One-Way")]
+    [Tooltip("Si está activo, el jugador podrá atravesar la plataforma desde abajo.")]
+    public bool isOneWay = true;
+
     private Vector3 originalPosition;
     private bool isActivated = false;
+    private Transform playerTransform;
 
     // Referencias
     private Collider platformCollider;
@@ -55,11 +60,31 @@ public class CrumblingPlatform : MonoBehaviour
     private void Update()
     {
         UpdateParticles();
+        UpdateOneWayLogic();
 
         if (!isActivated)
         {
             CheckPlayerOnTop();
         }
+    }
+
+    private void UpdateOneWayLogic()
+    {
+        if (!isOneWay || isActivated || platformCollider == null) return;
+
+        // Auto-búsqueda del jugador
+        if (playerTransform == null)
+        {
+            GameObject p = GameObject.FindWithTag("Player");
+            if (p != null) playerTransform = p.transform;
+            else return;
+        }
+
+        // Si los pies del jugador están por debajo de la tapa, la plataforma es un trigger (atravasable)
+        float platformTop = platformCollider.bounds.max.y;
+        float playerBottom = playerTransform.position.y; 
+
+        platformCollider.isTrigger = (playerBottom < platformTop - 0.1f);
     }
 
     private void CheckPlayerOnTop()
