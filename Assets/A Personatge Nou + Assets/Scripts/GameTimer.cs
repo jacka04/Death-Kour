@@ -45,56 +45,104 @@ public class GameTimer : MonoBehaviour
         Instance = this;
         hasEnded = false;
         isRunning = false;
+        cam = Camera.main;
+        timeLeft = totalTime;
 
-        // AUTO-BÚSQUEDA DE UI (Si se pierde al reiniciar)
+        if (timeoutCanvas != null) timeoutCanvas.SetActive(false);
+        if (timeoutPanel != null) timeoutPanel.SetActive(false);
+
+        ForceFindUI();
+
+        // Suscribir el evento para que se resetee automáticamente al reiniciar el nivel
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // ¡RESET FORZADO AL REINICIAR O CAMBIAR DE NIVEL!
+        hasEnded = false;
+        isRunning = false;
+        timeLeft = totalTime;
+        cam = Camera.main;
+
+        if (timeoutCanvas != null) timeoutCanvas.SetActive(false);
+        if (timeoutPanel != null) timeoutPanel.SetActive(false);
+
+        ForceFindUI();
+        UpdateTimerText();
+    }
+
+    private void ForceFindUI()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // Buscar texto SOLO en la escena actual (Ignora objetos de otros Managers)
         if (timerText == null)
         {
-            // Busca cualquier objeto que se llame "TimerText" o similar
-            GameObject tObj = GameObject.Find("TimerText") ?? GameObject.Find("TimeText");
-            if (tObj != null) timerText = tObj.GetComponent<TMPro.TextMeshProUGUI>();
-            
-            // Si aún no lo encuentra, busca el primero que haya en la escena
-            if (timerText == null) timerText = Object.FindFirstObjectByType<TMPro.TextMeshProUGUI>();
-        }
-
-        if (timerText == null) Debug.LogError("¡ERROR CRÍTICO!: No hay ningún componente de texto para mostrar el tiempo.");
-
-        // Auto-búsqueda del jugador si no está asignado
-        if (playerController == null || player == null)
-        {
-            GameObject p = GameObject.FindWithTag("Player");
-            if (p == null) p = GameObject.Find("Player");
-            
-            if (p != null)
+            TextMeshProUGUI[] texts = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
+            foreach (var t in texts)
             {
-                if (player == null) player = p.transform;
-                if (playerController == null) playerController = p.GetComponent<CelestePlayer>();
+                if (t.gameObject.scene.name == currentScene)
+                {
+                    if (t.name.ToLower().Contains("timer") || t.name.ToLower().Contains("time"))
+                    {
+                        timerText = t;
+                        break;
+                    }
+                }
             }
         }
 
-        cam = Camera.main;
-        timeLeft = totalTime;
-        if (timeoutCanvas != null) timeoutCanvas.SetActive(false);
-        if (timeoutPanel != null) timeoutPanel.SetActive(false);
+        // Buscar jugador SOLO en la escena actual
+        if (player == null || playerController == null)
+        {
+            CelestePlayer[] players = Resources.FindObjectsOfTypeAll<CelestePlayer>();
+            foreach (var p in players)
+            {
+                if (p.gameObject.scene.name == currentScene)
+                {
+                    playerController = p;
+                    player = p.transform;
+                    break;
+                }
+            }
+        }
     }
 
     private void Start()
     {
-        // Actualizar el texto al inicio para que se vea el tiempo total durante la cuenta atrás
         UpdateTimerText();
     }
 
     public void StartTimer()
     {
         isRunning = true;
-        UpdateTimerText(); // Asegurar que se actualice al empezar
+        UpdateTimerText();
     }
 
     private void Update()
     {
+        Instance = this; // Asegurar siempre la instancia
+
+        // Auto curación de emergencia en cada frame si falta algo
+        if (timerText == null || player == null)
+        {
+            ForceFindUI();
+        }
+
+        // FORZAR INICIO: Si el tiempo no está congelado y la cuenta atrás ya terminó, arrancar sí o sí
+        if (!isRunning && !hasEnded && Time.timeScale > 0f && timeLeft == totalTime)
+        {
+            isRunning = true;
+        }
+
         if (!isRunning || hasEnded) return;
 
-        // Asegurar que el texto sea visible
         if (timerText != null && !timerText.gameObject.activeInHierarchy)
             timerText.gameObject.SetActive(true);
 
@@ -105,7 +153,10 @@ public class GameTimer : MonoBehaviour
             timeLeft = 0f;
             isRunning = false;
             hasEnded = true;
-            StartCoroutine(TimeoutSequence());
+            if (playerController != null && timeoutCanvas != null)
+            {
+                StartCoroutine(TimeoutSequence());
+            }
         }
 
         UpdateTimerText();
