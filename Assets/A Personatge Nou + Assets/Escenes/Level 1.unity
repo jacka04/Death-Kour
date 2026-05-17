@@ -156,6 +156,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 374121889}
     - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: openMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b626a93a31441e044a6e9ed92f2f3ce4, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
+      propertyPath: closeMenuSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fe7183860ef5c948937a83b3da4e519, type: 3}
+    - target: {fileID: 4544268662609429935, guid: 0cb33e3a98dd74f49b67615a143d4d75, type: 3}
       propertyPath: nextLevelSceneName
       value: Level 2
       objectReference: {fileID: 0}
@@ -865,6 +873,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3873736207192076968, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2084009040}
+    - target: {fileID: 3873736207192076968, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5908918869659226465, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -953,12 +969,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Retry
       objectReference: {fileID: 0}
+    - target: {fileID: 7042811051993170087, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2084009040}
+    - target: {fileID: 7042811051993170087, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 8044617520297637637, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
       propertyPath: m_Name
       value: PauseCanvasTuto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8772865982208714393, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98563797dbcd34d70a5b1564a3cda403, type: 3}
@@ -1873,7 +1898,7 @@ PrefabInstance:
     - target: {fileID: 91168530381360674, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2084009040}
     - target: {fileID: 91168530381360674, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Retry
@@ -1913,7 +1938,7 @@ PrefabInstance:
     - target: {fileID: 1904924138786815642, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2084009040}
     - target: {fileID: 1904924138786815642, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadNextLevel
@@ -1921,7 +1946,7 @@ PrefabInstance:
     - target: {fileID: 3332043070073282346, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2084009040}
     - target: {fileID: 3332043070073282346, guid: 8c55d61e5106649a29b3885fefd95be4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToMainMenu
