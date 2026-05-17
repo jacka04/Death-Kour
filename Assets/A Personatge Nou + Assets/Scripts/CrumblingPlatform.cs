@@ -105,6 +105,7 @@ public class CrumblingPlatform : MonoBehaviour
             CelestePlayer player = hit.GetComponent<CelestePlayer>();
             if (player != null || hit.CompareTag("Player"))
             {
+                if (!IsPlayerStandingOnPlatform(hit.gameObject)) continue;
                 StartCoroutine(CrumbleRoutine());
                 break;
             }
@@ -131,8 +132,24 @@ public class CrumblingPlatform : MonoBehaviour
         
         if (player != null || obj.CompareTag("Player"))
         {
+            if (!IsPlayerStandingOnPlatform(obj)) return;
             StartCoroutine(CrumbleRoutine());
         }
+    }
+
+    private bool IsPlayerStandingOnPlatform(GameObject playerObj)
+    {
+        if (!isOneWay) return true;
+        if (platformCollider == null) return true;
+
+        // Si la plataforma es un trigger (el jugador está debajo subiendo), no la rompemos.
+        if (platformCollider.isTrigger) return false;
+
+        // Comprobamos que el jugador esté realmente arriba.
+        float platformTop = platformCollider.bounds.max.y;
+        float playerBottom = playerObj.transform.position.y;
+        
+        return playerBottom >= platformTop - 0.2f;
     }
 
     private IEnumerator CrumbleRoutine()
