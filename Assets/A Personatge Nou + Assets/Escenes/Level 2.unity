@@ -42383,7 +42383,7 @@ PrefabInstance:
       objectReference: {fileID: 1058191160}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: totalTime
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1483994973326045590, guid: a652057e4409d5a4c9b947baf4a25364, type: 3}
       propertyPath: timeoutPanel

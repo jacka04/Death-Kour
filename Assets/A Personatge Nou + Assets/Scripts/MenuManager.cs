@@ -66,6 +66,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnBotonSalir()
     {
+        Debug.Log("Saliendo del juego...");
         Application.Quit();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

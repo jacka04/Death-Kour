@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5836381744118626211, guid: 542b14c0b41d26942ac18983eff9ed96, type: 3}
+  m_Sprite: {fileID: 4965768590368700598, guid: 8e53e225a1f4241269994abf811bf9f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -379,7 +379,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 418817042}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: OnConfirmarSalir
+        m_MethodName: OnBotonSalir
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 2004894629}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.14748502, g: 0.07079922, b: 0.4056604, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -1309,8 +1309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 803146527}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.07420685, g: 0.057938762, b: 0.3962264, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -1784,7 +1784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5836381744118626211, guid: 542b14c0b41d26942ac18983eff9ed96, type: 3}
+  m_Sprite: {fileID: 4965768590368700598, guid: 8e53e225a1f4241269994abf811bf9f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2133,8 +2133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 1377798888}
-  color1: {r: 1, g: 0.8314501, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.07420685, g: 0.057938762, b: 0.3962264, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -2646,8 +2646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 509495061}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.07420685, g: 0.057938762, b: 0.3962264, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -3089,8 +3089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 1282679628}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.07420685, g: 0.057938762, b: 0.3962264, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -3217,8 +3217,8 @@ Transform:
   m_GameObject: {fileID: 1785396892}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 385, z: -9719.999}
-  m_LocalScale: {x: 50, y: 50, z: 108}
+  m_LocalPosition: {x: 0.2, y: 382.7, z: -9719.999}
+  m_LocalScale: {x: 77, y: 79, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1197350066}
@@ -3270,7 +3270,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9eba431f381b64e458ae3fba638be27c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40e338684aa64437eb4d7cb2f4340585, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3488,7 +3488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5836381744118626211, guid: 542b14c0b41d26942ac18983eff9ed96, type: 3}
+  m_Sprite: {fileID: 4965768590368700598, guid: 8e53e225a1f4241269994abf811bf9f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3879,8 +3879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 1869419781}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.9254902, b: 1, a: 1}
+  color2: {r: 0.07420685, g: 0.057938762, b: 0.3962264, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -4033,8 +4033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotonIntermitente
   textoBoton: {fileID: 703736401}
-  color1: {r: 1, g: 0.83137256, b: 0, a: 1}
-  color2: {r: 0.21573511, g: 0.09825561, b: 0.3018868, a: 1}
+  color1: {r: 0, g: 0.8328998, b: 1, a: 1}
+  color2: {r: 0.044499815, g: 0.07064646, b: 0.3773585, a: 1}
   velocidad: 0.2
   escalaHover: 1.15
   velocidadZoom: 0.1
@@ -4200,8 +4200,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278245375
-  m_fontColor: {r: 1, g: 0.8431373, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4285,6 +4285,30 @@ PrefabInstance:
     - target: {fileID: 5561427915432620481, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
       propertyPath: m_Name
       value: BotonOptions (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color1.g
+      value: 0.92561984
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color2.b
+      value: 0.3019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color2.g
+      value: 0.11084164
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280328445444140580, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
+      propertyPath: color2.r
+      value: 0.09803922
       objectReference: {fileID: 0}
     - target: {fileID: 7521151384912944268, guid: 2749b5202ef8d4d4cac00e3d356c20de, type: 3}
       propertyPath: m_Pivot.x
