@@ -1,0 +1,1017 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
+[RequireComponent(typeof(CharacterController))]
+public class CelestePlayer : MonoBehaviour
+{
+    
+    
+    
+    private enum State
+    {
+        Normal,
+        Dash,
+        Climb,
+        WallSlide
+    }
+
+    
+    
+    
+
+    private float springLaunchTimer;
+    private const float Gravity            = 75f;
+    private const float HalfGravThreshold  = 40f;   
+    private const float MaxFall            = 20f;
+    private const float FastMaxFall        = 200f;
+    private const float FastMaxAccel       = 250f;
+
+    
+    private const float MaxRun    = 12f;
+    private const float RunAccel  = 950f;
+    private const float RunReduce = 450f;
+    private const float AirMult   = 0.65f;
+
+    
+    private const float JumpSpeed      = 15f;
+    private const float JumpHBoost     = 8f;
+    private const float VarJumpTime    = 0.2f;
+    private const float JumpGraceTime  = 1f;   
+    private const int   UpwardCornerCorrection = 4;
+
+    
+    private const int   WallJumpCheckDist  = 3;
+    private const float WallJumpForceTime  = 0.16f;
+    private const float WallJumpHSpeed     = MaxRun + JumpHBoost;  
+    private const float WallSpeedRetentionTime = 0.06f;
+
+    
+    private const float WallSlideStartMax = 10f;
+    private const float WallSlideTime     = 1.2f;
+
+    
+    private const float SuperWallJumpSpeed   = -160f;
+    private const float SuperWallJumpVarTime = 0.25f;
+    private const float SuperWallJumpForceTime = 0.2f;
+    private const float SuperWallJumpH       = MaxRun + JumpHBoost * 2f; 
+
+    
+    private const float ClimbMaxStamina    = 110f;
+    private const float ClimbUpCost        = 100f / 2.2f;
+    private const float ClimbStillCost     = 100f / 10f;
+    private const float ClimbJumpCost      = 110f / 4f;
+    private const int   ClimbCheckDist     = 2;
+    private const float ClimbNoMoveTime    = 0.05f;
+    public  const float ClimbTiredThreshold = 20f;
+    private const float ClimbUpSpeed       = 4.5f;
+    private const float ClimbDownSpeed     = -8f;
+    private const float ClimbSlipSpeed     = -3f;
+    private const float ClimbAccel         = 900f;
+    private const float ClimbGrabYMult     = 0.2f;
+    private const float ClimbHopY          = 12f;
+    private const float ClimbHopX          = 100f;
+    private const float ClimbHopForceTime  = 0.2f;
+    private const float ClimbJumpBoostTime = 0.2f;
+
+    
+    private const float DashSpeed              = 20f;
+    private const float EndDashSpeed           = 9f;
+    private const float EndDashUpMult          = 1f;
+    private const float DashTime               = 0.10f;
+    private const float DashCooldown           = 0.4f;
+    private const float DashRefillCooldown     = 0.1f;
+    private const int   DashCornerCorrection    = 4;
+    private const float DashAttackTime         = 0.3f;
+    private const float DodgeSlideSpeedMult    = 1.2f;
+
+    
+
+[Header("Sonido")]
+[SerializeField] private CharacterSounds playerSounds; 
+[Header("FX")]
+[SerializeField] private DashTrail dashTrail;
+[SerializeField] private PlayerDustFX dustFX;
+    
+    [Header("Animación")]
+    [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer sprite;
+
+    
+    
+    
+    [Header("Refs")]
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
+
+    [Header("Estado (solo lectura)")]
+    [SerializeField] private State currentState = State.Normal;
+    [SerializeField] private float stamina;
+    [SerializeField] private int   dashes = 1;
+
+    
+    
+    
+    private CharacterController cc;
+
+    
+    
+    
+
+    private const float GroundedGraceTime = 0.08f;
+private float coyoteGroundedTimer;
+private bool animIsGrounded;
+    private Vector2 speed;          
+    private int     facing = 1;     
+
+    
+    private float jumpGraceTimer;
+    private float varJumpTimer;
+    private float varJumpSpeed;
+    private bool  onGround;
+
+    
+    private float wallSlideTimer = WallSlideTime;
+    private int   wallSlideDir;
+
+    
+    private float wallSpeedRetentionTimer;
+    private float wallSpeedRetained;
+
+    
+    private int   wallBoostDir;
+    private float wallBoostTimer;
+
+    
+    private int   forceMoveX;
+    private float forceMoveXTimer;
+
+    
+    private int   dashCount = 1;
+    private float dashCooldownTimer;
+    private float dashRefillCooldownTimer;
+    private float dashAttackTimer;
+    private Vector2 dashDir;
+    private bool  dashStartedOnGround;
+    private bool  wasDashStarted;
+
+    
+    private float climbNoMoveTimer;
+    private int   lastClimbMove;
+    private bool  isTouchingWall;
+    private int   wallDir;           
+    private float climbTimer;        
+
+    
+    
+    
+    private Vector3 respawnPoint;
+    private bool isDead = false;
+    public bool IsDead => isDead;
+
+
+    private void Start()
+    {
+        respawnPoint = transform.position;
+    }
+
+    public void ActualizarCheckpoint(Vector3 newPosition)
+    {
+        respawnPoint = newPosition;
+    }
+
+    public void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        if (anim != null)
+            anim.SetTrigger("Die");
+
+        playerSounds?.PlayDeath();
+
+        StartCoroutine(RespawnCoroutine());
+    }
+
+    private IEnumerator RespawnCoroutine()
+    {
+        
+        cc.enabled = false;
+        speed = Vector2.zero;
+
+        yield return new WaitForSeconds(0.8f); 
+
+        transform.position = respawnPoint;
+        cc.enabled = true;
+
+        if (anim != null)
+        {
+            anim.Rebind();
+            anim.Update(0f);
+        }
+
+        currentState = State.Normal;
+        stamina = ClimbMaxStamina;
+        dashes = dashCount;
+        speed = Vector2.zero;
+        varJumpTimer = 0f;
+        jumpGraceTimer = 0f;
+        dashCooldownTimer = 0f;
+
+        isDead = false;
+    }
+    
+    private Coroutine dashCoroutine;
+
+    
+    private float maxFall;
+
+    
+    
+    
+    private Vector2 moveInput;
+private bool jumpPressed;
+private bool jumpHeld;
+private bool grabHeld;
+private bool dashPressed;
+
+private float InputX => moveInput.x;
+private float InputY => moveInput.y;
+private bool JumpPressed { get { bool v = jumpPressed; jumpPressed = false; return v; } }
+private bool JumpHeld    => jumpHeld;
+private bool GrabHeld    => grabHeld;
+private bool DashPressed { get { bool v = dashPressed; dashPressed = false; return v; } }
+
+private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
+private void OnJump(InputValue value)
+{
+    jumpHeld = value.isPressed;
+    if (value.isPressed) jumpPressed = true;
+}
+private void OnDash(InputValue value)
+{
+    if (value.isPressed) dashPressed = true;
+}
+private bool grabPressed;
+
+private void OnGrab(InputValue value)
+{
+    grabHeld = value.isPressed;
+    if (value.isPressed) grabPressed = true;   
+}
+
+private bool GrabPressed { get { bool v = grabPressed; grabPressed = false; return v; } }
+    private int MoveX
+    {
+        get
+        {
+            if (forceMoveXTimer > 0) return forceMoveX;
+            return Mathf.RoundToInt(InputX);
+        }
+    }
+
+    
+    
+    
+    private void Awake()
+    {
+        cc       = GetComponent<CharacterController>();
+        stamina  = ClimbMaxStamina;
+        maxFall  = MaxFall;
+        dashes   = dashCount;
+    }
+
+    private void Update()
+    {
+         if (!cc.enabled) return;
+        UpdateTimers();
+        UpdateGroundCheck();
+        UpdateWallCheck();
+        UpdateDashRefill();
+
+        switch (currentState)
+        {
+            case State.Normal:    UpdateNormal();    break;
+            case State.Dash:       break;
+            case State.Climb:     UpdateClimb();     break;
+            case State.WallSlide: UpdateWallSlide(); break;
+        }
+
+        
+        cc.Move(new Vector3(speed.x, speed.y, 0f) * Time.deltaTime);
+        Vector3 pos = transform.position;
+pos.z = 0f;
+transform.position = pos;
+    }
+    private void LateUpdate() 
+    {
+        UpdateAnimations();
+    }
+
+   private void UpdateAnimations()
+{
+    if (anim == null || sprite == null) return;
+
+    sprite.flipX = (facing == -1);
+
+    bool isClimbing = currentState == State.Climb;
+    bool isRunning  = onGround && Mathf.Abs(speed.x) > 0.5f;
+
+    anim.SetBool("isGrounded",     animIsGrounded);
+    anim.SetBool("isRunning",      isRunning);
+    anim.SetBool("isClimbing",     isClimbing);
+    anim.SetFloat("verticalSpeed", speed.y);
+
+    
+    if (isClimbing)
+        anim.speed = Mathf.Abs(InputY) > 0.1f ? 1f : 0f;
+    else
+        anim.speed = 1f;
+}
+    
+
+    public bool TryRefillDash()
+    {
+        if (dashes >= dashCount) return false;
+        dashes = dashCount;
+        dashRefillCooldownTimer = 0f;
+        dashCooldownTimer = 0f; // Elimina el retraso para poder dashear de nuevo al instante
+        return true;
+    }
+    
+    private void UpdateTimers()
+    {
+        float dt = Time.deltaTime;
+        if (springLaunchTimer > 0) springLaunchTimer -= dt;
+
+        if (jumpGraceTimer    > 0) jumpGraceTimer    -= dt;
+        if (varJumpTimer      > 0) varJumpTimer      -= dt;
+        if (dashCooldownTimer > 0) dashCooldownTimer -= dt;
+        if (dashRefillCooldownTimer > 0) dashRefillCooldownTimer -= dt;
+        if (dashAttackTimer   > 0) dashAttackTimer   -= dt;
+        if (forceMoveXTimer   > 0) forceMoveXTimer   -= dt;
+        if (wallBoostTimer    > 0)
+        {
+            wallBoostTimer -= dt;
+            
+            if (MoveX == wallBoostDir)
+            {
+                speed.x      = WallJumpHSpeed * MoveX;
+                stamina      += ClimbJumpCost;
+                wallBoostTimer = 0f;
+            }
+        }
+        if (wallSpeedRetentionTimer > 0)
+        {
+            if (Mathf.Sign(speed.x) == -Mathf.Sign(wallSpeedRetained))
+                wallSpeedRetentionTimer = 0f;
+            else if (!CheckWallInDir(Mathf.RoundToInt(Mathf.Sign(wallSpeedRetained))))
+            {
+                speed.x = wallSpeedRetained;
+                wallSpeedRetentionTimer = 0f;
+            }
+            else
+                wallSpeedRetentionTimer -= dt;
+        }
+
+        
+        if (wallSlideDir != 0)
+        {
+            wallSlideTimer = Mathf.Max(wallSlideTimer - dt, 0f);
+            wallSlideDir   = 0;
+        }
+    }
+
+
+    
+    
+    private bool wasOnGround;
+    private void UpdateGroundCheck()
+{
+    bool rawGround = cc.isGrounded;
+
+    if (rawGround)
+        coyoteGroundedTimer = GroundedGraceTime;
+    else if (coyoteGroundedTimer > 0)
+        coyoteGroundedTimer -= Time.deltaTime;
+     if (rawGround && !wasOnGround)
+    {
+        playerSounds?.PlayLand();
+        dustFX?.PlayLand();
+    }
+         wasOnGround = rawGround;
+    onGround       = rawGround;
+    animIsGrounded = coyoteGroundedTimer > 0f;
+
+    if (onGround)
+    {
+        jumpGraceTimer = JumpGraceTime;
+        wallSlideTimer = WallSlideTime;
+        maxFall        = MaxFall;
+        if (dashRefillCooldownTimer <= 0)
+            RefillDash();
+        stamina = ClimbMaxStamina;
+    }
+}
+    private void UpdateWallCheck()
+    {
+        isTouchingWall = false;
+
+        
+        float checkDist = 1.1f;
+        
+        if (Physics.Raycast(transform.position, Vector3.right, checkDist, wallLayer))
+        {
+            isTouchingWall = true;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, checkDist, wallLayer))
+        {
+            isTouchingWall = true;
+        }
+       
+    }
+
+    private bool CheckWallInDir(int dir)
+    {
+        if (dir == 0) return false;
+        float checkDist = 1.5f;
+        Vector3 d = dir > 0 ? Vector3.right : Vector3.left;
+        return Physics.Raycast(transform.position, d, checkDist, wallLayer);
+    }
+    private bool CheckWallInDirClimb(int dir)
+{
+    if (dir == 0) return false;
+
+    float   checkDist = 1.5f;
+    Vector3 d         = dir > 0 ? Vector3.right : Vector3.left;
+
+    bool centerHit = Physics.Raycast(transform.position, d, checkDist, wallLayer);
+
+    Vector3 feetOrigin = transform.position - new Vector3(0f, cc.height * 0.55f, 0f);
+    bool feetHit       = Physics.Raycast(feetOrigin, d, checkDist, wallLayer);
+
+    return centerHit || feetHit;
+}
+
+    
+    
+    
+    private void UpdateDashRefill()
+    {
+        if (dashRefillCooldownTimer <= 0 && onGround && currentState != State.Dash)
+            RefillDash();
+    }
+
+    private bool RefillDash()
+    {
+        if (dashes < dashCount)
+        {
+            dashes = dashCount;
+            return true;
+        }
+        return false;
+    }
+
+    
+    
+    
+   private void UpdateNormal()
+{
+    float dt = Time.deltaTime;
+
+    if (GrabPressed && isTouchingWall && CheckWallInDir(facing))
+    {
+        EnterClimb();
+        return;
+    }
+
+    if (CanDash)
+    {
+        StartDash();
+        return;
+    }
+
+    float mult = onGround ? 1f : AirMult;
+    if (Mathf.Abs(speed.x) > MaxRun && Mathf.Sign(speed.x) == MoveX)
+        speed.x = Approach(speed.x, MaxRun * MoveX, RunReduce * mult * dt);
+    else
+        speed.x = Approach(speed.x, MaxRun * MoveX, RunAccel * mult * dt);
+
+    if (MoveX != 0) facing = MoveX;
+
+    if (!onGround)
+    {
+        if (InputY < -0.5f && speed.y <= -maxFall)
+            maxFall = Approach(maxFall, FastMaxFall, FastMaxAccel * dt);
+        else
+            maxFall = Approach(maxFall, MaxFall, FastMaxAccel * dt);
+
+        bool isDashing = currentState == State.Dash;
+        float gravMult = (!isDashing && Mathf.Abs(speed.y) < HalfGravThreshold && JumpHeld) ? 0.5f : 1f;
+        speed.y = Approach(speed.y, -maxFall, Gravity * gravMult * dt);
+    }
+    else
+    {
+        // Al estar en el suelo, reseteamos la velocidad vertical.
+        // Usamos un pequeño valor negativo (-2) para que el CharacterController
+        // detecte mejor que sigue tocando el suelo (isGrounded).
+        if (springLaunchTimer <= 0f)
+            speed.y = -2f;
+
+    }
+
+    if (varJumpTimer > 0f && currentState != State.Dash)
+    {
+        if (JumpHeld)
+            speed.y = Mathf.Min(speed.y, varJumpSpeed);
+        else
+            varJumpTimer = 0f;
+    }
+
+    UpdateWallSlideCheck();
+
+    if (JumpPressed)
+    {
+        if (jumpGraceTimer > 0f)
+        {
+            Jump();
+        }
+        else
+        {
+            if (CheckWallInDir(1))
+            {
+                if (facing == 1 && GrabHeld && stamina > 0f)
+                    ClimbJump();
+                else if (IsDashingUp())
+                    SuperWallJump(-1);
+                else
+                    WallJump(-1);
+            }
+            else if (CheckWallInDir(-1))
+            {
+                if (facing == -1 && GrabHeld && stamina > 0f)
+                    ClimbJump();
+                else if (IsDashingUp())
+                    SuperWallJump(1);
+                else
+                    WallJump(1);
+            }
+        }
+    }
+}
+
+    
+    public void SpringLaunch(float launchSpeed, float hMult, bool refillDash)
+{
+    if (dashCoroutine != null)
+    {
+        StopCoroutine(dashCoroutine);
+        dashCoroutine = null;
+        dashTrail?.StopTrail();
+    }
+
+    if (currentState == State.Climb)
+        currentState = State.Normal;
+    springLaunchTimer = 0.1f;   
+    speed.x *= hMult;
+    speed.y  = launchSpeed;
+
+    varJumpTimer = VarJumpTime * 1.5f;
+    varJumpSpeed = launchSpeed;
+
+    jumpGraceTimer  = 0f;
+    dashAttackTimer = 0f;
+    wallBoostTimer  = 0f;
+
+    if (refillDash)
+    {
+        dashes = dashCount;
+        dashRefillCooldownTimer = 0f;
+    }
+
+    playerSounds?.PlayJump();
+}
+    
+    private void UpdateWallSlideCheck()
+    {
+        if ((MoveX == facing || (MoveX == 0 && GrabHeld)) && InputY >= -0.1f)
+        {
+            if (speed.y >= 0f && wallSlideTimer > 0f && CheckWallInDir(facing))
+            {
+                wallSlideDir = facing;
+            }
+        }
+
+        if (wallSlideDir != 0)
+        {
+            float maxSlide = Mathf.Lerp(MaxFall, WallSlideStartMax, wallSlideTimer / WallSlideTime);
+            speed.y = Mathf.Min(speed.y, maxSlide);
+        }
+    }
+
+    private void UpdateWallSlide()
+    {
+        
+        currentState = State.Normal;
+    }
+
+    
+    
+    
+    private void Jump(bool particles = true)
+    {
+        jumpGraceTimer = 0f;
+        varJumpTimer   = VarJumpTime;
+        wallSlideTimer = WallSlideTime;
+        wallBoostTimer = 0f;
+        dashAttackTimer = 0f;
+
+        speed.x    += JumpHBoost * MoveX;
+        speed.y     = JumpSpeed;
+        varJumpSpeed = speed.y;
+        playerSounds?.PlayJump();
+        dustFX?.PlayJump();
+    }
+
+    private void WallJump(int dir)
+    {
+        jumpGraceTimer  = 0f;
+        varJumpTimer    = VarJumpTime;
+        wallSlideTimer  = WallSlideTime;
+        wallBoostTimer  = 0f;
+        dashAttackTimer = 0f;
+
+        if (MoveX != 0)
+        {
+            forceMoveX      = dir;
+            forceMoveXTimer = WallJumpForceTime;
+        }
+
+        speed.x      = WallJumpHSpeed * dir;
+        speed.y      = JumpSpeed;
+        varJumpSpeed = speed.y;
+
+        facing = dir;
+        playerSounds?.PlayWallJump();
+    }
+
+    private void SuperWallJump(int dir)
+    {
+        jumpGraceTimer  = 0f;
+        varJumpTimer    = SuperWallJumpVarTime;
+        wallSlideTimer  = WallSlideTime;
+        wallBoostTimer  = 0f;
+        dashAttackTimer = 0f;
+
+        speed.x      = SuperWallJumpH * dir;
+        speed.y      = SuperWallJumpSpeed;
+        varJumpSpeed = speed.y;
+
+        facing = dir;
+    }
+
+    private void ClimbJump()
+    {
+        if (!onGround)
+            stamina -= ClimbJumpCost;
+
+        
+        jumpGraceTimer  = 0f;
+        varJumpTimer    = VarJumpTime;
+        wallSlideTimer  = WallSlideTime;
+        wallBoostTimer  = 0f;
+        dashAttackTimer = 0f;
+
+        speed.x      += JumpHBoost * MoveX;
+        speed.y       = JumpSpeed;
+        varJumpSpeed  = speed.y;
+
+        if (MoveX == 0)
+        {
+            wallBoostDir   = -facing;
+            wallBoostTimer = ClimbJumpBoostTime;
+        }
+
+        currentState = State.Normal;
+    }
+
+    
+    
+    
+    private bool CanDash => DashPressed && dashCooldownTimer <= 0f && dashes > 0;
+
+    private bool IsDashingUp() => dashDir.x == 0f && dashDir.y < 0f && dashAttackTimer > 0f;
+
+  private void StartDash()
+{
+    dashes                  = Mathf.Max(0, dashes - 1);
+    dashCooldownTimer       = DashCooldown;
+    dashRefillCooldownTimer = DashRefillCooldown;
+    dashStartedOnGround     = onGround;
+    dashAttackTimer         = DashAttackTime;
+    currentState            = State.Dash;
+    speed                   = Vector2.zero;
+    playerSounds?.PlayDash();
+    dashTrail.StartTrail();
+    CameraShake.Instance.Shake();
+
+    if (dashCoroutine != null) StopCoroutine(dashCoroutine);
+    dashCoroutine = StartCoroutine(DashCoroutine());
+}
+
+    private IEnumerator DashCoroutine()
+    {
+        
+        yield return null;
+varJumpTimer = 0f;   
+varJumpSpeed = 0f;
+        
+        Vector2 aim = GetAimVector();
+        Vector2 newSpeed = aim * DashSpeed;
+
+        speed  = newSpeed;
+        dashDir = aim;
+
+        if (dashDir.x != 0f)
+            facing = Mathf.RoundToInt(dashDir.x);
+
+        
+        if (onGround && dashDir.x != 0f && dashDir.y > 0f && speed.y > 0f)
+        {
+            dashDir = new Vector2(Mathf.Sign(dashDir.x), 0f);
+            speed.y = 0f;
+            speed.x *= DodgeSlideSpeedMult;
+        }
+
+        
+        float timer = 0f;
+        while (timer < DashTime)
+        {
+            timer += Time.deltaTime;
+
+            
+            if (dashDir.x == 0f && dashDir.y < 0f)
+            {
+                if (JumpPressed)
+                {
+                    if (CheckWallInDir(1))  { SuperWallJump(-1); currentState = State.Normal; yield break; }
+                    if (CheckWallInDir(-1)) { SuperWallJump(1);  currentState = State.Normal; yield break; }
+                }
+            }
+            else
+            {
+                if (JumpPressed)
+                {
+                    if (CheckWallInDir(1))  { WallJump(-1); currentState = State.Normal; yield break; }
+                    if (CheckWallInDir(-1)) { WallJump(1);  currentState = State.Normal; yield break; }
+                }
+            }
+
+            
+            if (dashDir.y == 0f && JumpPressed && jumpGraceTimer > 0f)
+            {
+                SuperJump();
+                currentState = State.Normal;
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        
+        if (dashDir.y <= 0f)
+    speed = dashDir * EndDashSpeed;
+else if (dashDir.x == 0f)   
+    speed = new Vector2(0f, EndDashSpeed);   
+if (speed.y < 0f)
+    speed.y *= EndDashUpMult;
+            dashTrail.StopTrail();
+
+        currentState = State.Normal;
+    }
+
+    private void SuperJump()
+    {
+        jumpGraceTimer  = 0f;
+        varJumpTimer    = VarJumpTime;
+        wallSlideTimer  = WallSlideTime;
+        wallBoostTimer  = 0f;
+        dashAttackTimer = 0f;
+
+        speed.x      = 260f * facing;
+        speed.y      = JumpSpeed;
+        varJumpSpeed = speed.y;
+    }
+
+    
+    
+    
+   private void EnterClimb()
+    {
+        if (!grabHeld) return;
+        currentState     = State.Climb;
+        speed.x          = 0f;
+        speed.y         *= ClimbGrabYMult;
+        wallSlideTimer   = WallSlideTime;
+        climbNoMoveTimer = ClimbNoMoveTime;
+        wallBoostTimer   = 0f;
+        lastClimbMove    = 0;
+        playerSounds?.PlayGrab();
+        
+        
+for (int i = 0; i < 8; i++)   
+{
+    if (!CheckWallInDir(facing))
+        transform.position += new Vector3(facing * 0.1f, 0f, 0f);
+    else
+        break;
+}
+    }
+
+    private void UpdateClimb()
+    {
+        float dt = Time.deltaTime;
+        climbNoMoveTimer -= dt;
+
+        
+        if (onGround)
+            stamina = ClimbMaxStamina;
+
+        
+       
+        if (!GrabHeld)
+        {
+            grabHeld = false;
+            currentState = State.Normal;
+            return;
+        }
+
+        
+        if (!CheckWallInDirClimb(facing))
+        {
+            grabHeld = false;
+            if (speed.y < 0f)
+                ClimbHop();
+            currentState = State.Normal;
+            return;
+        }
+
+        
+        if (JumpPressed)
+        {
+            if (MoveX == -facing)
+                WallJump(-facing);
+            else
+                ClimbJump();
+            return;
+        }
+
+        
+        if (CanDash)
+        {
+            StartDash();
+            return;
+        }
+
+        
+        float target      = 0f;
+        bool  trySlip     = false;
+
+        if (climbNoMoveTimer <= 0f)
+        {
+            if (InputY > 0.5f)      
+            {
+                target = ClimbUpSpeed;
+
+                
+                if (CheckCeiling())
+                {
+                    speed.y = 0f;
+                    target  = 0f;
+                    trySlip = true;
+                }
+            }
+            else if (InputY < -0.5f) 
+            {
+                target = ClimbDownSpeed;
+                if (onGround)
+                {
+                    speed.y = 0f;
+                    target  = 0f;
+                }
+            }
+            else
+                trySlip = true;
+        }
+        else
+            trySlip = true;
+
+        lastClimbMove = (int)Mathf.Sign(target);
+
+        
+        if (trySlip && SlipCheck())
+            target = ClimbSlipSpeed;
+
+        speed.y = Approach(speed.y, target, ClimbAccel * dt);
+
+        
+if (InputY >= -0.1f && speed.y > 0f && !CheckWallInDirClimb(facing))
+            speed.y = 0f;
+
+        
+        if (climbNoMoveTimer <= 0f)
+        {
+            if (lastClimbMove == -1)          
+                stamina -= ClimbUpCost * dt;
+            else if (lastClimbMove == 0)
+                stamina -= ClimbStillCost * dt;
+        }
+
+        
+        if (stamina <= 0f)
+        {
+            currentState = State.Normal;
+            return;
+        }
+    }
+
+    private void ClimbHop()
+    {
+        speed.x = facing * ClimbHopX;
+        speed.y = Mathf.Min(speed.y, ClimbHopY);
+        forceMoveX      = 0;
+        forceMoveXTimer = ClimbHopForceTime;
+    }
+    
+    
+    
+    
+
+    
+    private Vector2 GetAimVector()
+    {
+        float x = InputX;
+        float y = InputY;
+
+        Vector2 aim;
+        if (Mathf.Abs(x) < 0.1f && Mathf.Abs(y) < 0.1f)
+            aim = new Vector2(facing, 0f);
+        else
+            aim = new Vector2(x, y).normalized;
+
+        
+        float angle = Mathf.Atan2(aim.y, aim.x);
+        float snap  = Mathf.Round(angle / (Mathf.PI / 4f)) * (Mathf.PI / 4f);
+        return new Vector2(Mathf.Cos(snap), Mathf.Sin(snap));
+    }
+
+    
+    private static float Approach(float val, float target, float maxMove)
+    {
+        if (val < target) return Mathf.Min(val + maxMove, target);
+        if (val > target) return Mathf.Max(val - maxMove, target);
+        return target;
+    }
+
+    
+    private bool CheckCeiling()
+    {
+        return Physics.Raycast(
+            transform.position,
+            Vector3.up,
+            cc.height * 0.5f + 0.1f,
+            groundLayer
+        );
+    }
+
+    
+    
+    
+    
+    private bool SlipCheck(float addY = 0f)
+    {
+        Vector3 topOffset = new Vector3(
+            facing * (cc.radius + 0.1f),
+            cc.height * 0.5f + addY,
+            0f
+        );
+        return !Physics.Raycast(
+            transform.position + topOffset,
+            Vector3.down,
+            0.2f,
+            wallLayer
+        );
+    }
+
+    
+    
+    
+    public bool  IsOnGround      => onGround;
+    public bool  IsDashAttacking => dashAttackTimer > 0f;
+    public bool  IsClimbing      => currentState == State.Climb;
+    public bool  IsWallSliding   => wallSlideDir != 0;
+    public bool  IsTired         => stamina < ClimbTiredThreshold;
+    public float Stamina         => stamina;
+    public int   Dashes          => dashes;
+    public int   Facing          => facing;
+    public Vector2 Speed         => speed;
+}

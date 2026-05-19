@@ -1,0 +1,2236 @@
+fileFormatVersion: 2
+guid: aa27dd0b505a6df46a25d27966799ebf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5658058485875229804
+    second: AppleCounterFont3_0
+  - first:
+      213: -6793628722085160846
+    second: AppleCounterFont3_1
+  - first:
+      213: 3361517112437108287
+    second: AppleCounterFont3_2
+  - first:
+      213: 8125448180288959674
+    second: AppleCounterFont3_3
+  - first:
+      213: 3316340097607043320
+    second: AppleCounterFont3_4
+  - first:
+      213: -6972833920594357019
+    second: AppleCounterFont3_5
+  - first:
+      213: 2718096792417234239
+    second: AppleCounterFont3_6
+  - first:
+      213: -5217408577490336390
+    second: AppleCounterFont3_7
+  - first:
+      213: -2727386181381010147
+    second: AppleCounterFont3_8
+  - first:
+      213: 422490619513419018
+    second: AppleCounterFont3_9
+  - first:
+      213: 8907480532841114879
+    second: AppleCounterFont3_10
+  - first:
+      213: 338411846737244887
+    second: AppleCounterFont3_11
+  - first:
+      213: -1166212392070539005
+    second: AppleCounterFont3_12
+  - first:
+      213: 2091679050538338506
+    second: AppleCounterFont3_13
+  - first:
+      213: -8964816840273829960
+    second: AppleCounterFont3_14
+  - first:
+      213: 2190694180190328961
+    second: AppleCounterFont3_15
+  - first:
+      213: -1368583411921044695
+    second: AppleCounterFont3_16
+  - first:
+      213: 8170040397443049996
+    second: AppleCounterFont3_17
+  - first:
+      213: -6691383004621348991
+    second: AppleCounterFont3_18
+  - first:
+      213: -2964738843937544465
+    second: AppleCounterFont3_19
+  - first:
+      213: 9189540691940317156
+    second: AppleCounterFont3_20
+  - first:
+      213: -4954263398143125651
+    second: AppleCounterFont3_21
+  - first:
+      213: 8450516439603613546
+    second: AppleCounterFont3_22
+  - first:
+      213: 3011403910988026398
+    second: AppleCounterFont3_23
+  - first:
+      213: 4593050175916305947
+    second: AppleCounterFont3_24
+  - first:
+      213: -173665899721510983
+    second: AppleCounterFont3_25
+  - first:
+      213: 5495470525418927065
+    second: AppleCounterFont3_26
+  - first:
+      213: -841773948064979768
+    second: AppleCounterFont3_27
+  - first:
+      213: 7110116258910305973
+    second: AppleCounterFont3_28
+  - first:
+      213: 7764697906979804030
+    second: AppleCounterFont3_29
+  - first:
+      213: -274913010710191683
+    second: AppleCounterFont3_30
+  - first:
+      213: -500785202998209471
+    second: AppleCounterFont3_31
+  - first:
+      213: -4600045636972186769
+    second: AppleCounterFont3_32
+  - first:
+      213: -7831781401923079834
+    second: AppleCounterFont3_33
+  - first:
+      213: -4252750880455918147
+    second: AppleCounterFont3_34
+  - first:
+      213: 9019953005552783396
+    second: AppleCounterFont3_35
+  - first:
+      213: 3474147227033175064
+    second: AppleCounterFont3_36
+  - first:
+      213: 4524906918215444000
+    second: AppleCounterFont3_37
+  - first:
+      213: 2991820702572844786
+    second: AppleCounterFont3_38
+  - first:
+      213: 7258540471089897742
+    second: AppleCounterFont3_39
+  - first:
+      213: 5296020396267852033
+    second: AppleCounterFont3_40
+  - first:
+      213: 6192532142586912426
+    second: AppleCounterFont3_41
+  - first:
+      213: -2533663291698881230
+    second: AppleCounterFont3_42
+  - first:
+      213: 1253213727252437297
+    second: AppleCounterFont3_43
+  - first:
+      213: -3364962175679202995
+    second: AppleCounterFont3_44
+  - first:
+      213: 7639839070112240814
+    second: AppleCounterFont3_45
+  - first:
+      213: 5883595285094519906
+    second: AppleCounterFont3_46
+  - first:
+      213: 5055340984369540614
+    second: AppleCounterFont3_47
+  - first:
+      213: -8390790629733548103
+    second: AppleCounterFont3_48
+  - first:
+      213: 2283060586904220751
+    second: AppleCounterFont3_49
+  - first:
+      213: -5128670420073489677
+    second: AppleCounterFont3_50
+  - first:
+      213: 6563017844157927359
+    second: AppleCounterFont3_51
+  - first:
+      213: 3262068335474427232
+    second: AppleCounterFont3_52
+  - first:
+      213: 6134321933171033990
+    second: AppleCounterFont3_53
+  - first:
+      213: 7869805693086461704
+    second: AppleCounterFont3_54
+  - first:
+      213: 3634367145330970063
+    second: AppleCounterFont3_55
+  - first:
+      213: 3386073618489145476
+    second: AppleCounterFont3_56
+  - first:
+      213: 1819861321588362758
+    second: AppleCounterFont3_57
+  - first:
+      213: -3146776449268620278
+    second: AppleCounterFont3_58
+  - first:
+      213: -1710358762307267455
+    second: AppleCounterFont3_59
+  - first:
+      213: 7190106750440165474
+    second: AppleCounterFont3_60
+  - first:
+      213: 6077559789325312634
+    second: AppleCounterFont3_61
+  - first:
+      213: -7957068578259582463
+    second: AppleCounterFont3_62
+  - first:
+      213: -8485192799740403842
+    second: AppleCounterFont3_63
+  - first:
+      213: 8821888110447213186
+    second: AppleCounterFont3_64
+  - first:
+      213: 5412406468242484183
+    second: AppleCounterFont3_65
+  - first:
+      213: -8308653184202400456
+    second: AppleCounterFont3_66
+  - first:
+      213: 8726291386420529075
+    second: AppleCounterFont3_67
+  - first:
+      213: 7192624281561153131
+    second: AppleCounterFont3_68
+  - first:
+      213: -8497592970391081324
+    second: AppleCounterFont3_69
+  - first:
+      213: -5403789766352396297
+    second: AppleCounterFont3_70
+  - first:
+      213: -3533536569854329014
+    second: AppleCounterFont3_71
+  - first:
+      213: -1621754738587200435
+    second: AppleCounterFont3_72
+  - first:
+      213: 7922666040847079937
+    second: AppleCounterFont3_73
+  - first:
+      213: -1503187576083189986
+    second: AppleCounterFont3_74
+  - first:
+      213: 5817082011544798313
+    second: AppleCounterFont3_75
+  - first:
+      213: -1635976329795275652
+    second: AppleCounterFont3_76
+  - first:
+      213: -7883793818638741904
+    second: AppleCounterFont3_77
+  - first:
+      213: -2709269891515235585
+    second: AppleCounterFont3_78
+  - first:
+      213: 5536780534212733644
+    second: AppleCounterFont3_79
+  - first:
+      213: -2884526688815128771
+    second: AppleCounterFont3_80
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AppleCounterFont3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 495
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bb507e8c98a71b0800000000000000
+      internalID: -5658058485875229804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 495
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2781934ebae28b1a0800000000000000
+      internalID: -6793628722085160846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_2
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 495
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ee531f00286ae20800000000000000
+      internalID: 3361517112437108287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 495
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab4b7fac11463c070800000000000000
+      internalID: 8125448180288959674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 495
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f880408fb1060e20800000000000000
+      internalID: 3316340097607043320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 495
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e4dd2d2e748b3f90800000000000000
+      internalID: -6972833920594357019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_6
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 495
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d6821b1ae98b520800000000000000
+      internalID: 2718096792417234239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_7
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 481
+        width: 12
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75cc92ba8a0897b0800000000000000
+      internalID: -5217408577490336390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 495
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1dc975e7b0662ad0800000000000000
+      internalID: -2727386181381010147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_9
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 496
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a053801eafcfcd500800000000000000
+      internalID: 422490619513419018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 497
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffca3bbc95abd9b70800000000000000
+      internalID: 8907480532841114879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2be8818c742b400800000000000000
+      internalID: 338411846737244887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_12
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 498
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3091afd1208c0dfe0800000000000000
+      internalID: -1166212392070539005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_13
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8c677a303270d10800000000000000
+      internalID: 2091679050538338506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_14
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 498
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bfd907d492969380800000000000000
+      internalID: -8964816840273829960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_15
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 498
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18892c500c8e66e10800000000000000
+      internalID: 2190694180190328961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_16
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b34fe43a0d10de0800000000000000
+      internalID: -1368583411921044695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_17
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0a2f2a6470d16170800000000000000
+      internalID: 8170040397443049996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_18
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 498
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f55791c9e6323a0800000000000000
+      internalID: -6691383004621348991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_19
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6ec43bab12bd6d0800000000000000
+      internalID: -2964738843937544465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_20
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e79910329ec78f70800000000000000
+      internalID: 9189540691940317156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_21
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6795fd20bbee3bb0800000000000000
+      internalID: -4954263398143125651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_22
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 498
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f0c27dde3464570800000000000000
+      internalID: 8450516439603613546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_23
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e12d9a5e6e7aac920800000000000000
+      internalID: 3011403910988026398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_24
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1e690bcccacdbf30800000000000000
+      internalID: 4593050175916305947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_25
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 498
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf2089c8c3079df0800000000000000
+      internalID: -173665899721510983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_26
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3793d9355d34c40800000000000000
+      internalID: 5495470525418927065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_27
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 498
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c4a86cdd0b6154f0800000000000000
+      internalID: -841773948064979768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_28
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bef31401153ca260800000000000000
+      internalID: 7110116258910305973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_29
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7310c57b9fb1cb60800000000000000
+      internalID: 7764697906979804030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_30
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db16c74c2105f2cf0800000000000000
+      internalID: -274913010710191683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_31
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 498
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 144158ad28adc09f0800000000000000
+      internalID: -500785202998209471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_32
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 498
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f63ffa18dda5920c0800000000000000
+      internalID: -4600045636972186769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_33
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6613ddb3f4cef4390800000000000000
+      internalID: -7831781401923079834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_34
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 498
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbdf1343b913bf4c0800000000000000
+      internalID: -4252750880455918147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_35
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 420d0b2087f4d2d70800000000000000
+      internalID: 9019953005552783396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_36
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81488b40f76a63030800000000000000
+      internalID: 3474147227033175064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_37
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 498
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02660fd3ed2bbce30800000000000000
+      internalID: 4524906918215444000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_38
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f69380e315158920800000000000000
+      internalID: 2991820702572844786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_39
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 498
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e012c1fd9148bb460800000000000000
+      internalID: 7258540471089897742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_40
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 101d4caad7e3f7940800000000000000
+      internalID: 5296020396267852033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_41
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 491
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaed41b9c2b40f550800000000000000
+      internalID: 6192532142586912426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_42
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 498
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d57ddf8ae96dcd0800000000000000
+      internalID: -2533663291698881230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 481
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1395680ce3f446110800000000000000
+      internalID: 1253213727252437297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_44
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 481
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49f304cab04d41d0800000000000000
+      internalID: -3364962175679202995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_45
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 481
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4d03b1829260a60800000000000000
+      internalID: 7639839070112240814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_46
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 264d83a3dbab6a150800000000000000
+      internalID: 5883595285094519906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_47
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 481
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60ee1d747dd282640800000000000000
+      internalID: 5055340984369540614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf3e0ae06ced8b80800000000000000
+      internalID: -8390790629733548103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_49
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44fe13f18f0faf10800000000000000
+      internalID: 2283060586904220751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_50
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa57710d6d43d8b0800000000000000
+      internalID: -5128670420073489677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_51
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbf4597f4f5841b50800000000000000
+      internalID: 6563017844157927359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_52
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065c0013ed1354d20800000000000000
+      internalID: 3262068335474427232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_53
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 481
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6870c841c4d712550800000000000000
+      internalID: 6134321933171033990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_54
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80fe3c3f49a273d60800000000000000
+      internalID: 7869805693086461704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_55
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 481
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd8dc8b9addf6230800000000000000
+      internalID: 3634367145330970063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_56
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 481
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488fd5d0400cdfe20800000000000000
+      internalID: 3386073618489145476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_57
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 487
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60e4fbdda32714910800000000000000
+      internalID: 1819861321588362758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_58
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 481
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0467c1ed776454d0800000000000000
+      internalID: -3146776449268620278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_59
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 481
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184d23e74c59348e0800000000000000
+      internalID: -1710358762307267455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_60
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 481
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 260df15aef368c360800000000000000
+      internalID: 7190106750440165474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_61
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 483
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a72eee79d64d75450800000000000000
+      internalID: 6077559789325312634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_62
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 483
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1024a635940d29190800000000000000
+      internalID: -7957068578259582463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_63
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 483
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7f55c8ea1a8e3a80800000000000000
+      internalID: -8485192799740403842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_64
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ab27ffe74ad6a70800000000000000
+      internalID: 8821888110447213186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_65
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dbae97b10bbc1b40800000000000000
+      internalID: 5412406468242484183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_66
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 484
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d92b933fbb1bc80800000000000000
+      internalID: -8308653184202400456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_67
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 484
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b7852638c30a1970800000000000000
+      internalID: 8726291386420529075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_68
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e3d490da551d360800000000000000
+      internalID: 7192624281561153131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_69
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49eabf1373c721a80800000000000000
+      internalID: -8497592970391081324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_70
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 484
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff9ca786d1e105b0800000000000000
+      internalID: -5403789766352396297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_71
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 484
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4ffaf0163b56fec0800000000000000
+      internalID: -3533536569854329014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_72
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4414bd58ae5e79e0800000000000000
+      internalID: -1621754738587200435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_73
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 484
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a9dbeb9c6f2fd60800000000000000
+      internalID: 7922666040847079937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_74
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 484
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1fe7c02dda932be0800000000000000
+      internalID: -1503187576083189986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_75
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 484
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964417fe44d6ab050800000000000000
+      internalID: 5817082011544798313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_76
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 484
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c74fa912238db49e0800000000000000
+      internalID: -1635976329795275652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_77
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 484
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e0e95ca43279290800000000000000
+      internalID: -7883793818638741904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_78
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 486
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2c293536db66ad0800000000000000
+      internalID: -2709269891515235585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_79
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 487
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca2c0d8f8896dc40800000000000000
+      internalID: 5536780534212733644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AppleCounterFont3_80
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 489
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f5a08624a18f7d0800000000000000
+      internalID: -2884526688815128771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AppleCounterFont3_0: -5658058485875229804
+      AppleCounterFont3_1: -6793628722085160846
+      AppleCounterFont3_10: 8907480532841114879
+      AppleCounterFont3_11: 338411846737244887
+      AppleCounterFont3_12: -1166212392070539005
+      AppleCounterFont3_13: 2091679050538338506
+      AppleCounterFont3_14: -8964816840273829960
+      AppleCounterFont3_15: 2190694180190328961
+      AppleCounterFont3_16: -1368583411921044695
+      AppleCounterFont3_17: 8170040397443049996
+      AppleCounterFont3_18: -6691383004621348991
+      AppleCounterFont3_19: -2964738843937544465
+      AppleCounterFont3_2: 3361517112437108287
+      AppleCounterFont3_20: 9189540691940317156
+      AppleCounterFont3_21: -4954263398143125651
+      AppleCounterFont3_22: 8450516439603613546
+      AppleCounterFont3_23: 3011403910988026398
+      AppleCounterFont3_24: 4593050175916305947
+      AppleCounterFont3_25: -173665899721510983
+      AppleCounterFont3_26: 5495470525418927065
+      AppleCounterFont3_27: -841773948064979768
+      AppleCounterFont3_28: 7110116258910305973
+      AppleCounterFont3_29: 7764697906979804030
+      AppleCounterFont3_3: 8125448180288959674
+      AppleCounterFont3_30: -274913010710191683
+      AppleCounterFont3_31: -500785202998209471
+      AppleCounterFont3_32: -4600045636972186769
+      AppleCounterFont3_33: -7831781401923079834
+      AppleCounterFont3_34: -4252750880455918147
+      AppleCounterFont3_35: 9019953005552783396
+      AppleCounterFont3_36: 3474147227033175064
+      AppleCounterFont3_37: 4524906918215444000
+      AppleCounterFont3_38: 2991820702572844786
+      AppleCounterFont3_39: 7258540471089897742
+      AppleCounterFont3_4: 3316340097607043320
+      AppleCounterFont3_40: 5296020396267852033
+      AppleCounterFont3_41: 6192532142586912426
+      AppleCounterFont3_42: -2533663291698881230
+      AppleCounterFont3_43: 1253213727252437297
+      AppleCounterFont3_44: -3364962175679202995
+      AppleCounterFont3_45: 7639839070112240814
+      AppleCounterFont3_46: 5883595285094519906
+      AppleCounterFont3_47: 5055340984369540614
+      AppleCounterFont3_48: -8390790629733548103
+      AppleCounterFont3_49: 2283060586904220751
+      AppleCounterFont3_5: -6972833920594357019
+      AppleCounterFont3_50: -5128670420073489677
+      AppleCounterFont3_51: 6563017844157927359
+      AppleCounterFont3_52: 3262068335474427232
+      AppleCounterFont3_53: 6134321933171033990
+      AppleCounterFont3_54: 7869805693086461704
+      AppleCounterFont3_55: 3634367145330970063
+      AppleCounterFont3_56: 3386073618489145476
+      AppleCounterFont3_57: 1819861321588362758
+      AppleCounterFont3_58: -3146776449268620278
+      AppleCounterFont3_59: -1710358762307267455
+      AppleCounterFont3_6: 2718096792417234239
+      AppleCounterFont3_60: 7190106750440165474
+      AppleCounterFont3_61: 6077559789325312634
+      AppleCounterFont3_62: -7957068578259582463
+      AppleCounterFont3_63: -8485192799740403842
+      AppleCounterFont3_64: 8821888110447213186
+      AppleCounterFont3_65: 5412406468242484183
+      AppleCounterFont3_66: -8308653184202400456
+      AppleCounterFont3_67: 8726291386420529075
+      AppleCounterFont3_68: 7192624281561153131
+      AppleCounterFont3_69: -8497592970391081324
+      AppleCounterFont3_7: -5217408577490336390
+      AppleCounterFont3_70: -5403789766352396297
+      AppleCounterFont3_71: -3533536569854329014
+      AppleCounterFont3_72: -1621754738587200435
+      AppleCounterFont3_73: 7922666040847079937
+      AppleCounterFont3_74: -1503187576083189986
+      AppleCounterFont3_75: 5817082011544798313
+      AppleCounterFont3_76: -1635976329795275652
+      AppleCounterFont3_77: -7883793818638741904
+      AppleCounterFont3_78: -2709269891515235585
+      AppleCounterFont3_79: 5536780534212733644
+      AppleCounterFont3_8: -2727386181381010147
+      AppleCounterFont3_80: -2884526688815128771
+      AppleCounterFont3_9: 422490619513419018
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

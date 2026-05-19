@@ -20,7 +20,7 @@ public class Bala : MonoBehaviour
     {
         if (otro.CompareTag("Player"))
         {
-            PlayerController jugador = otro.GetComponent<PlayerController>();
+            PlayerController3 jugador = otro.GetComponent<PlayerController3>();
 
             if (jugador != null)
             {
